@@ -7,6 +7,8 @@ import placeholderImage2 from "../../assets/images/placeholder2.png";
 import placeholderImage3 from "../../assets/images/placeholder3.png";
 import placeholderImage4 from "../../assets/images/placeholder4.png";
 import placeholderImage5 from "../../assets/images/placeholder5.png";
+// import loadImageAsBase64 from "../../utils/loadImageAsBase64.js"; // Your utility function
+
 
 const RecipeDetail = () => {
   const { id } = useParams();

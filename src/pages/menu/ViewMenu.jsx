@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { handleDownloadPDF } from "./download"; // Import the function from the utils file
+import { handleDownloadPDF } from "./download"; 
 import styles from "../../styles/ViewMenu.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons"; // Import the download icon

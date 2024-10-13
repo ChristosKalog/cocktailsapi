@@ -1,24 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import mockCocktails from "../../data/mockCocktails"; // Import the mock cocktail data
-import styles from "../../styles/recipelist.module.css"; // Import CSS module for styling
+import mockCocktails from "../../data/mockCocktails";
+import styles from "../../styles/recipelist.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSortAlphaAsc,
   faSortAlphaDesc,
 } from "@fortawesome/free-solid-svg-icons";
-// import placeholder_sm from "../../assets/images/placeholder1.png";
+import loadImageAsBase64 from "../../utils/loadImageAsBase64.js"; // Your utility function
 
 const RecipeList = () => {
   const [filter, setFilter] = useState("");
   const [complexity, setComplexity] = useState("");
-  const [sortOrder, setSortOrder] = useState("asc"); // New state for sorting, default to ascending
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [base64Images, setBase64Images] = useState({}); // To store base64 images
 
   const toggleSortOrder = () => {
     setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
   };
 
-  // Filter cocktails based on style and complexity
+  useEffect(() => {
+    mockCocktails.forEach(async (cocktail) => {
+      const imageName = cocktail.imageName;
+      const storedImage = localStorage.getItem(imageName);
+
+      if (!storedImage) {
+        try {
+          const base64Image = await loadImageAsBase64(imageName);
+          localStorage.setItem(imageName, base64Image);
+          setBase64Images((prev) => ({ ...prev, [imageName]: base64Image }));
+        } catch (error) {
+          console.error("Error loading image:", error);
+        }
+      } else {
+        setBase64Images((prev) => ({ ...prev, [imageName]: storedImage }));
+      }
+    });
+  }, []);
+
   const filteredCocktails = mockCocktails
     .filter((cocktail) => {
       const matchesStyle = filter ? cocktail.style === filter : true;
@@ -28,7 +47,6 @@ const RecipeList = () => {
       return matchesStyle && matchesComplexity;
     })
     .sort((a, b) => {
-      // Sort cocktails alphabetically based on the selected sort order
       if (sortOrder === "asc") {
         return a.name.localeCompare(b.name);
       } else {
@@ -48,7 +66,6 @@ const RecipeList = () => {
     <div className={styles.recipeList}>
       <h1>Cocktail Recipes</h1>
 
-      {/* Filter Options */}
       <div className={styles.filters}>
         <label>
           Filter by Style:
@@ -77,7 +94,6 @@ const RecipeList = () => {
           </select>
         </label>
 
-        {/* Sort Button */}
         <button onClick={toggleSortOrder} className={styles.sortButton}>
           <FontAwesomeIcon
             icon={sortOrder === "asc" ? faSortAlphaAsc : faSortAlphaDesc}
@@ -85,7 +101,6 @@ const RecipeList = () => {
         </button>
       </div>
 
-      {/* Cocktail List */}
       <div className={styles.recipeGrid}>
         {filteredCocktails.map((cocktail) => (
           <Link
@@ -97,11 +112,13 @@ const RecipeList = () => {
               <div className={styles.imageContainer}>
                 <img
                   className={styles.image}
-                  src={require(`../../assets/images/${cocktail.imageName}`)}
+                  src={
+                    base64Images[cocktail.imageName] ||
+                    require(`../../assets/images/${cocktail.imageName}`)
+                  }
                   alt={cocktail.name}
-                />{" "}
+                />
               </div>
-
               <div className={styles.infoContainer}>
                 <h2>{cocktail.name}</h2>
                 <div className={styles.moreInfo}>

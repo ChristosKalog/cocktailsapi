@@ -104,9 +104,8 @@
 
   .iconContainer {
     display: flex;
-    justify-content: start;
-    align-items: start;
-
+    justify-content: flex-start;
+    align-items: flex-start;
     font-size: 0.9rem;
   }
 
