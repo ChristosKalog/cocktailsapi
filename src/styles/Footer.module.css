@@ -3,17 +3,15 @@
 .footer {
   background-color: #121212;
   color: white;
-  /* White text */
   text-align: center;
   padding: 20px;
-  border-top: 2px solid rgba(255, 215, 0, 0.3);
+  border-top: 2px solid var(--primary-color-dark);
+  width: 95vw;
 }
 
 .footerContent {
   max-width: 1200px;
-  /* Set a max width for content */
   margin: 0 auto;
-  /* Center the content */
 }
 
 .footer p {
@@ -23,14 +21,12 @@
 
 .socialLinks {
   margin-top: 10px;
-  /* Small margin above social links */
 }
 
 
 
 .socialLinks a:hover {
   color: white;
-  /* Change to white on hover */
 }
 
 
@@ -38,14 +34,11 @@
   background: none;
   border: none;
   color: var(--white);
-  /* Use your theme color */
-  cursor: pointer;
-
   padding: 0;
   margin: 5px;
+  cursor: pointer;
 }
 
 .linkButton:hover {
   color: var(--primary-color);
-
 }
