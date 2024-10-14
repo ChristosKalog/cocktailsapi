@@ -1,13 +1,13 @@
-// src/services/authService.js
+import mockUsers from '../data/mockUsers'; // Import initial mock user data
 
-import mockUsers from '../data/mockUsers'; // Import mock user data
+// Load users from localStorage, or use initial mock data if not available
+let users = JSON.parse(localStorage.getItem('users')) || mockUsers;
 
 // Simulate an API call for logging in
 const login = (username, password) => {
   return new Promise((resolve, reject) => {
-    const user = mockUsers.find(user => user.username === username);
+    const user = users.find(user => user.username === username);
     if (user) {
-      // Check if the password matches
       if (user.password === password) {
         resolve({ ...user, isAuthenticated: true });
       } else {
@@ -22,15 +22,15 @@ const login = (username, password) => {
 // Simulate an API call for user registration
 const register = (newUser) => {
   return new Promise((resolve) => {
-    // Here you would typically send a request to your API to create a user
-    mockUsers.push(newUser); // Add the new user to the mock data
+    users.push(newUser); // Add the new user to the mock data
+    localStorage.setItem('users', JSON.stringify(users)); // Persist to localStorage
     resolve(newUser);
   });
 };
 
 // Simulate checking if the user is authenticated
 const isAuthenticated = (username) => {
-  return mockUsers.some(user => user.username === username);
+  return users.some(user => user.username === username);
 };
 
 export default {
