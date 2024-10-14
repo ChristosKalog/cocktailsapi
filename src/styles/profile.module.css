@@ -207,51 +207,51 @@
   }
 
   .section h1 {
-    font-size: 1.1rem; /* Adjust font size for mobile */
+    font-size: 1.1rem; 
     border: none;
   }
 
   .section h2 {
-    font-size: 1.3rem; /* Adjust font size for mobile */
+    font-size: 1.3rem; 
     margin-bottom: var(--spacing-sm);
   }
 
   .section h3 {
-    font-size: 0.9rem; /* Adjust font size for mobile */
+    font-size: 0.9rem; 
     margin-bottom: var(--spacing-xs);
   }
 
   .imageContainer {
-    height: 200px; /* Reduce image height for mobile */
-    margin-bottom: var(--spacing-md); /* Adjust margin */
+    height: 200px; 
+    margin-bottom: var(--spacing-md); 
   }
 
   .deleteButton {
-    font-size: 0.9rem; /* Adjust button size */
-    padding: var(--spacing-xs); /* Adjust padding */
-    margin-top: var(--spacing-sm); /* Adjust margin */
+    font-size: 0.9rem; 
+    padding: var(--spacing-xs); 
+    margin-top: var(--spacing-sm); 
   }
 
   .linkButton {
-    font-size: 0.9rem; /* Adjust font size for mobile */
+    font-size: 0.9rem; 
   }
 
   .confirmationDialog {
     width: 100%;
     flex-direction: row; /* Stack confirmation elements vertically */
     gap: var(--spacing-sm); /* Add space between elements */
-    padding: var(--spacing-sm); /* Reduce padding */
+    padding: var(--spacing-sm); 
   }
 
   .confirmButton,
   .cancelButton {
-    width: 20%; /* Full width for buttons */
-    padding: var(--spacing-xs); /* Adjust padding */
+    width: 20%; 
+    padding: var(--spacing-xs); 
   }
 
   .deletedMessage {
-    flex-direction: column; /* Stack message content vertically */
-    padding: var(--spacing-sm); /* Adjust padding */
+    flex-direction: column; 
+    padding: var(--spacing-sm); 
   
   }
 
