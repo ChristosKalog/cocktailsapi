@@ -1,0 +1,174 @@
+@import './variables.css';
+
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-color);
+  text-align: center;
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin: var(--spacing-md) 0;
+}
+
+.formGroup {
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  font-size: var(--font-size-md);
+  color: var(--text-color);
+  background-color: transparent;
+  border: 1px solid var(--primary-color-dark);
+  border-radius: var(--border-radius-md);
+  outline: none;
+  transition: var(--transition);
+}
+
+input[type="text"]:focus,
+.selectInput:focus,
+textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
+}
+
+label {
+  font-size: 0.9rem;
+  margin-right: var(--spacing-sm);
+}
+
+.selectInput {
+  border: 1px solid var(--primary-color-dark);
+  background-color: transparent;
+  color: white;
+  padding: var(--spacing-sm);
+  text-align: center;
+  border-radius: var(--spacing-sm);
+  margin-right: var(--spacing-md);
+}
+
+.ingredients {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.ingredient {
+  width: 35% !important;
+  text-align: center;
+  color: white;
+  margin-right: var(--spacing-sm);
+  border: 1px solid var(--primary-color-dark);
+  border-radius: var(--spacing-sm);
+  background-color: transparent;
+  padding: var(--spacing-sm);
+  text-align: center;
+}
+
+
+.removeIngredient {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-color);
+  cursor: pointer;
+
+}
+
+textarea {
+  resize: none;
+  height: 150px;
+}
+
+.addMoreButton {
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-sm);
+  cursor: pointer;
+  width: 30%
+}
+
+.addIcon {
+  margin-right: var(--spacing-sm);
+}
+
+.alcoholValue {
+  display: flex;
+  padding-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+.formGroup p {
+  font-size: 0.95rem;
+  color: var(--primary-color);
+  text-align: right;
+  width: 45px;
+}
+
+.submitButton {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-md);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+
+
+.submitButton:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .formContainer {
+    padding: var(--spacing-md);
+  }
+
+  input[type="text"],
+  textarea {
+    font-size: var(--font-size-sm);
+  }
+
+  button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+}

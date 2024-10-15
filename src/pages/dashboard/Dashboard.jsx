@@ -22,14 +22,26 @@ const Dashboard = () => {
           <div className={styles.menuItemsContainer}>
             {menus.map((menu) => (
               <div key={menu.id} className={styles.itemContainer}>
-                <Link className={styles.menuLink} to={`/viewmenu/${menu.id}`}>{menu.title}</Link>
+                <Link className={styles.menuLink} to={`/viewmenu/${menu.id}`}>
+                  {menu.title}
+                </Link>
               </div>
             ))}
           </div>
         ) : (
-          <p>No menus yet!<Link className={styles.link} to="/menu/create"> Create your first!</Link></p>
+          <>
+            <p>
+              No menus yet!
+              <Link className={styles.link} to="/menu/create">
+                {" "}
+                Create your first!
+              </Link>
+            </p>      
+          </>
         )}
       </div>
+      <Link to="/recipe/edit">Edit Page</Link>
+      <Link to="/recipe/Add">Add Page</Link>
     </div>
   );
 };
