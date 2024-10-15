@@ -36,18 +36,32 @@ form {
   width: 100%;
 }
 
-input[type="text"],
-textarea {
+
+.textarea {
   width: 100%;
   padding: var(--spacing-sm);
   font-size: var(--font-size-md);
   color: var(--text-color);
   background-color: transparent;
-  border: 1px solid var(--primary-color-dark);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius-md);
+  outline: none;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.recipeArea {
+  width: 100%;
+  padding: var(--spacing-md);
+  font-size: var(--font-size-md);
+  color: var(--text-color);
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
   border-radius: var(--border-radius-md);
   outline: none;
   transition: var(--transition);
 }
+
 
 input[type="text"]:focus, 
 textarea:focus,
@@ -65,7 +79,7 @@ label {
   padding: var(--spacing-sm);
   margin-right: var(--spacing-md);
   background-color: transparent;
-  border: 1px solid var(--primary-color-dark);
+  border: 1px solid var(--primary-color);
   color: white;
   text-align: center;
   border-radius: var(--spacing-sm);
@@ -73,14 +87,14 @@ label {
 
 .ingredients {
   display: flex;
-  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  padding-left: var(--spacing-lg);
 }
 
 .ingredient {
-  flex: 1 1 45%;
+  width: 30%;
   margin-right: var(--spacing-sm);
   padding: var(--spacing-sm);
   color: white;
@@ -88,8 +102,10 @@ label {
   background-color: transparent;
   border: 1px solid var(--primary-color-dark);
   border-radius: var(--spacing-sm);
-  margin-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
 }
+
 
 .removeIngredient {
   display: flex;
@@ -97,6 +113,7 @@ label {
   align-items: center;
   color: var(--primary-color);
   cursor: pointer;
+
 }
 
 textarea {
@@ -113,7 +130,6 @@ textarea {
   justify-content: center;
   padding: var(--spacing-sm);
   width: 100%;
-  max-width: 200px;
   margin-bottom: var(--spacing-sm);
   cursor: pointer;
 }

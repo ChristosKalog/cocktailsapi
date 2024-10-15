@@ -69,6 +69,7 @@ const AddRecipe = () => {
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
           <input
+          className={styles.textarea}
             type="text"
             name="name"
             value={recipe.name}
@@ -169,6 +170,7 @@ const AddRecipe = () => {
         </button>
         <div className={styles.formGroup}>
           <textarea
+          className={styles.recipeArea}
             name="recipe"
             value={recipe.recipe}
             onChange={(e) => handleChange(e)}
