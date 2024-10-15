@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import mockCocktails from "../../data/mockCocktails";
+import {savedCocktails} from "../../data/db.json";
 import styles from "../../styles/CreateMenu.module.css";
 
 const CreateMenu = () => {
@@ -27,7 +27,7 @@ const CreateMenu = () => {
     const newMenu = {
       id: menus.length + 1, // Generate a unique id based on existing menus length
       title,
-      cocktails: mockCocktails.filter((cocktail) =>
+      cocktails: savedCocktails.filter((cocktail) =>
         selectedCocktails.includes(cocktail.id)
       ),
     };
@@ -65,7 +65,7 @@ const CreateMenu = () => {
       <h3>Select Cocktails</h3>
       <div className={styles.mobileWrapper}>
         <div className={styles.cocktailSelection}>
-          {mockCocktails.map((cocktail) => (
+          {savedCocktails.map((cocktail) => (
             <label key={cocktail.id} className={styles.cocktailLabel}>
               <input
                 type="checkbox"

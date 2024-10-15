@@ -1,46 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import mockCocktails from "../../data/mockCocktails";
+import {savedCocktails} from "../../data/db.json";
 import styles from "../../styles/recipelist.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSortAlphaAsc,
   faSortAlphaDesc,
 } from "@fortawesome/free-solid-svg-icons";
-import loadImageAsBase64 from "../../utils/loadImageAsBase64.js"; // Your utility function
 
 const RecipeList = () => {
   const [filter, setFilter] = useState("");
   const [complexity, setComplexity] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
-  const [base64Images, setBase64Images] = useState({}); // To store base64 images
 
   const toggleSortOrder = () => {
     setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
   };
 
-  useEffect(() => {
-    mockCocktails.forEach(async (cocktail) => {
-      const imageName = cocktail.imageName;
-      const storedImage = localStorage.getItem(imageName);
 
-      if (!storedImage) {
-        try {
-          const base64Image = await loadImageAsBase64(imageName);
-          localStorage.setItem(imageName, base64Image);
-          setBase64Images((prev) => ({ ...prev, [imageName]: base64Image }));
-        } catch (error) {
-          console.error("Error loading image:", error);
-        }
-      } else {
-        setBase64Images((prev) => ({ ...prev, [imageName]: storedImage }));
-      }
-    });
-  }, []);
 
-  const filteredCocktails = mockCocktails
+  const filteredCocktails = savedCocktails
     .filter((cocktail) => {
-      const matchesStyle = filter ? cocktail.style === filter : true;
+      const matchesStyle = filter ? cocktail.cocktailStyle === filter : true;
       const matchesComplexity = complexity
         ? cocktail.complexityLevel === complexity
         : true;
@@ -56,10 +37,10 @@ const RecipeList = () => {
 
   // Get unique styles and complexities for filter options
   const stylesOptions = [
-    ...new Set(mockCocktails.map((cocktail) => cocktail.style)),
+    ...new Set(savedCocktails.map((cocktail) => cocktail.cocktailStyle)),
   ];
   const complexityOptions = [
-    ...new Set(mockCocktails.map((cocktail) => cocktail.complexityLevel)),
+    ...new Set(savedCocktails.map((cocktail) => cocktail.complexityLevel)),
   ];
 
   return (
@@ -109,21 +90,20 @@ const RecipeList = () => {
             className={styles.recipeLink}
           >
             <div className={styles.recipeCard}>
-              <div className={styles.imageContainer}>
+              {/* <div className={styles.imageContainer}>
                 <img
                   className={styles.image}
                   src={
-                    base64Images[cocktail.imageName] ||
                     require(`../../assets/images/${cocktail.imageName}`)
                   }
                   alt={cocktail.name}
                 />
-              </div>
+              </div> */}
               <div className={styles.infoContainer}>
                 <h2>{cocktail.name}</h2>
                 <div className={styles.moreInfo}>
                   <p>
-                    <strong>Style:</strong> {cocktail.style}
+                    <strong>Style:</strong> {cocktail.cocktailStyle}
                   </p>
                   <p>
                     <strong>Complexity:</strong> {cocktail.complexityLevel}

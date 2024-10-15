@@ -1,6 +1,5 @@
 @import './variables.css';
 
-
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -14,25 +13,25 @@
 }
 
 h1 {
+  color: var(--primary-color);
   font-size: var(--font-size-lg);
   margin-bottom: var(--spacing-md);
-  color: var(--primary-color);
   text-align: center;
 }
 
 form {
-  width: 100%;
-  max-width: 400px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 400px;
   margin: var(--spacing-md) 0;
 }
 
 .formGroup {
-  margin-bottom: var(--spacing-md);
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
+  margin-bottom: var(--spacing-md);
 }
 
 input[type="text"],
@@ -48,9 +47,9 @@ textarea {
   transition: var(--transition);
 }
 
-input[type="text"]:focus,
-.selectInput:focus,
-textarea:focus {
+input[type="text"]:focus, 
+textarea:focus,
+.selectInput:focus {
   border-color: var(--primary-color);
   box-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
 }
@@ -61,34 +60,32 @@ label {
 }
 
 .selectInput {
-  border: 1px solid var(--primary-color-dark);
-  background-color: transparent;
-  color: white;
   padding: var(--spacing-sm);
+  margin-right: var(--spacing-md);
+  background-color: transparent;
+  border: 1px solid var(--primary-color-dark);
+  color: white;
   text-align: center;
   border-radius: var(--spacing-sm);
-  margin-right: var(--spacing-md);
 }
 
 .ingredients {
-  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
 }
 
 .ingredient {
-  width: 35% !important;
-  text-align: center;
-  color: white;
+  width: 35%!important;
   margin-right: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  color: white;
+  text-align: center;
+  background-color: transparent;
   border: 1px solid var(--primary-color-dark);
   border-radius: var(--spacing-sm);
-  background-color: transparent;
-  padding: var(--spacing-sm);
-  text-align: center;
 }
-
 
 .removeIngredient {
   display: flex;
@@ -96,7 +93,6 @@ label {
   align-items: center;
   color: var(--primary-color);
   cursor: pointer;
-
 }
 
 textarea {
@@ -106,15 +102,15 @@ textarea {
 
 .addMoreButton {
   background-color: transparent;
-  border: none;
   color: white;
-  padding: var(--spacing-sm);
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: var(--spacing-sm);
+  width: 30%;
   margin-bottom: var(--spacing-sm);
   cursor: pointer;
-  width: 30%
 }
 
 .addIcon {
@@ -123,12 +119,11 @@ textarea {
 
 .alcoholValue {
   display: flex;
-  padding-top: var(--spacing-sm);
-  padding-bottom: var(--spacing-sm);
   align-items: center;
   justify-content: flex-start;
+  padding-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
 }
-
 
 .formGroup p {
   font-size: 0.95rem;
@@ -148,8 +143,6 @@ textarea {
   cursor: pointer;
   transition: var(--transition);
 }
-
-
 
 .submitButton:hover {
   background-color: var(--secondary-color);

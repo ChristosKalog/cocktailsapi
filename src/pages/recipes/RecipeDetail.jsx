@@ -1,24 +1,29 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import mockCocktails from "../../data/mockCocktails"; 
-import styles from "../../styles/recipedetail.module.css"; 
+import { savedCocktails } from "../../data/db.json"; // Make sure this path is correct
+import styles from "../../styles/recipedetail.module.css";
+
+// Static imports for images
+import placeholder1 from '../../assets/images/placeholder1.png';
+import placeholder2 from '../../assets/images/placeholder2.png';
+import placeholder3 from '../../assets/images/placeholder3.png';
+import placeholder4 from '../../assets/images/placeholder4.png';
+import placeholder5 from '../../assets/images/placeholder5.png';
 
 const RecipeDetail = () => {
   const { id } = useParams();
-  const cocktail = mockCocktails.find((cocktail) => cocktail.id === Number(id));
+  const cocktail = savedCocktails.find((cocktail) => cocktail.id === id);
 
+  // Define images with static imports
   const images = [
-    { id: 1, src: "placeholder1", alt: "Pic 1" },
-    { id: 2, src: "placeholder2", alt: "Pic 2" },
-    { id: 3, src: "placeholder3", alt: "Pic 3" },
-    { id: 4, src: "placeholder4", alt: "Pic 4" },
-    { id: 5, src: "placeholder5", alt: "Pic 5" },
+    { id: 1, src: placeholder1, alt: "Pic 1" },
+    { id: 2, src: placeholder2, alt: "Pic 2" },
+    { id: 3, src: placeholder3, alt: "Pic 3" },
+    { id: 4, src: placeholder4, alt: "Pic 4" },
+    { id: 5, src: placeholder5, alt: "Pic 5" },
   ];
 
-  const [mainImage, setMainImage] = useState(images[1].src);
-
-  const mainImageSrc = require(`../../assets/images/${mainImage}.png`);
-  console.log(mainImageSrc)
+  const [mainImage, setMainImage] = useState(images[0].src); // Set the first image as default
 
   if (!cocktail) {
     return <div className={styles.error}>Cocktail not found!</div>;
@@ -30,7 +35,7 @@ const RecipeDetail = () => {
         <div className={styles.leftContainer}>
           <div className={styles.imageContainer}>
             <img
-              src={mainImageSrc} // Use the dynamic src
+              src={mainImage} // Use the static main image
               className={styles.image}
               alt={cocktail.name}
             />
@@ -40,12 +45,12 @@ const RecipeDetail = () => {
             {images.map((image) => (
               <img
                 key={image.id}
-                src={require(`../../assets/images/${image.src}.png`)} // Dynamically load each carousel image
+                src={image.src} // Use static image source
                 alt={image.alt}
                 className={`${styles.carouselImage} ${
                   image.src === mainImage ? styles.carouselImageActive : ""
                 }`}
-                onClick={() => setMainImage(image.src)}  // Update the main image on click
+                onClick={() => setMainImage(image.src)} // Update the main image on click
               />
             ))}
           </div>

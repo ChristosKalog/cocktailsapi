@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import styles from "../../styles/AddRecipe.module.css"; // Import CSS module
 import rangeStyles from "../../styles/Range.module.css"; // Import CSS module
+import { saveRecipe } from '../../services/recipeService';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faAdd } from "@fortawesome/free-solid-svg-icons"; // Import the download icon
+
+
 
 const AddRecipe = () => {
   const [recipe, setRecipe] = useState({
@@ -43,32 +46,20 @@ const AddRecipe = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await fetch("/api/recipes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...recipe,
-          ingredients: recipe.ingredients, // Keep ingredients with their quantities
-        }),
+      // Save the recipe to the JSON database
+      saveRecipe(recipe);
+      console.log("Recipe created successfully!");
+      setRecipe({
+        name: "",
+        cocktailStyle: "",
+        complexityLevel: "",
+        ingredients: [{ name: "", quantity: "" }],
+        recipe: "",
+        alcoholValue: 0,
       });
-
-      if (response.ok) {
-        console.log("Recipe created successfully!");
-        setRecipe({
-          name: "",
-          cocktailStyle: "",
-          complexityLevel: "",
-          ingredients: [{ name: "", quantity: "" }],
-          recipe: "",
-          alcoholValue: 0, // Reset alcohol value
-        });
-      }
     } catch (error) {
-      console.error("Error creating recipe:", error);
+      console.error("Error saving recipe:", error);
     }
   };
 
@@ -98,7 +89,7 @@ const AddRecipe = () => {
               Cocktail Style
             </option>
             <option value="Classic">Classic</option>
-            <option value="Mordern">Mordern</option>
+            <option value="Modern">Modern</option>
             <option value="Tropical">Tropical</option>
           </select>
           <select
