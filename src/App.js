@@ -13,7 +13,7 @@ import Register from "./pages/auth/Register";
 import Dashboard from "./pages/dashboard/Dashboard";
 import RecipeList from "./pages/recipes/RecipeList";
 import RecipeDetail from "./pages/recipes/RecipeDetail";
-// import AddRecipe from "./pages/recipes/AddRecipe";
+import AddRecipe from "./pages/recipes/AddRecipe";
 // import EditRecipe from "./pages/recipes/EditRecipe";
 import CreateMenu from "./pages/menu/CreateMenu";
 import ViewMenu from "./pages/menu/ViewMenu";
@@ -33,21 +33,18 @@ function App() {
 
   } else if (navigator.userAgent.indexOf("Linux") !== -1) {
 
+
   }
+
+
+
   return (
-    <AuthProvider>
       <Router>
+    <AuthProvider>
         <div className="App">
-
-          {/* Common layout elements */}
           <Navbar />
-          {/* <Sidebar /> */}
-
           <main>
-            {/* Define routes for different pages */}
-            <Routes>
-              
-              {/* Public Routes */}
+            <Routes>              
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               {/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
@@ -56,22 +53,20 @@ function App() {
 
               <Route path="/" element={ <PrivateRoute> <Dashboard /> </PrivateRoute>} />
               <Route path="/recipes" element={<PrivateRoute><RecipeList /></PrivateRoute>} />
-              <Route path="/recipes/:id" element={<RecipeDetail />} />
-
-              <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+              <Route path="/add" element={<PrivateRoute><AddRecipe /></PrivateRoute>} />
+              <Route path="/recipes/:id"  element={<PrivateRoute><RecipeDetail /></PrivateRoute>} />
+              <Route path="/profile" element={<PrivateRoute><Profile />   </PrivateRoute>} />
               <Route path="/menu/create" element={<PrivateRoute><CreateMenu /></PrivateRoute>} />
               <Route path="/viewmenu/:id" element={<PrivateRoute><ViewMenu /></PrivateRoute>} />
 
-           {/*  <Route path="/recipes/add" element={<PrivateRoute><AddRecipe /></PrivateRoute>} /
-            <Route path="/recipes/edit/:id" element={<PrivateRoute><EditRecipe /></PrivateRoute>} />
-            <Route path="/settings" element={<PrivateRoute><Settings /></PrivateRoute>} /> */}
+           {/* <Route path="/recipes/edit/:id" element={<PrivateRoute><EditRecipe /></PrivateRoute>} /> */}
             </Routes>
           </main>
 
           <Footer />
         </div>
-      </Router>
     </AuthProvider>
+      </Router>
   );
 }
 
