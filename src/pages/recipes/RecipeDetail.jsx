@@ -4,11 +4,11 @@ import { savedCocktails } from "../../data/db.json"; // Make sure this path is c
 import styles from "../../styles/recipedetail.module.css";
 
 // Static imports for images
-import placeholder1 from '../../assets/images/placeholder1.png';
-import placeholder2 from '../../assets/images/placeholder2.png';
-import placeholder3 from '../../assets/images/placeholder3.png';
-import placeholder4 from '../../assets/images/placeholder4.png';
-import placeholder5 from '../../assets/images/placeholder5.png';
+import placeholder1 from "../../assets/images/placeholder1.png";
+import placeholder2 from "../../assets/images/placeholder2.png";
+import placeholder3 from "../../assets/images/placeholder3.png";
+import placeholder4 from "../../assets/images/placeholder4.png";
+import placeholder5 from "../../assets/images/placeholder5.png";
 
 const RecipeDetail = () => {
   const { id } = useParams();
@@ -63,39 +63,43 @@ const RecipeDetail = () => {
             <div className={styles.complexicityContainer}>
               <h2>Complexity:</h2>
               <div className={styles.barContainer}>
+                {/* Fix complexityLevel case mismatch */}
                 <div
                   className={`${styles.bar} ${
-                    cocktail.complexityLevel === "Easy" ||
-                    cocktail.complexityLevel === "Medium" ||
-                    cocktail.complexityLevel === "Hard"
+                    ["easy", "medium", "hard"].includes(
+                      cocktail.complexityLevel.toLowerCase()
+                    )
                       ? styles.barActive
                       : ""
                   }`}
                 ></div>
                 <div
                   className={`${styles.bar} ${
-                    cocktail.complexityLevel === "Medium" ||
-                    cocktail.complexityLevel === "Hard"
+                    ["medium", "hard"].includes(
+                      cocktail.complexityLevel.toLowerCase()
+                    )
                       ? styles.barActive
                       : ""
                   }`}
                 ></div>
                 <div
                   className={`${styles.bar} ${
-                    cocktail.complexityLevel === "Hard" ? styles.barActive : ""
+                    cocktail.complexityLevel.toLowerCase() === "hard"
+                      ? styles.barActive
+                      : ""
                   }`}
                 ></div>
               </div>
             </div>
             <div>
-              <h2>Style: {cocktail.style}</h2>
+              <h2>Style: {cocktail.cocktailStyle}</h2>
             </div>
           </div>
           <h4>Ingredients:</h4>
           <div className={styles.ingredientsContainer}>
             {cocktail.ingredients.map((ingredient, index) => (
               <div className={styles.ingredient} key={index}>
-                {ingredient}
+                {ingredient.name}
               </div>
             ))}
           </div>

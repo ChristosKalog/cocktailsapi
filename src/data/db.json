@@ -8,12 +8,12 @@
       "ingredients": [
         {
           "name": "Champagne",
-          "quantity": "250 ml",
+          "quantity": "250",
           "id": 1728998788162
         },
         {
           "name": "Orange Juice",
-          "quantity": "250 ml",
+          "quantity": "250",
           "id": 1728998837157
         }
       ],
@@ -29,17 +29,17 @@
       "ingredients": [
         {
           "name": "White Rum",
-          "quantity": "60 ml",
+          "quantity": "60",
           "id": 1728998888840
         },
         {
           "name": "Coconut Cream",
-          "quantity": "60 ml",
+          "quantity": "60",
           "id": 1728998922811
         },
         {
           "name": "Pineapple Juice",
-          "quantity": "120 ml",
+          "quantity": "120",
           "id": 1728998954325
         },
         {
@@ -60,17 +60,17 @@
       "ingredients": [
         {
           "name": "Tequila",
-          "quantity": "50 ml",
+          "quantity": "50",
           "id": 1728999305927
         },
         {
           "name": "Triple Sec",
-          "quantity": "25 ml",
+          "quantity": "25",
           "id": 1728999311934
         },
         {
           "name": "Lime Juice",
-          "quantity": "25 ml",
+          "quantity": "25",
           "id": 1728999311935
         },
         {
@@ -91,7 +91,7 @@
       "ingredients": [
         {
           "name": "Bourbon",
-          "quantity": "50 ml",
+          "quantity": "50",
           "id": 1728999629361
         },
         {

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const API_URL = 'http://localhost:3000/savedCocktails';
+const API_URL = 'http://localhost:5000/savedCocktails';
 
 
 const saveRecipe = async (recipe) => {

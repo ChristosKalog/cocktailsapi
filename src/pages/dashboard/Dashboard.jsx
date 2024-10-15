@@ -41,8 +41,7 @@ const Dashboard = () => {
           </>
         )}
       </div>
-      <Link to="/recipe/edit">Edit Page</Link>
-      <Link to="/recipe/Add">Add Page</Link>
+      <Link to="/recipe/Add">Add a Recipe!</Link>
       <p>Woo hoo! You have {savedCocktails.length} recipes!</p>
     </div>
   );

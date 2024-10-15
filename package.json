@@ -25,7 +25,7 @@
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts --openssl-legacy-provider test",
     "eject": "react-scripts eject",
-    "server": "json-server --watch src/data/db.json"
+    "server": "json-server --watch src/data/db.json --port 5000"
   },
   "eslintConfig": {
     "extends": [
