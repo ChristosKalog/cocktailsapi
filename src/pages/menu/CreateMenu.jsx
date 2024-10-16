@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {savedCocktails} from "../../data/db.json";
-import styles from "../../styles/CreateMenu.module.css";
+import cocktailsData from "../../data/db.json"; // import the whole default export
+import styles from "../../styles/CreateMenu.module.css";    
+
 
 const CreateMenu = () => {
   const [title, setTitle] = useState("");
@@ -27,9 +28,10 @@ const CreateMenu = () => {
     const newMenu = {
       id: menus.length + 1, // Generate a unique id based on existing menus length
       title,
-      cocktails: savedCocktails.filter((cocktail) =>
+      cocktails: cocktailsData.savedCocktails.filter((cocktail) =>
         selectedCocktails.includes(cocktail.id)
       ),
+      
     };
 
     menus.push(newMenu);
@@ -65,7 +67,7 @@ const CreateMenu = () => {
       <h3>Select Cocktails</h3>
       <div className={styles.mobileWrapper}>
         <div className={styles.cocktailSelection}>
-          {savedCocktails.map((cocktail) => (
+          {cocktailsData.savedCocktails.map((cocktail) => (
             <label key={cocktail.id} className={styles.cocktailLabel}>
               <input
                 type="checkbox"

@@ -92,6 +92,9 @@ const AddRecipe = () => {
             <option value="Classic">Classic</option>
             <option value="Modern">Modern</option>
             <option value="Tropical">Tropical</option>
+            <option value="Tropical">Tiki</option>
+            <option value="Tropical">Sour</option>
+            <option value="Tropical">Highballs</option>
           </select>
           <select
             name="complexityLevel"

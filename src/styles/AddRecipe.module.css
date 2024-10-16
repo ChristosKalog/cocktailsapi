@@ -63,11 +63,11 @@ form {
 }
 
 
-input[type="text"]:focus, 
+input[type="text"]:focus,
 textarea:focus,
 .selectInput:focus {
+  border: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
 }
 
 label {
@@ -94,16 +94,16 @@ label {
 }
 
 .ingredient {
+  display: flex;
+  align-items: center;
+  text-align: center;
   width: 30%;
   margin-right: var(--spacing-sm);
   padding: var(--spacing-sm);
   color: white;
-  text-align: center;
   background-color: transparent;
   border: 1px solid var(--primary-color-dark);
   border-radius: var(--spacing-sm);
-  display: flex;
-  align-items: center;
 }
 
 
@@ -113,7 +113,6 @@ label {
   align-items: center;
   color: var(--primary-color);
   cursor: pointer;
-
 }
 
 textarea {
@@ -200,6 +199,10 @@ textarea {
   .formContainer {
     padding: var(--spacing-md);
     width: 100%;
+    border-radius: 0;
+    min-height: 80vh;
+    text-align: center;
+    justify-content: flex-start;
   }
 
   h1 {
@@ -214,8 +217,10 @@ textarea {
   .formGroup {
     align-items: center;
     text-align: center;
-    width: 100%;
+    width: 85%;
     justify-content: space-between;
+    margin: 0 auto;
+    margin-bottom: var(--spacing-lg);
   }
 
   .selectInput {
@@ -227,22 +232,37 @@ textarea {
   textarea {
     font-size: var(--font-size-sm);
     padding: var(--spacing-sm);
-  } 
+  }
+
+  .ingredients {
+    margin: 0;
+    justify-content: start;
+    align-items: center;
+    padding: 0;
+  }
 
   .ingredient {
-    border: none!important;
-    border-bottom: 1px solid white!important;
-    height: 3rem;
-    border-radius: 0!important;
-    width: 50px!important
+    border: none;
+    border-bottom: 1px solid var(--primary-color);
+    height: 2rem;
+    border-radius: 0 !important;
+    padding: 2px !important;
+    margin: 0;
+    margin-right: 15px;
+    width: 100px!important;
+    color: var(--primary-color)
+  }
+
+  .ingredient input:focus {
+    border: none !important;
   }
 
   .addMoreButton {
-    width: 90vw!important;
+    width: 90vw !important;
     border: 1px solid var(--primary-color-dark);
     margin: 0 auto;
     padding: var(--spacing-md);
-    margin-bottom: var(--spacing-md)
+    margin-bottom: var(--spacing-lg)
   }
 
   .submitButton {

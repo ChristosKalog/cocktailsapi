@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {savedCocktails} from "../../data/db.json";
+import cocktailsData from "../../data/db.json"; // import the whole default export
 import styles from "../../styles/recipelist.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,7 +19,7 @@ const RecipeList = () => {
 
 
 
-  const filteredCocktails = savedCocktails
+  const filteredCocktails = cocktailsData.savedCocktails
     .filter((cocktail) => {
       const matchesStyle = filter ? cocktail.cocktailStyle === filter : true;
       const matchesComplexity = complexity
@@ -37,10 +37,10 @@ const RecipeList = () => {
 
   // Get unique styles and complexities for filter options
   const stylesOptions = [
-    ...new Set(savedCocktails.map((cocktail) => cocktail.cocktailStyle)),
+    ...new Set(cocktailsData.savedCocktails.map((cocktail) => cocktail.cocktailStyle)),
   ];
   const complexityOptions = [
-    ...new Set(savedCocktails.map((cocktail) => cocktail.complexityLevel)),
+    ...new Set(cocktailsData.savedCocktails.map((cocktail) => cocktail.complexityLevel)),
   ];
 
   return (

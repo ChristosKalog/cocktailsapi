@@ -19,6 +19,11 @@ if (typeof process !== 'undefined' && process.versions && process.versions.node)
   console.log('Running in the browser');
 }
 
+if (!('process' in window)) {
+  // @ts-ignore
+  window.process = {}
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

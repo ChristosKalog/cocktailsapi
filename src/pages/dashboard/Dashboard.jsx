@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // import SearchBar from "../../components/ui/SearchBar";
 import styles from "../../styles/Dashboard.module.css";
-import {savedCocktails} from "../../data/db.json";
 
 const Dashboard = () => {
   const [menus, setMenus] = useState([]);
-  
+
   useEffect(() => {
     // Retrieve menus from localStorage on component mount
     const savedMenus = JSON.parse(localStorage.getItem("menus")) || [];
@@ -37,12 +36,12 @@ const Dashboard = () => {
                 {" "}
                 Create your first!
               </Link>
-            </p>      
+            </p>
           </>
         )}
       </div>
       <Link to="/recipe/Add">Add a Recipe!</Link>
-      <p>Woo hoo! You have {savedCocktails.length} recipes!</p>
+     
     </div>
   );
 };

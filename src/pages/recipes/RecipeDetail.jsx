@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { savedCocktails } from "../../data/db.json"; // Make sure this path is correct
+import cocktailsData from "../../data/db.json"; // import the whole default export
 import styles from "../../styles/recipedetail.module.css";
 
 // Static imports for images
@@ -12,7 +12,7 @@ import placeholder5 from "../../assets/images/placeholder5.png";
 
 const RecipeDetail = () => {
   const { id } = useParams();
-  const cocktail = savedCocktails.find((cocktail) => cocktail.id === id);
+  const cocktail = cocktailsData.find((cocktail) => cocktail.id === id);
 
   // Define images with static imports
   const images = [

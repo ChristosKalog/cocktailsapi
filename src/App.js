@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // Layout components
@@ -29,6 +29,11 @@ function App() {
   } else if (navigator.userAgent.indexOf("Linux") !== -1) {
   }
 
+  useEffect(() => {
+    window.process = {
+      ...window.process,
+    };
+  }, []);
 
   return (
       <Router>
