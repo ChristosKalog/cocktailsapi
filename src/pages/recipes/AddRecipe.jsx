@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "../../styles/AddRecipe.module.css"; // Import CSS module
 import rangeStyles from "../../styles/Range.module.css"; // Import CSS module
 import { saveRecipe } from "../../services/recipeService";
+import ButtonComponent from "../../components/ui/ButtonComponent"; // Import the DeleteButton component
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faAdd } from "@fortawesome/free-solid-svg-icons"; // Import icons
@@ -210,9 +211,7 @@ const AddRecipe = () => {
             required
           />
         </div>
-        <button className={styles.submitButton} type="submit">
-          Add Recipe
-        </button>
+        <ButtonComponent type="sumbit" category="save">Add Recipe</ButtonComponent>
       </form>
     </div>
   );
