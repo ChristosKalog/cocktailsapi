@@ -1,0 +1,32 @@
+/* src/components/ui/DeleteButton.module.css */
+
+.deleteButton {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+  background-color: var(--primary-color);
+  font-size: 1rem;
+  color: black;
+  transition: 500ms;
+}
+
+.clicked {
+  background-color: var(--primary-color-dark);
+  cursor: default;
+}
+
+.deleteIcon {
+  color: black;
+  margin-right: var(--spacing-sm);
+}
+
+.deleteIconclicked {
+  color: black;
+  margin-right: var(--spacing-sm);
+  opacity: 0.8;
+}

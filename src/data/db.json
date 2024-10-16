@@ -22,38 +22,7 @@
       "price": "4"
     },
     {
-      "id": "caa3",
-      "name": "Pina Colada",
-      "cocktailStyle": "Tropical",
-      "complexityLevel": "medium",
-      "ingredients": [
-        {
-          "name": "White Rum",
-          "quantity": "60",
-          "id": 1728998888840
-        },
-        {
-          "name": "Coconut Cream",
-          "quantity": "60",
-          "id": 1728998922811
-        },
-        {
-          "name": "Pineapple Juice",
-          "quantity": "120",
-          "id": 1728998954325
-        },
-        {
-          "name": "Pineapple Slice",
-          "quantity": "1 slice",
-          "id": 1728998954326
-        }
-      ],
-      "recipe": "Blend rum, coconut cream, and pineapple juice with ice. Garnish with a slice of pineapple.",
-      "alcoholValue": "14",
-      "price": "4"
-    },
-    {
-      "id": "1c81",
+      "id": "2a34",
       "name": "Margarita",
       "cocktailStyle": "Classic",
       "complexityLevel": "medium",
@@ -61,83 +30,74 @@
         {
           "name": "Tequila",
           "quantity": "50",
-          "id": 1728999305927
-        },
-        {
-          "name": "Triple Sec",
-          "quantity": "25",
-          "id": 1728999311934
+          "id": 1728998788163
         },
         {
           "name": "Lime Juice",
           "quantity": "25",
-          "id": 1728999311935
+          "id": 1728998837158
         },
         {
-          "name": "Salt",
-          "quantity": "for rimming",
-          "id": 1728999311936
+          "name": "Triple Sec",
+          "quantity": "25",
+          "id": 1728998837159
         }
       ],
-      "recipe": "Shake tequila, triple sec, and lime juice with ice. Rim glass with salt and strain into the glass.",
-      "alcoholValue": "15",
-      "price": "4"
+      "recipe": "Shake tequila, lime juice, and triple sec with ice. Strain into a salt-rimmed glass.",
+      "alcoholValue": "14",
+      "price": "6"
     },
     {
-      "id": "0019",
-      "name": "Old Fashioned",
-      "cocktailStyle": "Classic",
-      "complexityLevel": "hard",
+      "id": "4f12",
+      "name": "Pina Colada",
+      "cocktailStyle": "Tropical",
+      "complexityLevel": "easy",
       "ingredients": [
         {
-          "name": "Bourbon",
+          "name": "Rum",
           "quantity": "50",
-          "id": 1728999629361
+          "id": 1728998788165
         },
         {
-          "name": "Sugar Cube",
-          "quantity": "1",
-          "id": 1728999656859
+          "name": "Coconut Cream",
+          "quantity": "30",
+          "id": 1728998837163
         },
         {
-          "name": "Angostura Bitters",
-          "quantity": "2 dashes",
-          "id": 1728999656860
-        },
-        {
-          "name": "Orange Peel",
-          "quantity": "1 twist",
-          "id": 1728999656861
+          "name": "Pineapple Juice",
+          "quantity": "100",
+          "id": 1728998837164
         }
       ],
-      "recipe": "Muddle sugar and bitters, add bourbon, and stir. Garnish with an orange peel.",
-      "alcoholValue": "30",
-      "price": "4"
+      "recipe": "Blend rum, coconut cream, and pineapple juice with ice. Serve in a chilled glass.",
+      "alcoholValue": "12",
+      "price": "7"
     },
     {
-      "id": "915b",
-      "name": "Christos",
-      "cocktailStyle": "Modern",
-      "complexityLevel": "hard",
+      "id": "4f12",
+      "name": "Pina Colada",
+      "cocktailStyle": "Tropical",
+      "complexityLevel": "easy",
       "ingredients": [
         {
-          "name": "Wine",
-          "quantity": "500",
-          "id": 1729001331752
+          "name": "Rum",
+          "quantity": "50",
+          "id": 1728998788165
         },
         {
-          "name": "Lemon",
-          "quantity": "",
-          "id": 1729001342526
+          "name": "Coconut Cream",
+          "quantity": "30",
+          "id": 1728998837163
         },
         {
-          "name": "Juice",
-          "quantity": "120",
-          "id": 1729001343148
+          "name": "Pineapple Juice",
+          "quantity": "100",
+          "id": 1728998837164
         }
       ],
-      "recipe": "Make it.",
-      "alcoholValue": "100"
+      "recipe": "Blend rum, coconut cream, and pineapple juice with ice. Serve in a chilled glass.",
+      "alcoholValue": "12",
+      "price": "7"
     }
   ]
 }

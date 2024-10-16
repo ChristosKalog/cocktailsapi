@@ -1,0 +1,26 @@
+{
+  "savedCocktails": [
+    {
+      "id": "9c74",
+      "name": "Mimosa",
+      "cocktailStyle": "Brunch",
+      "complexityLevel": "easy",
+      "ingredients": [
+        {
+          "name": "Champagne",
+          "quantity": "250",
+          "id": 1728998788162
+        },
+        {
+          "name": "Orange Juice",
+          "quantity": "250",
+          "id": 1728998837157
+        }
+      ],
+      "recipe": "Mix equal parts champagne and orange juice in a flute.",
+      "alcoholValue": "8",
+      "price": "4"
+    }
+
+  ]
+}

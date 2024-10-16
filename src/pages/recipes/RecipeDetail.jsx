@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import cocktailsData from "../../data/db.json"; // import the whole default export
 import styles from "../../styles/recipedetail.module.css";
+import { deleteRecipe } from '../../services/recipeService';
+import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent"; // Adjust the import path
+import DeleteButton from "../../components/ui/DeleteButton"; // Import the DeleteButton component
+
 
 // Static imports for images
 import placeholder1 from "../../assets/images/placeholder1.png";
@@ -12,7 +16,7 @@ import placeholder5 from "../../assets/images/placeholder5.png";
 
 const RecipeDetail = () => {
   const { id } = useParams();
-  const cocktail = cocktailsData.find((cocktail) => cocktail.id === id);
+  const cocktail = cocktailsData.savedCocktails.find((cocktail) => cocktail.id === id);
 
   // Define images with static imports
   const images = [
@@ -24,10 +28,31 @@ const RecipeDetail = () => {
   ];
 
   const [mainImage, setMainImage] = useState(images[0].src); // Set the first image as default
+  const [showConfirmation, setShowConfirmation] = useState(false); // State to manage confirmation dialog
+  const [deletedMessage, setDeletedMessage] = useState(false); // State for deletion message
 
   if (!cocktail) {
     return <div className={styles.error}>Cocktail not found!</div>;
   }
+
+  const deleteHandle = async () => {
+    setShowConfirmation(true); // Show confirmation dialog
+  };
+
+  const confirmDelete = async () => {
+    await deleteRecipe(id); // Call deleteRecipe function
+    setDeletedMessage(true); // Show deletion message
+    setShowConfirmation(false); // Close confirmation dialog
+
+    // Redirect or perform any additional actions after deletion if needed
+    setTimeout(() => {
+      setDeletedMessage(false);
+    }, 2000); // Remove message after 2 seconds
+  };
+
+  const cancelDelete = () => {
+    setShowConfirmation(false); // Close confirmation dialog without deletion
+  };
 
   return (
     <>
@@ -63,7 +88,6 @@ const RecipeDetail = () => {
             <div className={styles.complexicityContainer}>
               <h2>Complexity:</h2>
               <div className={styles.barContainer}>
-                {/* Fix complexityLevel case mismatch */}
                 <div
                   className={`${styles.bar} ${
                     ["easy", "medium", "hard"].includes(
@@ -107,6 +131,23 @@ const RecipeDetail = () => {
           <div className={styles.recipeContainer}>
             <p>{cocktail.recipe}</p>
           </div>
+          <DeleteButton onClick={deleteHandle}>
+            Delete Recipe
+          </DeleteButton>
+
+          {/* Conditional rendering for the DeleteConfirmation dialog */}
+          {showConfirmation && (
+            <DeleteConfirmation
+              onConfirm={confirmDelete}
+              onCancel={cancelDelete}
+            />
+          )}
+          {/* Show deletion message */}
+          {deletedMessage && (
+            <div className={styles.deletedMessage}>
+              <p>Recipe deleted successfully!</p>
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.goBackContainer}>

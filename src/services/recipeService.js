@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const API_URL = 'http://localhost:5000/savedCocktails';
+const API_URL = 'http://localhost:5001/savedCocktails';
 
 
 const saveRecipe = async (recipe) => {
@@ -25,4 +25,15 @@ const getAllRecipes = async () => {
   }
 };
 
-export { saveRecipe, getAllRecipes };
+const deleteRecipe = async (id) => {
+  try {
+    const response = await axios.delete(`${API_URL}/${id}`);
+    console.log('Recipe deleted successfully!', response.data);
+    return response.data; // You can return any useful information after deletion
+  } catch (error) {
+    console.error('Error deleting recipe:', error);
+    throw error; // Handle the error accordingly in your component
+  }
+};
+
+export { saveRecipe, getAllRecipes, deleteRecipe };
