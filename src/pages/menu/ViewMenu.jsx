@@ -19,7 +19,6 @@ const ViewMenu = () => {
         const foundMenu = retrievedMenus.find((menu) => menu.id === id);
         setMenu(foundMenu);
 
-
       } catch (error) {
         console.error("Error fetching menus:", error);
       }

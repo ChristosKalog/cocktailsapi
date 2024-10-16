@@ -7,7 +7,7 @@ import { useAuth } from "../../context/AuthContext"; // Adjust the path as neces
 import mockCocktails from "../../data/mockCocktails"; // Import the mock cocktail data
 import mockUsers from "../../data/mockUsers"; // Import mock user data
 import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent"; // Adjust the import path
-import DeleteButton from "../../components/ui/DeleteButton"; // Import the DeleteButton component
+import ButtonComponent from "../../components/ui/ButtonComponent"; // Import the DeleteButton component
 
 const ProfilePage = () => {
   const [cocktailsArray, setCocktailsArray] = useState([]);
@@ -123,9 +123,9 @@ const ProfilePage = () => {
         <div className={styles.section}>
           <h1>Actions</h1>
           <div className={styles.buttonContainer}>
-            <DeleteButton onClick={handleDeleteClick}>
+            <ButtonComponent category="delete" icon="faTrash" onClick={handleDeleteClick}>
               Delete Menus
-            </DeleteButton>
+            </ButtonComponent>
             {showConfirmation && (
               <DeleteConfirmation
                 onConfirm={confirmDelete}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import cocktailsData from "../../data/db.json"; // import the whole default export
+import cocktailsData from "../../data/db.json"; 
 import styles from "../../styles/recipelist.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

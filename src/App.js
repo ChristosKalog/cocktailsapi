@@ -15,7 +15,8 @@ import AddRecipe from "./pages/recipes/AddRecipe";
 import CreateMenu from "./pages/menu/CreateMenu";
 import ViewMenu from "./pages/menu/ViewMenu";
 import Profile from "./pages/profile/Profile";
-// import EditRecipe from "./pages/recipes/EditRecipe";
+import EditRecipe from "./pages/recipes/EditRecipe";
+
 // import ForgotPassword from "./pages/auth/ForgotPassword";
 // import Settings from "./pages/settings/Settings";
 
@@ -51,11 +52,11 @@ function App() {
                   <Route path="/" element={ <PrivateRoute> <Dashboard /></PrivateRoute>} />
                   <Route path="/recipes" element={<PrivateRoute><RecipeList /></PrivateRoute>} />
                   <Route path="/recipes/:id"  element={<PrivateRoute><RecipeDetail /></PrivateRoute>} />
+                  <Route path="/edit-recipe/:id" element={<PrivateRoute><EditRecipe /></PrivateRoute>} />                  
                   <Route path="/profile" element={<PrivateRoute><Profile />   </PrivateRoute>} />
                   <Route path="/menu/create" element={<PrivateRoute><CreateMenu /></PrivateRoute>} />
                   <Route path="/viewmenu/:id" element={<PrivateRoute><ViewMenu /></PrivateRoute>} />
                   <Route path="/recipe/add" element={<PrivateRoute><AddRecipe /></PrivateRoute>} />
-                  {/* <Route path="/recipe/edit" element={<PrivateRoute><EditRecipe /></PrivateRoute>} /> */}                  
                 </Routes>
               </main>
 

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import styles from "../../styles/AddRecipe.module.css"; // Import CSS module
 import rangeStyles from "../../styles/Range.module.css"; // Import CSS module
-import { saveRecipe } from '../../services/recipeService';
+import { saveRecipe } from "../../services/recipeService";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose, faAdd } from "@fortawesome/free-solid-svg-icons"; // Import the download icon
-
-
+import { faClose, faAdd } from "@fortawesome/free-solid-svg-icons"; // Import icons
 
 const AddRecipe = () => {
   const [recipe, setRecipe] = useState({
@@ -16,10 +14,13 @@ const AddRecipe = () => {
     ingredients: [{ name: "", quantity: "", id: Date.now() }],
     recipe: "",
     alcoholValue: 0, // Initialize alcoholValue
+    price: "",
+    date: "",
   });
 
   const handleChange = (e, index) => {
     const { name, value } = e.target;
+
     if (index !== undefined) {
       const newIngredients = [...recipe.ingredients];
       newIngredients[index][name] = value;
@@ -47,9 +48,25 @@ const AddRecipe = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Save the recipe to the JSON database
-      saveRecipe(recipe);
+      // Create a new date object for the current date and time
+      const currentDate = new Date();
+
+      // Format the date to mm:hh dd/mm/yyyy
+      const formattedDate = `${String(currentDate.getHours()).padStart(
+        2,
+        "0"
+      )}:${String(currentDate.getMinutes()).padStart(2, "0")} ${String(
+        currentDate.getDate()
+      ).padStart(2, "0")}/${String(currentDate.getMonth() + 1).padStart(
+        2,
+        "0"
+      )}/${currentDate.getFullYear()}`;
+
+      // Save the recipe to the JSON database with the formatted date
+      await saveRecipe({ ...recipe, date: formattedDate });
       console.log("Recipe created successfully!");
+
+      // Reset the form
       setRecipe({
         name: "",
         cocktailStyle: "",
@@ -57,6 +74,8 @@ const AddRecipe = () => {
         ingredients: [{ name: "", quantity: "" }],
         recipe: "",
         alcoholValue: 0,
+        price: "",
+        date: "",
       });
     } catch (error) {
       console.error("Error saving recipe:", error);
@@ -69,11 +88,11 @@ const AddRecipe = () => {
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
           <input
-          className={styles.textarea}
+            className={styles.textarea}
             type="text"
             name="name"
             value={recipe.name}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
             placeholder="Recipe Name"
             required
           />
@@ -82,7 +101,7 @@ const AddRecipe = () => {
           <select
             name="cocktailStyle"
             value={recipe.cocktailStyle}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
             required
             className={styles.selectInput}
           >
@@ -92,14 +111,14 @@ const AddRecipe = () => {
             <option value="Classic">Classic</option>
             <option value="Modern">Modern</option>
             <option value="Tropical">Tropical</option>
-            <option value="Tropical">Tiki</option>
-            <option value="Tropical">Sour</option>
-            <option value="Tropical">Highballs</option>
+            <option value="Tiki">Tiki</option>
+            <option value="Sour">Sour</option>
+            <option value="Highballs">Highballs</option>
           </select>
           <select
             name="complexityLevel"
             value={recipe.complexityLevel}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
             required
             className={styles.selectInput}
           >
@@ -112,9 +131,7 @@ const AddRecipe = () => {
           </select>
         </div>
         <div className={styles.formGroup}>
-          <div className={styles.alcoholValue}>
-            <label htmlFor="alcoholValue">Alc/Vol:</label>
-          </div>
+          <label htmlFor="alcoholValue">Alc/Vol:</label>
           <input
             type="range"
             name="alcoholValue"
@@ -122,7 +139,7 @@ const AddRecipe = () => {
             max="100"
             step="5"
             value={recipe.alcoholValue}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
             className={rangeStyles.rangeInput}
           />
           <p>{recipe.alcoholValue} %</p>
@@ -166,22 +183,33 @@ const AddRecipe = () => {
           onClick={handleAddIngredient}
           className={styles.addMoreButton}
         >
-          <div className={styles.addIcon}>
-            <FontAwesomeIcon icon={faAdd} />
-          </div>
-          add more
+          <FontAwesomeIcon icon={faAdd} />
+          Add More
         </button>
         <div className={styles.formGroup}>
+          <label htmlFor="price">Recipe Price</label>
+          <input
+            className={styles.recipePrice}
+            type="number"
+            name="price"
+            min="1"
+            value={recipe.price}
+            onChange={handleChange}
+            placeholder="--"
+            required
+          />
+          <span>EUR</span> {/* Added span for currency display */}
+        </div>
+        <div className={styles.formGroup}>
           <textarea
-          className={styles.recipeArea}
+            className={styles.recipeArea}
             name="recipe"
             value={recipe.recipe}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
             placeholder="Recipe Instructions"
             required
           />
         </div>
-
         <button className={styles.submitButton} type="submit">
           Add Recipe
         </button>

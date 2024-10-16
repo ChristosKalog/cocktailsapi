@@ -3,8 +3,9 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import cocktailsData from "../../data/db.json"; // import the whole default export
 import styles from "../../styles/recipedetail.module.css";
 import { deleteRecipe } from "../../services/recipeService";
+
 import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent";
-import DeleteButton from "../../components/ui/DeleteButton";
+import ButtonComponent from "../../components/ui/ButtonComponent";
 
 import placeholder1 from "../../assets/images/placeholder1.png";
 import placeholder2 from "../../assets/images/placeholder2.png";
@@ -39,6 +40,9 @@ const RecipeDetail = () => {
 
   const deleteHandle = async () => {
     setShowConfirmation(true); // Show confirmation dialog
+  };
+  const editHandle = async () => {
+    navigate(`/edit-recipe/${id}`); // Navigate to the EditRecipe component
   };
 
   const confirmDelete = async () => {
@@ -126,14 +130,23 @@ const RecipeDetail = () => {
             {cocktail.ingredients.map((ingredient, index) => (
               <div className={styles.ingredient} key={index}>
                 {ingredient.name}
+                {" "}
+                {ingredient.quantity}ml
               </div>
+              
             ))}
           </div>
           <h4>Recipe:</h4>
           <div className={styles.recipeContainer}>
             <p>{cocktail.recipe}</p>
           </div>
-          <DeleteButton onClick={deleteHandle}>Delete Recipe</DeleteButton>
+          <h5>Made At:</h5>
+          <div className={styles.recipeContainer}>
+            <p>{cocktail.date}</p>
+          </div>
+          <ButtonComponent onClick={editHandle} category="edit">Edit Recipe</ButtonComponent>
+          <ButtonComponent onClick={deleteHandle} category="delete">Delete Recipe</ButtonComponent>
+
 
           {/* Conditional rendering for the DeleteConfirmation dialog */}
           {showConfirmation && (

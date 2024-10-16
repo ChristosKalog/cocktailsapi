@@ -10,6 +10,8 @@
   --success-color: #28a745; /* Green for success */
   --warning-color: #ffc107; /* Yellow for warnings */
   --error-color: #dc3545; /* Red for errors */
+  --edit-color: rgb(255, 238, 0);
+--edit-color-dark: rgb(177, 165, 0);
 
   /* Spacing */
   --spacing-xs: 4px;  /* Extra small spacing */

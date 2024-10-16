@@ -36,4 +36,27 @@ const deleteRecipe = async (id) => {
   }
 };
 
-export { saveRecipe, getAllRecipes, deleteRecipe };
+
+const updateRecipe = async (id, recipeData) => {
+  try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(recipeData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to update recipe: ${response.statusText}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error updating recipe:", error);
+    throw error; // re-throw the error after logging it
+  }
+};
+
+
+export { saveRecipe, getAllRecipes, deleteRecipe, updateRecipe };

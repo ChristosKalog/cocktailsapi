@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import cocktailsData from "../../data/db.json";
-import menuService from "../../services/menuService"; // Import your menu service
+import menuService from "../../services/menuService"; // Adjust the path if needed
 import styles from "../../styles/CreateMenu.module.css";
 
 const CreateMenu = () => {
