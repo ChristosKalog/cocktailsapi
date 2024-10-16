@@ -10,17 +10,19 @@
   padding: var(--spacing-lg);
 
 }
+
 .bigSection {
   display: flex;
+
 }
+
+
 .section {
-  width: 50vw;
-  height: 30vh;
-  border: 1px solid red;
+  width: 25vw;
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;;
-  min-height: 500px;
+  align-items: flex-start;
+  margin: var(--spacing-md);
   flex-direction: column;
   padding: var(--spacing-lg);
 
@@ -62,8 +64,10 @@
 
 .favoriteCocktails {
   display: flex;
-  justify-content: flex-start;;
-  align-items: flex-start;;
+  justify-content: flex-start;
+  ;
+  align-items: flex-start;
+  ;
   flex-direction: column;
 }
 
@@ -158,84 +162,95 @@
 
 @media (max-width: 768px) {
   .wrapper {
-    flex-direction: column; /* Stack sections vertically */
-    padding: var(--spacing-md); /* Reduce padding */
-    max-width: 100%; /* Full width for mobile */
+    flex-direction: column;
+    /* Stack sections vertically */
+    padding: var(--spacing-md);
+    /* Reduce padding */
+    max-width: 100%;
+    /* Full width for mobile */
     overflow-x: hidden;
   }
 
   .section {
-    width: 100%; /* Full width for sections */
-    padding: var(--spacing-sm); /* Reduce padding */
-    margin: 0 0; /* Margin between sections */
+    width: 100%;
+    /* Full width for sections */
+    padding: var(--spacing-sm);
+    /* Reduce padding */
+    margin: 0 0;
+    /* Margin between sections */
     margin-bottom: var(--spacing-sm);
-    min-height: auto; /* Remove fixed min-height */
+    min-height: auto;
+    /* Remove fixed min-height */
     border-bottom: 1px solid var(--primary-color-dark);
   }
 
-  .section:last-child{
+  .section:last-child {
     border: none;
   }
 
   .section h1 {
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
     border: none;
   }
 
   .section h2 {
-    font-size: 1.3rem; 
+    font-size: 1.3rem;
     margin-bottom: var(--spacing-sm);
   }
 
   .section h3 {
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
     margin-bottom: var(--spacing-xs);
   }
 
   .imageContainer {
-    height: 200px; 
-    margin-bottom: var(--spacing-md); 
+    height: 200px;
+    margin-bottom: var(--spacing-md);
   }
 
   .deleteButton {
-    font-size: 0.9rem; 
-    padding: var(--spacing-xs); 
-    margin-top: var(--spacing-sm); 
+    font-size: 0.9rem;
+    padding: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
   }
 
   .linkButton {
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
   }
 
   .confirmationDialog {
     width: 100%;
-    flex-direction: row; /* Stack confirmation elements vertically */
-    gap: var(--spacing-sm); /* Add space between elements */
-    padding: var(--spacing-sm); 
+    flex-direction: row;
+    /* Stack confirmation elements vertically */
+    gap: var(--spacing-sm);
+    /* Add space between elements */
+    padding: var(--spacing-sm);
   }
 
   .confirmButton,
   .cancelButton {
-    width: 20%; 
-    padding: var(--spacing-xs); 
+    width: 20%;
+    padding: var(--spacing-xs);
   }
 
   .deletedMessage {
-    flex-direction: column; 
-    padding: var(--spacing-sm); 
-  
+    flex-direction: column;
+    padding: var(--spacing-sm);
+
   }
 
-  
+
   .buttonContainer {
     width: 90vw;
     margin: 0 auto;
     display: flex;
-    align-items: flex-start;;
+    align-items: flex-start;
+    ;
     justify-content: flex-start;
     flex-direction: column;
     font-size: 0.9rem;
   }
+
   .buttonContainer p {
     margin: 0;
     padding: 0;

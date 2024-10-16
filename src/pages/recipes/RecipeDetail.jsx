@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import cocktailsData from "../../data/db.json"; // import the whole default export
 import styles from "../../styles/recipedetail.module.css";
-import { deleteRecipe } from '../../services/recipeService';
-import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent"; // Adjust the import path
-import DeleteButton from "../../components/ui/DeleteButton"; // Import the DeleteButton component
+import { deleteRecipe } from "../../services/recipeService";
+import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent";
+import DeleteButton from "../../components/ui/DeleteButton";
 
-
-// Static imports for images
 import placeholder1 from "../../assets/images/placeholder1.png";
 import placeholder2 from "../../assets/images/placeholder2.png";
 import placeholder3 from "../../assets/images/placeholder3.png";
@@ -16,7 +14,11 @@ import placeholder5 from "../../assets/images/placeholder5.png";
 
 const RecipeDetail = () => {
   const { id } = useParams();
-  const cocktail = cocktailsData.savedCocktails.find((cocktail) => cocktail.id === id);
+  const navigate = useNavigate(); // Initialize the hook
+
+  const cocktail = cocktailsData.savedCocktails.find(
+    (cocktail) => cocktail.id === id
+  );
 
   // Define images with static imports
   const images = [
@@ -43,8 +45,8 @@ const RecipeDetail = () => {
     await deleteRecipe(id); // Call deleteRecipe function
     setDeletedMessage(true); // Show deletion message
     setShowConfirmation(false); // Close confirmation dialog
-
     // Redirect or perform any additional actions after deletion if needed
+    navigate("/recipes");
     setTimeout(() => {
       setDeletedMessage(false);
     }, 2000); // Remove message after 2 seconds
@@ -131,9 +133,7 @@ const RecipeDetail = () => {
           <div className={styles.recipeContainer}>
             <p>{cocktail.recipe}</p>
           </div>
-          <DeleteButton onClick={deleteHandle}>
-            Delete Recipe
-          </DeleteButton>
+          <DeleteButton onClick={deleteHandle}>Delete Recipe</DeleteButton>
 
           {/* Conditional rendering for the DeleteConfirmation dialog */}
           {showConfirmation && (

@@ -40,8 +40,9 @@ const Dashboard = () => {
           </>
         )}
       </div>
-      <Link to="/recipe/Add">Add a Recipe!</Link>
-     
+      <button className={styles.addRecipe}>
+        <Link to="/recipe/Add">Add a Recipe!</Link>
+      </button>
     </div>
   );
 };

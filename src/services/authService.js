@@ -9,7 +9,9 @@ const login = (username, password) => {
     const user = users.find(user => user.username === username);
     if (user) {
       if (user.password === password) {
-        resolve({ ...user, isAuthenticated: true });
+         // Store the user in localStorage to persist the session
+         localStorage.setItem('loggedInUser', JSON.stringify({ ...user, isAuthenticated: true }));
+        resolve({ ...user, isAuthenticated: true });        
       } else {
         reject(new Error('Invalid password'));
       }

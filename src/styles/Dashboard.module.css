@@ -105,17 +105,26 @@
   border-radius: var(--border-radius-sm);
 }
 
-.link {
-  color: var(--primary-color);
-  opacity: 0.7;
-  transition: 250ms;
+.addRecipe {
+  background-color: var(--primary-color);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-md);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: var(--transition);
 }
 
-.link:hover {
-  opacity: 1;
-  transition: 250ms;
-
+.addRecipe:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
 }
+
+.addRecipe a {
+  color: black;
+}
+
 
 @media (max-width: 768px) {
 

@@ -1,38 +1,39 @@
-// src/context/AuthContext.jsx
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { createContext, useState, useEffect } from "react";
+import authService from "../services/authService"; // Import your authService for login/logout functions
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
-  // Check if user data exists in local storage when the app loads
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));  // Restore user from local storage
-    }
-  }, []);
-
-  const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));  // Save user to local storage
-    navigate('/');  // Redirect to homepage or dashboard after login
+  // Function to log in the user
+  const login = async (username, password) => {
+    const loggedInUser = await authService.login(username, password);
+    setUser(loggedInUser);
+    localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
   };
 
+  // Function to log out the user
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('user');  // Remove user from local storage
-    // navigate('/login');  // Redirect to login page after logout
+    localStorage.removeItem('loggedInUser');
   };
 
+  // Rehydrate the user on app load from localStorage
+  useEffect(() => {
+    const storedUser = localStorage.getItem('loggedInUser');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+    setLoading(false); // Indicate that rehydration has finished
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => React.useContext(AuthContext);
