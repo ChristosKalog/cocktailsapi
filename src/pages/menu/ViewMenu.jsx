@@ -4,18 +4,29 @@ import { handleDownloadPDF } from "./download";
 import styles from "../../styles/ViewMenu.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons"; // Import the download icon
+import menuService from "../../services/menuService"; // Adjust the path if needed
+
 
 const ViewMenu = () => {
   const { id } = useParams();
   const [menu, setMenu] = useState(null);
 
-  useEffect(() => {
-    // Retrieve menus from localStorage and find the one matching the id
-    const savedMenus = JSON.parse(localStorage.getItem("menus")) || [];
-    const foundMenu = savedMenus.find((menu) => menu.id === parseInt(id));
-    setMenu(foundMenu);
-  }, [id]);
 
+  useEffect(() => {
+    const fetchMenus = async () => {
+      try {
+        const retrievedMenus = await menuService.fetchMenus();
+        const foundMenu = retrievedMenus.find((menu) => menu.id === id);
+        setMenu(foundMenu);
+
+
+      } catch (error) {
+        console.error("Error fetching menus:", error);
+      }
+    };
+
+    fetchMenus(); // Call the fetchMenus function
+  }, [id]);
   if (!menu) {
     return <p>Menu not found</p>;
   }

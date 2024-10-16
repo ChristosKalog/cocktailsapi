@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import cocktailsData from "../../data/db.json"; // import the whole default export
-import styles from "../../styles/CreateMenu.module.css";    
-
+import cocktailsData from "../../data/db.json";
+import menuService from "../../services/menuService"; // Import your menu service
+import styles from "../../styles/CreateMenu.module.css";
 
 const CreateMenu = () => {
   const [title, setTitle] = useState("");
@@ -18,26 +18,27 @@ const CreateMenu = () => {
     );
   };
 
-  const handleSaveMenu = () => {
+  const handleSaveMenu = async () => {
     if (title.trim() === "" || selectedCocktails.length < 3) {
       alert("Please enter a title and select at least 3 cocktails.");
       return;
     }
 
-    const menus = JSON.parse(localStorage.getItem("menus")) || [];
     const newMenu = {
-      id: menus.length + 1, // Generate a unique id based on existing menus length
       title,
       cocktails: cocktailsData.savedCocktails.filter((cocktail) =>
         selectedCocktails.includes(cocktail.id)
       ),
-      
     };
 
-    menus.push(newMenu);
-    localStorage.setItem("menus", JSON.stringify(menus));
-
-    setIsSaved(true);
+    try {
+      const savedMenu = await menuService.createMenu(newMenu);
+      console.log("Saved Menu:", savedMenu);
+      setIsSaved(true);
+    } catch (error) {
+      console.error("Error saving menu:", error);
+      alert("There was an error saving your menu. Please try again."); // Optional: Display user-friendly message
+    }
   };
 
   const handleViewMenu = () => {
@@ -49,7 +50,7 @@ const CreateMenu = () => {
   const handleCreateAnother = () => {
     setIsSaved(false);
     setTitle("");
-    setSelectedCocktails([]); // Reset the form for creating a new menu
+    setSelectedCocktails([]);
   };
 
   return (

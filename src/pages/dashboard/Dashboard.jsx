@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import SearchBar from "../../components/ui/SearchBar";
+// Import your menuService
+import menuService from "../../services/menuService"; // Adjust the path if needed
 import styles from "../../styles/Dashboard.module.css";
 
 const Dashboard = () => {
   const [menus, setMenus] = useState([]);
 
   useEffect(() => {
-    // Retrieve menus from localStorage on component mount
-    const savedMenus = JSON.parse(localStorage.getItem("menus")) || [];
-    setMenus(savedMenus);
+    const fetchMenus = async () => {
+      try {
+        const retrievedMenus = await menuService.fetchMenus();
+        setMenus(retrievedMenus); // Set the retrieved menus to state
+      } catch (error) {
+        console.error("Error fetching menus:", error);
+      }
+    };
+
+    fetchMenus(); // Call the fetchMenus function
   }, []);
 
   return (
