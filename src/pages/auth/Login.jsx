@@ -1,20 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
-import authService from '../../services/authService'; // Adjust the path as needed
-import { useAuth } from '../../context/AuthContext'; // Import useAuth
-import styles from '../../styles/Login.module.css'; // Import CSS module for styling
+import authService from "../../services/authService"; // Adjust the path as needed
+import { useAuth } from "../../context/AuthContext"; // Import useAuth
+
+import ButtonComponent from "../../components/ui/ButtonComponent";
+
+import styles from "../../styles/Login.module.css"; // Import CSS module for styling
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false); // State for "Remember Me"
   const navigate = useNavigate();
   const { login } = useAuth(); // Access login function from Auth context
 
   // Check local storage for saved user data
   useEffect(() => {
-    const savedUser = localStorage.getItem('user');
+    const savedUser = localStorage.getItem("user");
     if (savedUser) {
       const user = JSON.parse(savedUser);
       setUsername(user.username);
@@ -25,25 +28,25 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const user = await authService.login(username, password);
-      
+
       if (user) {
         login(user); // Update authentication context
-        
+
         if (rememberMe) {
           // Store user data in localStorage for persistence
-          localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem("user", JSON.stringify(user));
         } else {
           // Clear any stored session in localStorage if "Remember Me" is unchecked
-          localStorage.removeItem('user');
+          localStorage.removeItem("user");
         }
-        
-        navigate('/'); // Redirect to the dashboard
+
+        navigate("/"); // Redirect to the dashboard
       }
     } catch (error) {
-      alert('Invalid username or password');
+      alert("Invalid username or password");
     }
   };
 
@@ -82,7 +85,11 @@ const Login = () => {
             Remember Me
           </label>
         </div>
-        <button type="submit" className={styles.loginButton}>Log In</button>
+
+
+        <ButtonComponent type="sumbit" category="login">
+          Log In
+        </ButtonComponent>
       </form>
       <Link to="/register">New User? Register Here</Link>
     </div>

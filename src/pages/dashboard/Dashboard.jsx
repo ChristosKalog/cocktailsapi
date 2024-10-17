@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// Import your menuService
-import menuService from "../../services/menuService"; // Adjust the path if needed
 import styles from "../../styles/Dashboard.module.css";
+import menuService from "../../services/menuService"; 
+import ButtonComponent from "../../components/ui/ButtonComponent";
+
+
 
 const Dashboard = () => {
   const [menus, setMenus] = useState([]);
@@ -48,9 +50,11 @@ const Dashboard = () => {
           </>
         )}
       </div>
-      <button className={styles.addRecipe}>
-        <Link to="/recipe/Add">Add a Recipe!</Link>
-      </button>
+      <div className={styles.buttonContainer}>
+        <ButtonComponent type="sumbit" category="add">
+          <Link to="/recipe/Add">add a recipe!</Link>
+        </ButtonComponent>
+      </div>
     </div>
   );
 };

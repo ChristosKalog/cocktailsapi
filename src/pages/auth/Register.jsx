@@ -19,7 +19,7 @@ const Register = () => {
       console.error("Passwords don't match!");
       return;
     }
-    console.log('Registering with:', { username, email, fullName, role, bar, password });
+    // console.log('Registering with:', { username, email, fullName, role, bar, password });
   };
 
   return (

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import cocktailsData from "../../data/db.json"; // import the whole default export
+import cocktailsData from "../../data/db.json"; 
 import styles from "../../styles/recipedetail.module.css";
 import { deleteRecipe } from "../../services/recipeService";
-
 import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent";
 import ButtonComponent from "../../components/ui/ButtonComponent";
-
 import placeholder1 from "../../assets/images/placeholder1.png";
 import placeholder2 from "../../assets/images/placeholder2.png";
 import placeholder3 from "../../assets/images/placeholder3.png";
@@ -21,7 +19,6 @@ const RecipeDetail = () => {
     (cocktail) => cocktail.id === id
   );
 
-  // Define images with static imports
   const images = [
     { id: 1, src: placeholder1, alt: "Pic 1" },
     { id: 2, src: placeholder2, alt: "Pic 2" },

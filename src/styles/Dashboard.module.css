@@ -16,8 +16,6 @@
   display: none;
 }
 
-
-
 .dashboard h1 {
   font-size: var(--font-size-xl);
   margin-bottom: var(--spacing-md);
@@ -33,12 +31,10 @@
   width: 100%;
   max-width: 600px;
   margin-bottom: var(--spacing-md);
-  /* Limit width for better aesthetics */
 }
 
 .menusList {
   width: 600px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +43,6 @@
   margin-top: var(--spacing-lg);
   background-color: var(--background-color-light);
   border-radius: var(--border-radius-md);
-
 }
 
 .menuItemsContainer {
@@ -61,7 +56,6 @@
   max-height: 500px;
   overflow-y: scroll;
   scrollbar-width: none;
-  /* Lighter dark background */
 }
 
 .itemContainer {
@@ -70,7 +64,6 @@
 }
 
 .menuLink {
-
   border-radius: var(--border-radius-md);
   width: 100%;
   height: 100%;
@@ -118,11 +111,10 @@
 
 .addRecipe:hover {
   background-color: var(--secondary-color);
-  transform: translateY(-2px);
 }
 
-.addRecipe a {
-  color: black;
+.buttonContainer a {
+  color: black; 
 }
 
 
