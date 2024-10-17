@@ -22,32 +22,6 @@
       "price": "4"
     },
     {
-      "id": "2a34",
-      "name": "Margarita",
-      "cocktailStyle": "Classic",
-      "complexityLevel": "medium",
-      "ingredients": [
-        {
-          "name": "Tequila",
-          "quantity": "50",
-          "id": 1728998788163
-        },
-        {
-          "name": "Lime Juice",
-          "quantity": "25",
-          "id": 1728998837158
-        },
-        {
-          "name": "Triple Sec",
-          "quantity": "25",
-          "id": 1728998837159
-        }
-      ],
-      "recipe": "Shake tequila, lime juice, and triple sec with ice. Strain into a salt-rimmed glass.",
-      "alcoholValue": "14",
-      "price": "6"
-    },
-    {
       "id": "7d65",
       "name": "Old Fashioned",
       "cocktailStyle": "Classic",
@@ -169,5 +143,90 @@
       "date": "14:11 17/10/2024"
     }
   ],
-  "savedMenus": []
+  "savedMenus": [
+    {
+      "id": "9810",
+      "title": "Standard",
+      "cocktails": [
+        {
+          "id": "9c74",
+          "name": "Mimosa",
+          "cocktailStyle": "Brunch",
+          "complexityLevel": "easy",
+          "ingredients": [
+            {
+              "name": "Champagne",
+              "quantity": "250",
+              "id": 1728998788162
+            },
+            {
+              "name": "Orange Juice",
+              "quantity": "250",
+              "id": 1728998837157
+            }
+          ],
+          "recipe": "Mix equal parts champagne and orange juice in a flute.",
+          "alcoholValue": "8",
+          "price": "4"
+        },
+        {
+          "id": "2a34",
+          "name": "Margarita",
+          "cocktailStyle": "Classic",
+          "complexityLevel": "medium",
+          "ingredients": [
+            {
+              "name": "Tequila",
+              "quantity": "50",
+              "id": 1728998788163
+            },
+            {
+              "name": "Lime Juice",
+              "quantity": "25",
+              "id": 1728998837158
+            },
+            {
+              "name": "Triple Sec",
+              "quantity": "25",
+              "id": 1728998837159
+            }
+          ],
+          "recipe": "Shake tequila, lime juice, and triple sec with ice. Strain into a salt-rimmed glass.",
+          "alcoholValue": "14",
+          "price": "6"
+        },
+        {
+          "id": "7d65",
+          "name": "Old Fashioned",
+          "cocktailStyle": "Classic",
+          "complexityLevel": "medium",
+          "ingredients": [
+            {
+              "name": "Bourbon",
+              "quantity": "50",
+              "id": 1728998788164
+            },
+            {
+              "name": "Sugar",
+              "quantity": "1",
+              "id": 1728998837160
+            },
+            {
+              "name": "Angostura Bitters",
+              "quantity": "2 dashes",
+              "id": 1728998837161
+            },
+            {
+              "name": "Orange Peel",
+              "quantity": "1",
+              "id": 1728998837162
+            }
+          ],
+          "recipe": "Muddle sugar and bitters, add bourbon, and serve with ice. Garnish with orange peel.",
+          "alcoholValue": "16",
+          "price": "8"
+        }
+      ]
+    }
+  ]
 }
