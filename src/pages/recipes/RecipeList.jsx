@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import cocktailsData from "../../data/db.json"; 
+import cocktailsData from "../../data/db.json";
+import ButtonComponent from "../../components/ui/ButtonComponent";
 import styles from "../../styles/recipelist.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,21 +12,32 @@ import {
 const RecipeList = () => {
   const [filter, setFilter] = useState("");
   const [complexity, setComplexity] = useState("");
+  const [ingredient, setIngredient] = useState(""); // New state for ingredient filter
   const [sortOrder, setSortOrder] = useState("asc");
+
+  const clearFilters = () => {
+    setFilter("");
+    setComplexity("");
+    setIngredient("");
+  };
 
   const toggleSortOrder = () => {
     setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
   };
 
-
-
+  // Filter cocktails by style, complexity, and ingredient
   const filteredCocktails = cocktailsData.savedCocktails
     .filter((cocktail) => {
       const matchesStyle = filter ? cocktail.cocktailStyle === filter : true;
       const matchesComplexity = complexity
         ? cocktail.complexityLevel === complexity
         : true;
-      return matchesStyle && matchesComplexity;
+      const matchesIngredient = ingredient
+        ? cocktail.ingredients.some((ing) =>
+            ing.name.toLowerCase().includes(ingredient.toLowerCase())
+          )
+        : true;
+      return matchesStyle && matchesComplexity && matchesIngredient;
     })
     .sort((a, b) => {
       if (sortOrder === "asc") {
@@ -35,13 +47,25 @@ const RecipeList = () => {
       }
     });
 
-  // Get unique styles and complexities for filter options
+  // Get unique styles, complexities, and ingredients for filter options
   const stylesOptions = [
-    ...new Set(cocktailsData.savedCocktails.map((cocktail) => cocktail.cocktailStyle)),
+    ...new Set(
+      cocktailsData.savedCocktails.map((cocktail) => cocktail.cocktailStyle)
+    ),
   ];
   const complexityOptions = [
-    ...new Set(cocktailsData.savedCocktails.map((cocktail) => cocktail.complexityLevel)),
+    ...new Set(
+      cocktailsData.savedCocktails.map((cocktail) => cocktail.complexityLevel)
+    ),
   ];
+
+  const ingredientOptions = [
+    ...new Set(
+      cocktailsData.savedCocktails.flatMap((cocktail) =>
+        cocktail.ingredients.map((ing) => ing.name)
+      )
+    ),
+  ].sort((a, b) => a.localeCompare(b)); // Sort alphabetically
 
   return (
     <div className={styles.recipeList}>
@@ -75,11 +99,28 @@ const RecipeList = () => {
           </select>
         </label>
 
+        {/* New Ingredient Filter */}
+        <label>
+          Filter by Ingredient:
+          <select
+            onChange={(e) => setIngredient(e.target.value)}
+            value={ingredient}
+          >
+            <option value="">All</option>
+            {ingredientOptions.map((ing) => (
+              <option key={ing} value={ing}>
+                {ing}
+              </option>
+            ))}
+          </select>
+        </label>
+
         <button onClick={toggleSortOrder} className={styles.sortButton}>
           <FontAwesomeIcon
             icon={sortOrder === "asc" ? faSortAlphaAsc : faSortAlphaDesc}
           />
         </button>
+        <button onClick={clearFilters}>Clear Filters</button>
       </div>
 
       <div className={styles.recipeGrid}>
@@ -90,15 +131,6 @@ const RecipeList = () => {
             className={styles.recipeLink}
           >
             <div className={styles.recipeCard}>
-              {/* <div className={styles.imageContainer}>
-                <img
-                  className={styles.image}
-                  src={
-                    require(`../../assets/images/${cocktail.imageName}`)
-                  }
-                  alt={cocktail.name}
-                />
-              </div> */}
               <div className={styles.infoContainer}>
                 <h2>{cocktail.name}</h2>
                 <div className={styles.moreInfo}>
@@ -113,6 +145,12 @@ const RecipeList = () => {
             </div>
           </Link>
         ))}
+      </div>
+
+      <div className={styles.buttonContainer}>
+        <ButtonComponent category="add">
+          <Link to="/recipe/Add">add more</Link>
+        </ButtonComponent>
       </div>
     </div>
   );

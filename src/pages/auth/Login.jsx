@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-
-import authService from "../../services/authService"; // Adjust the path as needed
-import { useAuth } from "../../context/AuthContext"; // Import useAuth
-
+import styles from "../../styles/Login.module.css"; 
 import ButtonComponent from "../../components/ui/ButtonComponent";
-
-import styles from "../../styles/Login.module.css"; // Import CSS module for styling
+import authService from "../../services/authService";
+import { useAuth } from "../../context/AuthContext"; 
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -36,10 +33,8 @@ const Login = () => {
         login(user); // Update authentication context
 
         if (rememberMe) {
-          // Store user data in localStorage for persistence
           localStorage.setItem("user", JSON.stringify(user));
         } else {
-          // Clear any stored session in localStorage if "Remember Me" is unchecked
           localStorage.removeItem("user");
         }
 
@@ -85,9 +80,7 @@ const Login = () => {
             Remember Me
           </label>
         </div>
-
-
-        <ButtonComponent type="sumbit" category="login">
+        <ButtonComponent type="submit" category="login">
           Log In
         </ButtonComponent>
       </form>

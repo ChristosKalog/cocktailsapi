@@ -90,6 +90,12 @@ label {
   align-items: center;
   color: var(--primary-color);
   cursor: pointer;
+  transition: 250ms;
+}
+
+.removeIngredient:hover{
+  color: white;
+  transition: 250ms;
 }
 
 textarea {
@@ -116,9 +122,15 @@ textarea {
   color: var(--background-color);
 }
 
+.addMoreButton p {
+  margin-left: var(--spacing-sm);
+}
+
 .addIcon {
   margin-right: var(--spacing-sm);
 }
+
+
 
 .alcoholValue {
   display: flex;

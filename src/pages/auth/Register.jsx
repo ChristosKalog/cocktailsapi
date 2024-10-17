@@ -1,16 +1,18 @@
 // src/pages/auth/Register.jsx
 
-import React, { useState } from 'react';
-import styles from '../../styles/register.module.css'; // Import the CSS module
+import React, { useState } from "react";
+import styles from "../../styles/register.module.css"; // Import the CSS module
+import ButtonComponent from "../../components/ui/ButtonComponent";
+
 
 const Register = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [role, setRole] = useState(''); // Default role can be set as needed
-  const [bar, setBar] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [role, setRole] = useState(""); // Default role can be set as needed
+  const [bar, setBar] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -18,8 +20,7 @@ const Register = () => {
     if (password !== confirmPassword) {
       console.error("Passwords don't match!");
       return;
-    }
-    // console.log('Registering with:', { username, email, fullName, role, bar, password });
+    } // console.log('Registering with:', { username, email, fullName, role, bar, password });
   };
 
   return (
@@ -79,7 +80,9 @@ const Register = () => {
           required
           className={styles.inputField}
         />
-        <button type="submit" className={styles.submitButton}>Register</button>
+        <ButtonComponent type="submit" category="register">
+          Register
+        </ButtonComponent>{" "}
       </form>
     </div>
   );

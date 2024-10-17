@@ -51,7 +51,7 @@ const Dashboard = () => {
         )}
       </div>
       <div className={styles.buttonContainer}>
-        <ButtonComponent type="sumbit" category="add">
+        <ButtonComponent category="add">
           <Link to="/recipe/Add">add a recipe!</Link>
         </ButtonComponent>
       </div>

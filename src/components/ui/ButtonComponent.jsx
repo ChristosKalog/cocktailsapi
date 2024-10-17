@@ -6,6 +6,7 @@ import {
   faTrash,
   faSave,
   faAdd,
+  faSignIn,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,8 +21,11 @@ const ButtonComponent = ({ onClick, category, children, type }) => {
       : category === "add"
       ? faAdd
       : category === "login"
+      ? faSignIn
+      : category === "register"
       ? faUser
       : null;
+      
   const typeValue = type === "submit" ? "submit" : "";
 
   return (

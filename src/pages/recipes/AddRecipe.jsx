@@ -3,15 +3,17 @@ import styles from "../../styles/AddRecipe.module.css";
 import rangeStyles from "../../styles/Range.module.css";
 import { saveRecipe } from "../../services/recipeService";
 import ButtonComponent from "../../components/ui/ButtonComponent";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faAdd } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const AddRecipe = () => {
   const [recipe, setRecipe] = useState({
+    id: Date.now().toString(),
     name: "",
     cocktailStyle: "",
     complexityLevel: "",
+    glassType: "",
     ingredients: [{ name: "", quantity: "", id: Date.now() }],
     recipe: "",
     alcoholValue: 0,
@@ -19,15 +21,75 @@ const AddRecipe = () => {
     date: "",
   });
 
+  const [isSubmitted, setIsSubmitted] = useState(false); // Control buttons visibility
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const ingredientSuggestions = [
+    "Absinthe",
+    "Amaretto",
+    "Angostura Bitters",
+    "Aperol",
+    "Aquavit",
+    "Bénédictine",
+    "Brandy",
+    "Campari",
+    "Cachaça",
+    "Chartreuse",
+    "Cider",
+    "Cognac",
+    "Creme de Cacao",
+    "Creme de Cassis",
+    "Curaçao",
+    "Dry Vermouth",
+    "Falernum",
+    "Galliano",
+    "Gin",
+    "Grand Marnier",
+    "Grenadine",
+    "Irish Whiskey",
+    "Kahlúa",
+    "Limoncello",
+    "Mezcal",
+    "Orange Bitters",
+    "Pimm's",
+    "Port",
+    "Rye Whiskey",
+    "Rum",
+    "Sake",
+    "Scotch",
+    "Sherry",
+    "Simple Syrup",
+    "Sloe Gin",
+    "St-Germain",
+    "Sweet Vermouth",
+    "Tequila",
+    "Triple Sec",
+    "Vodka",
+    "Whiskey"
+  ];
+  
+
   const handleChange = (e, index) => {
     const { name, value } = e.target;
 
+    const capitalizeFirstLetter = (string) => {
+      return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    };
+
     if (index !== undefined) {
       const newIngredients = [...recipe.ingredients];
-      newIngredients[index][name] = value;
+      if (name === "name") {
+        newIngredients[index][name] = capitalizeFirstLetter(value);
+      }  else {
+        newIngredients[index][name] = value;
+      }
       setRecipe({ ...recipe, ingredients: newIngredients });
     } else {
-      setRecipe({ ...recipe, [name]: value });
+      if (name === "name") {
+        setRecipe({ ...recipe, [name]: capitalizeFirstLetter(value) });
+      }  else {
+        setRecipe({ ...recipe, [name]: value });
+      }
     }
   };
 
@@ -48,9 +110,17 @@ const AddRecipe = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitted(true);
+  };
+
+  const handleViewRecipe = () => {
+    handleAddNewRecipe();
+    navigate(`/recipes/`); // Adjust to your actual recipe view route
+  };
+
+  const handleAddNewRecipe = async () => {
     try {
       const currentDate = new Date();
-
       const formattedDate = `${String(currentDate.getHours()).padStart(
         2,
         "0"
@@ -60,20 +130,22 @@ const AddRecipe = () => {
         2,
         "0"
       )}/${currentDate.getFullYear()}`;
-
       await saveRecipe({ ...recipe, date: formattedDate });
       console.log("Recipe created successfully!");
-
+      // Reset the form fields
       setRecipe({
         name: "",
         cocktailStyle: "",
         complexityLevel: "",
-        ingredients: [{ name: "", quantity: "" }],
+        glassType: "",
+        ingredients: [{ name: "", quantity: "", id: Date.now() }],
         recipe: "",
         alcoholValue: 0,
         price: "",
         date: "",
       });
+      // Hide the action buttons after adding the new recipe
+      setIsSubmitted(false);
     } catch (error) {
       console.error("Error saving recipe:", error);
     }
@@ -83,6 +155,7 @@ const AddRecipe = () => {
     <div className={styles.formContainer}>
       <h1>Add New Recipe</h1>
       <form onSubmit={handleSubmit}>
+        {/* Recipe form inputs */}
         <div className={styles.formGroup}>
           <input
             className={styles.textarea}
@@ -103,7 +176,7 @@ const AddRecipe = () => {
             className={styles.selectInput}
           >
             <option value="" disabled>
-              Cocktail Style
+              Style
             </option>
             <option value="Classic">Classic</option>
             <option value="Modern">Modern</option>
@@ -126,7 +199,26 @@ const AddRecipe = () => {
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </select>
+          <select
+            name="glassType"
+            value={recipe.glassType}
+            onChange={handleChange}
+            required
+            className={styles.selectInput}
+          >
+            <option value="" disabled>
+              Glass Type
+            </option>
+            <option value="Martini">Martini</option>
+            <option value="Highball">Highball</option>
+            <option value="Old Fashioned">Old Fashioned</option>
+            <option value="Coupe">Coupe</option>
+            <option value="Wine Glass">Wine Glass</option>
+            <option value="Shot Glass">Shot Glass</option>
+            <option value="Collins">Collins</option>
+          </select>
         </div>
+
         <div className={styles.formGroup}>
           <label htmlFor="alcoholValue">Alc/Vol:</label>
           <input
@@ -141,6 +233,8 @@ const AddRecipe = () => {
           />
           <p>{recipe.alcoholValue} %</p>
         </div>
+
+        {/* Ingredients list */}
         {recipe.ingredients.map((ingredient, index) => (
           <div className={styles.formGroup} key={ingredient.id}>
             <div className={styles.ingredients}>
@@ -152,7 +246,13 @@ const AddRecipe = () => {
                 onChange={(e) => handleChange(e, index)}
                 placeholder="Ingredient"
                 required
+                list="suggestions"
               />
+              <datalist id="suggestions">
+                {ingredientSuggestions.map((suggestion, idx) => (
+                  <option key={idx} value={suggestion} />
+                ))}
+              </datalist>
               <input
                 className={styles.ingredient}
                 type="number"
@@ -175,14 +275,18 @@ const AddRecipe = () => {
             </div>
           </div>
         ))}
+
+        {/* Add more ingredients */}
         <button
           type="button"
           onClick={handleAddIngredient}
           className={styles.addMoreButton}
         >
           <FontAwesomeIcon icon={faAdd} />
-          Add More
+          <p>Add More</p>
         </button>
+
+        {/* Recipe Price */}
         <div className={styles.formGroup}>
           <label htmlFor="price">Recipe Price</label>
           <input
@@ -197,6 +301,8 @@ const AddRecipe = () => {
           />
           <span>EUR</span>
         </div>
+
+        {/* Recipe Instructions */}
         <div className={styles.formGroup}>
           <textarea
             className={styles.recipeArea}
@@ -207,9 +313,25 @@ const AddRecipe = () => {
             required
           />
         </div>
-        <ButtonComponent type="sumbit" category="save">
-          Save Recipe
-        </ButtonComponent>
+
+        {/* Submit Button */}
+        {!isSubmitted && (
+          <ButtonComponent type="submit" category="save">
+            Save Recipe
+          </ButtonComponent>
+        )}
+
+        {/* Show buttons after submission */}
+        {isSubmitted && (
+          <div className={styles.actionButtons}>
+            <ButtonComponent onClick={handleAddNewRecipe} category="primary">
+              Add New Recipe
+            </ButtonComponent>
+            <ButtonComponent onClick={handleViewRecipe} category="secondary">
+              View Recipes
+            </ButtonComponent>
+          </div>
+        )}
       </form>
     </div>
   );

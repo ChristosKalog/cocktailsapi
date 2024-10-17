@@ -1,82 +1,82 @@
 {
   "savedCocktails": [
     {
-      "name": "Mimosa Light",
+      "id": "9c74",
+      "name": "Mimosa",
       "cocktailStyle": "Brunch",
       "complexityLevel": "easy",
       "ingredients": [
         {
           "name": "Champagne",
           "quantity": "250",
-          "id": 1729088590241
+          "id": 1728998788162
         },
         {
           "name": "Orange Juice",
           "quantity": "250",
-          "id": 1729088590241
+          "id": 1728998837157
         }
       ],
       "recipe": "Mix equal parts champagne and orange juice in a flute.",
-      "alcoholValue": "0",
-      "price": "4",
-      "id": "9c74"
+      "alcoholValue": "8",
+      "price": "4"
     },
     {
-      "name": "Margarita Light",
+      "id": "2a34",
+      "name": "Margarita",
       "cocktailStyle": "Classic",
       "complexityLevel": "medium",
       "ingredients": [
         {
           "name": "Tequila",
           "quantity": "50",
-          "id": 1729087467826
+          "id": 1728998788163
         },
         {
           "name": "Lime Juice",
           "quantity": "25",
-          "id": 1729087467826
+          "id": 1728998837158
         },
         {
           "name": "Triple Sec",
           "quantity": "25",
-          "id": 1729087467826
+          "id": 1728998837159
         }
       ],
       "recipe": "Shake tequila, lime juice, and triple sec with ice. Strain into a salt-rimmed glass.",
       "alcoholValue": "14",
-      "price": "6",
-      "id": "2a34"
+      "price": "6"
     },
     {
-      "name": "Old Fashioned Custom",
+      "id": "7d65",
+      "name": "Old Fashioned",
       "cocktailStyle": "Classic",
       "complexityLevel": "medium",
       "ingredients": [
         {
           "name": "Bourbon",
           "quantity": "50",
-          "id": 1729153634146
+          "id": 1728998788164
         },
         {
           "name": "Sugar",
           "quantity": "1",
-          "id": 1729153634146
+          "id": 1728998837160
         },
         {
           "name": "Angostura Bitters",
           "quantity": "2 dashes",
-          "id": 1729153634146
+          "id": 1728998837161
         },
         {
           "name": "Orange Peel",
           "quantity": "1",
-          "id": 1729153634146
+          "id": 1728998837162
         }
       ],
       "recipe": "Muddle sugar and bitters, add bourbon, and serve with ice. Garnish with orange peel.",
       "alcoholValue": "16",
-      "price": "8",
-      "id": "7d65"
+      "price": "8"
     },
     {
       "id": "4f12",
@@ -88,6 +88,11 @@
           "name": "Rum",
           "quantity": "50",
           "id": 1728998788165
+        },
+        {
+          "name": "Vodka",
+          "quantity": "40",
+          "id": 1728998788166
         },
         {
           "name": "Coconut Cream",
@@ -134,166 +139,35 @@
       "recipe": "Shake all ingredients with ice and strain into a martini glass.",
       "alcoholValue": "14",
       "price": "9"
-    }
-  ],
-  "savedMenus": [
-    {
-      "id": "048c",
-      "title": "Test",
-      "cocktails": [
-        {
-          "id": "4c79",
-          "name": "Christos",
-          "cocktailStyle": "Classic",
-          "complexityLevel": "medium",
-          "ingredients": [
-            {
-              "name": "Christos_K",
-              "quantity": "50",
-              "id": 1729084775403
-            }
-          ],
-          "recipe": "Okay.",
-          "alcoholValue": "55",
-          "price": "10"
-        },
-        {
-          "id": "d5fd",
-          "name": "New Thing in Town",
-          "cocktailStyle": "Tropical",
-          "complexityLevel": "medium",
-          "ingredients": [
-            {
-              "name": "Rum",
-              "quantity": "50",
-              "id": 1729085105952
-            },
-            {
-              "name": "Whisky",
-              "quantity": "10",
-              "id": 1729085118660
-            },
-            {
-              "name": "Coke",
-              "quantity": "5",
-              "id": 1729085119199
-            },
-            {
-              "name": "A slice of lime",
-              "quantity": "",
-              "id": 1729085184771
-            }
-          ],
-          "recipe": "What is it with the Germans and their epic music that makes you feel like questioning life's mysteries when you're in the middle of eating cereal.\n",
-          "alcoholValue": "55",
-          "price": "5600"
-        },
-        {
-          "id": "263a",
-          "name": "Hard Things",
-          "cocktailStyle": "Tropical",
-          "complexityLevel": "hard",
-          "ingredients": [
-            {
-              "name": "Alcoholo",
-              "quantity": "100",
-              "id": 1729085234940
-            },
-            {
-              "name": "None",
-              "quantity": "50",
-              "id": 1729085248568
-            }
-          ],
-          "recipe": "Yes please.",
-          "alcoholValue": "100",
-          "price": "100"
-        }
-      ]
     },
     {
-      "id": "6e83",
-      "title": "yrs",
-      "cocktails": [
+      "id": "1729163414246",
+      "name": "Fire",
+      "cocktailStyle": "Modern",
+      "complexityLevel": "medium",
+      "glassType": "Highball",
+      "ingredients": [
         {
-          "name": "Mimosa Light",
-          "cocktailStyle": "Brunch",
-          "complexityLevel": "easy",
-          "ingredients": [
-            {
-              "name": "Champagne",
-              "quantity": "250",
-              "id": 1729088590241
-            },
-            {
-              "name": "Orange Juice",
-              "quantity": "250",
-              "id": 1729088590241
-            }
-          ],
-          "recipe": "Mix equal parts champagne and orange juice in a flute.",
-          "alcoholValue": "0",
-          "price": "4",
-          "id": "9c74"
+          "name": "Simple syrup",
+          "quantity": "20",
+          "id": 1729163414246
         },
         {
-          "name": "Margarita Light",
-          "cocktailStyle": "Classic",
-          "complexityLevel": "medium",
-          "ingredients": [
-            {
-              "name": "Tequila",
-              "quantity": "50",
-              "id": 1729087467826
-            },
-            {
-              "name": "Lime Juice",
-              "quantity": "25",
-              "id": 1729087467826
-            },
-            {
-              "name": "Triple Sec",
-              "quantity": "25",
-              "id": 1729087467826
-            }
-          ],
-          "recipe": "Shake tequila, lime juice, and triple sec with ice. Strain into a salt-rimmed glass.",
-          "alcoholValue": "14",
-          "price": "6",
-          "id": "2a34"
+          "name": "St-germain",
+          "quantity": "210",
+          "id": 1729163436157
         },
         {
-          "id": "7d65",
-          "name": "Old Fashioned",
-          "cocktailStyle": "Classic",
-          "complexityLevel": "medium",
-          "ingredients": [
-            {
-              "name": "Bourbon",
-              "quantity": "50",
-              "id": 1728998788164
-            },
-            {
-              "name": "Sugar",
-              "quantity": "1",
-              "id": 1728998837160
-            },
-            {
-              "name": "Angostura Bitters",
-              "quantity": "2 dashes",
-              "id": 1728998837161
-            },
-            {
-              "name": "Orange Peel",
-              "quantity": "1",
-              "id": 1728998837162
-            }
-          ],
-          "recipe": "Muddle sugar and bitters, add bourbon, and serve with ice. Garnish with orange peel.",
-          "alcoholValue": "16",
-          "price": "8"
+          "name": "Absinthe",
+          "quantity": "21",
+          "id": 1729163448708
         }
-      ]
+      ],
+      "recipe": "Alright.",
+      "alcoholValue": "30",
+      "price": "112",
+      "date": "14:11 17/10/2024"
     }
-  ]
+  ],
+  "savedMenus": []
 }
