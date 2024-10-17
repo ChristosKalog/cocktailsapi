@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import styles from "../../styles/AddRecipe.module.css"; // Import CSS module
-import rangeStyles from "../../styles/Range.module.css"; // Import CSS module
+import styles from "../../styles/AddRecipe.module.css";
+import rangeStyles from "../../styles/Range.module.css";
 import { saveRecipe } from "../../services/recipeService";
-import ButtonComponent from "../../components/ui/ButtonComponent"; // Import the DeleteButton component
+import ButtonComponent from "../../components/ui/ButtonComponent";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose, faAdd } from "@fortawesome/free-solid-svg-icons"; // Import icons
+import { faClose, faAdd } from "@fortawesome/free-solid-svg-icons";
 
 const AddRecipe = () => {
   const [recipe, setRecipe] = useState({
@@ -14,7 +14,7 @@ const AddRecipe = () => {
     complexityLevel: "",
     ingredients: [{ name: "", quantity: "", id: Date.now() }],
     recipe: "",
-    alcoholValue: 0, // Initialize alcoholValue
+    alcoholValue: 0,
     price: "",
     date: "",
   });
@@ -49,10 +49,8 @@ const AddRecipe = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Create a new date object for the current date and time
       const currentDate = new Date();
 
-      // Format the date to mm:hh dd/mm/yyyy
       const formattedDate = `${String(currentDate.getHours()).padStart(
         2,
         "0"
@@ -63,11 +61,9 @@ const AddRecipe = () => {
         "0"
       )}/${currentDate.getFullYear()}`;
 
-      // Save the recipe to the JSON database with the formatted date
       await saveRecipe({ ...recipe, date: formattedDate });
       console.log("Recipe created successfully!");
 
-      // Reset the form
       setRecipe({
         name: "",
         cocktailStyle: "",
@@ -199,7 +195,7 @@ const AddRecipe = () => {
             placeholder="--"
             required
           />
-          <span>EUR</span> {/* Added span for currency display */}
+          <span>EUR</span>
         </div>
         <div className={styles.formGroup}>
           <textarea
@@ -211,7 +207,9 @@ const AddRecipe = () => {
             required
           />
         </div>
-        <ButtonComponent type="sumbit" category="save">Add Recipe</ButtonComponent>
+        <ButtonComponent type="sumbit" category="save">
+          Save Recipe
+        </ButtonComponent>
       </form>
     </div>
   );

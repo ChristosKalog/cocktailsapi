@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import cocktailsData from "../../data/db.json";
-import menuService from "../../services/menuService"; // Adjust the path if needed
+import menuService from "../../services/menuService";
 import styles from "../../styles/CreateMenu.module.css";
+import ButtonComponent from "../../components/ui/ButtonComponent";
 
 const CreateMenu = () => {
   const [title, setTitle] = useState("");
@@ -37,7 +38,7 @@ const CreateMenu = () => {
       setIsSaved(true);
     } catch (error) {
       console.error("Error saving menu:", error);
-      alert("There was an error saving your menu. Please try again."); // Optional: Display user-friendly message
+      alert("There was an error saving your menu. Please try again.");
     }
   };
 
@@ -83,9 +84,9 @@ const CreateMenu = () => {
       </div>
 
       {!isSaved ? (
-        <button onClick={handleSaveMenu} className={styles.saveButton}>
+        <ButtonComponent onClick={handleSaveMenu} category="save">
           Save Menu
-        </button>
+        </ButtonComponent>
       ) : (
         <div className={styles.menuOptions}>
           <button onClick={handleViewMenu} className={styles.viewButton}>

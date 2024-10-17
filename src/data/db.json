@@ -210,6 +210,90 @@
           "price": "100"
         }
       ]
+    },
+    {
+      "id": "6e83",
+      "title": "yrs",
+      "cocktails": [
+        {
+          "name": "Mimosa Light",
+          "cocktailStyle": "Brunch",
+          "complexityLevel": "easy",
+          "ingredients": [
+            {
+              "name": "Champagne",
+              "quantity": "250",
+              "id": 1729088590241
+            },
+            {
+              "name": "Orange Juice",
+              "quantity": "250",
+              "id": 1729088590241
+            }
+          ],
+          "recipe": "Mix equal parts champagne and orange juice in a flute.",
+          "alcoholValue": "0",
+          "price": "4",
+          "id": "9c74"
+        },
+        {
+          "name": "Margarita Light",
+          "cocktailStyle": "Classic",
+          "complexityLevel": "medium",
+          "ingredients": [
+            {
+              "name": "Tequila",
+              "quantity": "50",
+              "id": 1729087467826
+            },
+            {
+              "name": "Lime Juice",
+              "quantity": "25",
+              "id": 1729087467826
+            },
+            {
+              "name": "Triple Sec",
+              "quantity": "25",
+              "id": 1729087467826
+            }
+          ],
+          "recipe": "Shake tequila, lime juice, and triple sec with ice. Strain into a salt-rimmed glass.",
+          "alcoholValue": "14",
+          "price": "6",
+          "id": "2a34"
+        },
+        {
+          "id": "7d65",
+          "name": "Old Fashioned",
+          "cocktailStyle": "Classic",
+          "complexityLevel": "medium",
+          "ingredients": [
+            {
+              "name": "Bourbon",
+              "quantity": "50",
+              "id": 1728998788164
+            },
+            {
+              "name": "Sugar",
+              "quantity": "1",
+              "id": 1728998837160
+            },
+            {
+              "name": "Angostura Bitters",
+              "quantity": "2 dashes",
+              "id": 1728998837161
+            },
+            {
+              "name": "Orange Peel",
+              "quantity": "1",
+              "id": 1728998837162
+            }
+          ],
+          "recipe": "Muddle sugar and bitters, add bourbon, and serve with ice. Garnish with orange peel.",
+          "alcoholValue": "16",
+          "price": "8"
+        }
+      ]
     }
   ]
 }

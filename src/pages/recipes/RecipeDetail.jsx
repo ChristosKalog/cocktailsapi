@@ -15,7 +15,7 @@ import placeholder5 from "../../assets/images/placeholder5.png";
 
 const RecipeDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate(); // Initialize the hook
+  const navigate = useNavigate();
 
   const cocktail = cocktailsData.savedCocktails.find(
     (cocktail) => cocktail.id === id
@@ -146,16 +146,12 @@ const RecipeDetail = () => {
           </div>
           <ButtonComponent onClick={editHandle} category="edit">Edit Recipe</ButtonComponent>
           <ButtonComponent onClick={deleteHandle} category="delete">Delete Recipe</ButtonComponent>
-
-
-          {/* Conditional rendering for the DeleteConfirmation dialog */}
           {showConfirmation && (
             <DeleteConfirmation
               onConfirm={confirmDelete}
               onCancel={cancelDelete}
             />
           )}
-          {/* Show deletion message */}
           {deletedMessage && (
             <div className={styles.deletedMessage}>
               <p>Recipe deleted successfully!</p>
