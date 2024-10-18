@@ -1,6 +1,7 @@
 :root {
   /* Color Palette */
   --primary-color: #ffc107; /* Gold accent */
+  --primary-color-lightdark: #d29e01; /* Gold accent */
   --primary-color-dark: #6d5201;
   --secondary-color: #6c757d; /* Example grey */
   --background-color: #121212; /* Dark background */

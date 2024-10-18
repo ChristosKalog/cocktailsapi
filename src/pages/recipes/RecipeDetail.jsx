@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import cocktailsData from "../../data/db.json"; 
+import cocktailsData from "../../data/db.json";
 import styles from "../../styles/recipedetail.module.css";
 import { deleteRecipe } from "../../services/recipeService";
 import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent";
@@ -126,11 +126,8 @@ const RecipeDetail = () => {
           <div className={styles.ingredientsContainer}>
             {cocktail.ingredients.map((ingredient, index) => (
               <div className={styles.ingredient} key={index}>
-                {ingredient.name}
-                {" "}
-                {ingredient.quantity}ml
+                {ingredient.name} {ingredient.quantity}ml
               </div>
-              
             ))}
           </div>
           <h4>Recipe:</h4>
@@ -141,14 +138,24 @@ const RecipeDetail = () => {
           <div className={styles.recipeContainer}>
             <p>{cocktail.date}</p>
           </div>
-          <ButtonComponent onClick={editHandle} category="edit">Edit Recipe</ButtonComponent>
-          <ButtonComponent onClick={deleteHandle} category="delete">Delete Recipe</ButtonComponent>
-          {showConfirmation && (
-            <DeleteConfirmation
-              onConfirm={confirmDelete}
-              onCancel={cancelDelete}
-            />
-          )}
+          <div className={styles.bigContainer}>
+            <div className={styles.buttonsContainer}>
+              <ButtonComponent onClick={editHandle} category="edit">
+                Edit Recipe
+              </ButtonComponent>
+              <ButtonComponent onClick={deleteHandle} category="delete">
+                Delete Recipe
+              </ButtonComponent>
+            </div>
+            <div className={styles.confirmationContainer}>
+              {showConfirmation && (
+                <DeleteConfirmation
+                  onConfirm={confirmDelete}
+                  onCancel={cancelDelete}
+                />
+              )}
+            </div>
+          </div>
           {deletedMessage && (
             <div className={styles.deletedMessage}>
               <p>Recipe deleted successfully!</p>

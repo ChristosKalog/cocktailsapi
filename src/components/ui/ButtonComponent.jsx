@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/DeleteButton.module.css";
+import styles from "../../styles/ButtonComponent.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEdit,
@@ -32,9 +32,9 @@ const ButtonComponent = ({ onClick, category, children, type }) => {
   const typeValue = type === "submit" ? "submit" : "";
 
   return (
-    <button className={styles.deleteButton} type={typeValue} onClick={onClick}>
+    <button className={styles.buttonComponent} type={typeValue} onClick={onClick}>
       {iconValue && (
-        <FontAwesomeIcon className={styles.deleteIcon} icon={iconValue} />
+        <FontAwesomeIcon className={styles.buttonIcon} icon={iconValue} />
       )}
       {children}
     </button>

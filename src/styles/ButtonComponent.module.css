@@ -1,6 +1,5 @@
-/* src/components/ui/DeleteButton.module.css */
 
-.deleteButton {
+.buttonComponent {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,21 +12,17 @@
   background-color: var(--primary-color);
   font-size: 1rem;
   color: black;
-  transition: 500ms;
+  transition: 250ms;
 }
 
-.clicked {
-  background-color: var(--primary-color-dark);
-  cursor: default;
+
+.buttonComponent:hover {
+  background-color: var(--primary-color-lightdark);
+
 }
 
-.deleteIcon {
+.buttonIcon {
   color: black;
   margin-right: var(--spacing-sm);
 }
 
-.deleteIconclicked {
-  color: black;
-  margin-right: var(--spacing-sm);
-  opacity: 0.8;
-}

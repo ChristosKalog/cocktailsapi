@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   color: var(--primary-color);
   padding: 10px;
   border-radius: 8px;

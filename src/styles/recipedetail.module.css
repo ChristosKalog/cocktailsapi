@@ -79,12 +79,9 @@
 .rightContainer {
   display: flex;
   justify-content: flex-start;
-  /* Use flex-start for clarity */
   flex-direction: column;
   align-items: flex-start;
-  /* Use flex-start for clarity */
   padding: var(--spacing-lg);
-
 }
 
 .recipeDetail h1 {
@@ -231,6 +228,18 @@ h5 {
 .goBackContainer a {
 
   transition: 250ms
+}
+
+.bigContainer {
+display: flex;
+}
+
+.confirmationContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  transform: translateY(6px);
 }
 
 .goBackContainer a:hover,
