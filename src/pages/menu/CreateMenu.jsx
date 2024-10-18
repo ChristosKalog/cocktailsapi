@@ -11,6 +11,10 @@ const CreateMenu = () => {
   const [selectedCocktails, setSelectedCocktails] = useState([]);
   const navigate = useNavigate();
 
+  const resetSelection = () => {
+    setSelectedCocktails([]);
+  };
+
   const handleCocktailSelect = (cocktailId) => {
     setSelectedCocktails((prevSelected) =>
       prevSelected.includes(cocktailId)
@@ -27,9 +31,8 @@ const CreateMenu = () => {
 
     const newMenu = {
       title,
-      cocktails: cocktailsData.savedCocktails.filter((cocktail) =>
-        selectedCocktails.includes(cocktail.id)
-      ),
+      cocktailIds: selectedCocktails,
+      dateCreated: new Date().toISOString(),
     };
 
     try {
@@ -44,7 +47,7 @@ const CreateMenu = () => {
 
   const handleViewMenu = () => {
     const menus = JSON.parse(localStorage.getItem("menus")) || [];
-    const latestMenu = menus[menus.length - 1]; // Get the latest saved menu
+    const latestMenu = menus[menus.length - 1];
     navigate(`/viewmenu/${latestMenu.id}`);
   };
 
@@ -66,40 +69,45 @@ const CreateMenu = () => {
         className={styles.inputField}
       />
 
-      <h3>Select Cocktails</h3>
       <div className={styles.mobileWrapper}>
         <div className={styles.cocktailSelection}>
           {cocktailsData.savedCocktails.map((cocktail) => (
-            <label key={cocktail.id} className={styles.cocktailLabel}>
+            <label
+              key={cocktail.id}
+              className={`${styles.cocktailLabel} ${
+                selectedCocktails.includes(cocktail.id)
+                  ? styles.selectedCocktail
+                  : ""
+              }`}
+              onClick={() => handleCocktailSelect(cocktail.id)}
+            >
               <input
                 type="checkbox"
                 value={cocktail.id}
                 checked={selectedCocktails.includes(cocktail.id)}
                 onChange={() => handleCocktailSelect(cocktail.id)}
+                className={styles.cocktailCheckbox}
               />
-              {cocktail.name} - ${cocktail.price}
+              <div className={styles.cocktailInfo}>
+                <span>{cocktail.name}</span>
+                <span>${cocktail.price}</span>
+              </div>
             </label>
           ))}
         </div>
       </div>
+      <h3>Selected Cocktails ({selectedCocktails.length})</h3>
 
-      {!isSaved ? (
-        <ButtonComponent onClick={handleSaveMenu} category="save">
-          Save Menu
-        </ButtonComponent>
-      ) : (
-        <div className={styles.menuOptions}>
-          <button onClick={handleViewMenu} className={styles.viewButton}>
-            View Menu
-          </button>
-          <button
-            onClick={handleCreateAnother}
-            className={styles.createAnotherButton}
-          >
-            Create Another
-          </button>
-        </div>
-      )}
+
+        <>
+          <ButtonComponent onClick={resetSelection} category="reset">
+            Reset Menu
+          </ButtonComponent>
+          <ButtonComponent onClick={handleSaveMenu} category="save">
+            Save Menu
+          </ButtonComponent>
+        </>
+
     </div>
   );
 };

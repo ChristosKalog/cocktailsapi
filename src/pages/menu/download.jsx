@@ -1,8 +1,9 @@
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
-export const handleDownloadPDF = (menu) => {
-  if (!menu) return;
+
+export const handleDownloadPDF = (menu, savedCocktails) => {
+  if (!menu || !savedCocktails) return;
 
   const doc = new jsPDF();
   const date = new Date().toLocaleDateString();
@@ -31,9 +32,9 @@ export const handleDownloadPDF = (menu) => {
   doc.text(`Downloaded on: ${date}`, 105, 50, null, null, "center");
 
   // Cocktails Table
-  const cocktails = menu.cocktails.map((cocktail) => [
+  const cocktails = savedCocktails.map((cocktail) => [
     cocktail.name,
-    `$${cocktail.price.toFixed(2)}`,
+    `$${(parseFloat(cocktail.price) || 0).toFixed(2)}`, // Ensure the price is a number, default to 0
   ]);
 
   // AutoTable for cocktails
@@ -71,6 +72,6 @@ export const handleDownloadPDF = (menu) => {
     "center"
   );
 
-  // Save the PDF
+
   doc.save(`${menu.title}_menu.pdf`);
 };

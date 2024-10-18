@@ -1,6 +1,114 @@
 {
   "savedCocktails": [
     {
+      "id": "9c74",
+      "name": "Mimosa",
+      "cocktailStyle": "Brunch",
+      "complexityLevel": "easy",
+      "ingredients": [
+        {
+          "name": "Champagne",
+          "quantity": "250",
+          "id": 1728998788162
+        },
+        {
+          "name": "Orange Juice",
+          "quantity": "250",
+          "id": 1728998837157
+        }
+      ],
+      "description": "A refreshing burst of bubbles and citrus, perfect for any occasion.",
+      "recipe": "Mix equal parts champagne and orange juice in a flute.",
+      "alcoholValue": "8",
+      "price": "10"
+    },
+    {
+      "id": "2a34",
+      "name": "Margarita",
+      "cocktailStyle": "Classic",
+      "complexityLevel": "medium",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "quantity": "50",
+          "id": 1728998788163
+        },
+        {
+          "name": "Lime Juice",
+          "quantity": "25",
+          "id": 1728998837158
+        },
+        {
+          "name": "Triple Sec",
+          "quantity": "25",
+          "id": 1728998837159
+        }
+      ],
+      "description": "A timeless blend of tangy lime and tequila, delivering the ultimate refreshment.",
+      "recipe": "Shake tequila, lime juice, and triple sec with ice. Strain into a salt-rimmed glass.",
+      "alcoholValue": "14",
+      "price": "12"
+    },
+    {
+      "id": "7d65",
+      "name": "Old Fashioned",
+      "cocktailStyle": "Classic",
+      "complexityLevel": "medium",
+      "ingredients": [
+        {
+          "name": "Bourbon",
+          "quantity": "50",
+          "id": 1728998788164
+        },
+        {
+          "name": "Sugar",
+          "quantity": "1",
+          "id": 1728998837160
+        },
+        {
+          "name": "Angostura Bitters",
+          "quantity": "2 dashes",
+          "id": 1728998837161
+        },
+        {
+          "name": "Orange Peel",
+          "quantity": "1",
+          "id": 1728998837162
+        }
+      ],
+      "description": "A bold whiskey cocktail with citrus and bitters, full of classic character.",
+      "recipe": "Muddle sugar and bitters, add bourbon, and serve with ice. Garnish with orange peel.",
+      "alcoholValue": "16",
+      "price": "10"
+    },
+    {
+      "id": "4f12",
+      "name": "Pina Colada",
+      "cocktailStyle": "Tropical",
+      "complexityLevel": "easy",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "quantity": "50",
+          "id": 1728998788165
+        },
+        {
+          "name": "Coconut Cream",
+          "quantity": "30",
+          "id": 1728998837163
+        },
+        {
+          "name": "Pineapple Juice",
+          "quantity": "100",
+          "id": 1728998837164
+        }
+      ],
+      "description": "A tropical escape in a glass with creamy coconut and sweet pineapple.",
+      "recipe": "Blend rum, coconut cream, and pineapple juice with ice. Serve in a chilled glass.",
+      "alcoholValue": "12",
+      "price": "10"
+    },
+    {
       "id": "8b49",
       "name": "Cosmopolitan",
       "cocktailStyle": "Classic",
@@ -27,146 +135,66 @@
           "id": 1728998837167
         }
       ],
+      "description": "A stylish and vibrant mix of vodka, cranberry, and lime for any party.",
       "recipe": "Shake all ingredients with ice and strain into a martini glass.",
       "alcoholValue": "14",
-      "price": "9"
-    },
-    {
-      "id": "1729209706868",
-      "name": "Christos",
-      "cocktailStyle": "Modern",
-      "complexityLevel": "easy",
-      "glassType": "Martini",
-      "ingredients": [
-        {
-          "name": "Simple syrup",
-          "quantity": "30",
-          "id": 1729209706868
-        },
-        {
-          "name": "Cognac",
-          "quantity": "",
-          "id": 1729209721548
-        }
-      ],
-      "recipe": "Well",
-      "alcoholValue": "100",
-      "price": "10",
-      "date": "03:02 18/10/2024"
-    },
-    {
-      "id": "1729211577747",
-      "name": "Classic manhattan",
-      "cocktailStyle": "Modern",
-      "complexityLevel": "medium",
-      "glassType": "Highball",
-      "ingredients": [
-        {
-          "name": "Cachaça",
-          "quantity": "100",
-          "id": 1729211577747
-        },
-        {
-          "name": "Brandy",
-          "quantity": "100",
-          "id": 1729211597375
-        },
-        {
-          "name": "Whiskey",
-          "quantity": "10",
-          "id": 1729211609155
-        }
-      ],
-      "recipe": "Yes.",
-      "alcoholValue": "100",
-      "price": "50",
-      "date": "03:33 18/10/2024"
+      "price": "12"
     }
   ],
   "savedMenus": [
     {
-      "id": "9810",
+      "id": "e1da",
       "title": "Standard",
-      "cocktails": [
-        {
-          "id": "9c74",
-          "name": "Mimosa",
-          "cocktailStyle": "Brunch",
-          "complexityLevel": "easy",
-          "ingredients": [
-            {
-              "name": "Champagne",
-              "quantity": "250",
-              "id": 1728998788162
-            },
-            {
-              "name": "Orange Juice",
-              "quantity": "250",
-              "id": 1728998837157
-            }
-          ],
-          "recipe": "Mix equal parts champagne and orange juice in a flute.",
-          "alcoholValue": "8",
-          "price": "4"
-        },
-        {
-          "id": "2a34",
-          "name": "Margarita",
-          "cocktailStyle": "Classic",
-          "complexityLevel": "medium",
-          "ingredients": [
-            {
-              "name": "Tequila",
-              "quantity": "50",
-              "id": 1728998788163
-            },
-            {
-              "name": "Lime Juice",
-              "quantity": "25",
-              "id": 1728998837158
-            },
-            {
-              "name": "Triple Sec",
-              "quantity": "25",
-              "id": 1728998837159
-            }
-          ],
-          "recipe": "Shake tequila, lime juice, and triple sec with ice. Strain into a salt-rimmed glass.",
-          "alcoholValue": "14",
-          "price": "6"
-        },
-        {
-          "id": "7d65",
-          "name": "Old Fashioned",
-          "cocktailStyle": "Classic",
-          "complexityLevel": "medium",
-          "ingredients": [
-            {
-              "name": "Bourbon",
-              "quantity": "50",
-              "id": 1728998788164
-            },
-            {
-              "name": "Sugar",
-              "quantity": "1",
-              "id": 1728998837160
-            },
-            {
-              "name": "Angostura Bitters",
-              "quantity": "2 dashes",
-              "id": 1728998837161
-            },
-            {
-              "name": "Orange Peel",
-              "quantity": "1",
-              "id": 1728998837162
-            }
-          ],
-          "recipe": "Muddle sugar and bitters, add bourbon, and serve with ice. Garnish with orange peel.",
-          "alcoholValue": "16",
-          "price": "8"
-        }
-      ]
+      "cocktailIds": [
+        "9c74",
+        "2a34",
+        "7d65",
+        "4f12",
+        "8b49"
+      ],
+      "dateCreated": "2024-10-18T10:48:17.433Z"
+    },
+    {
+      "id": "d427",
+      "title": "Basic",
+      "cocktailIds": [
+        "9c74",
+        "2a34",
+        "7d65"
+      ],
+      "dateCreated": "2024-10-18T10:59:39.213Z"
+    },
+    {
+      "id": "a8a0",
+      "title": "Everything",
+      "cocktailIds": [
+        "9c74",
+        "2a34",
+        "7d65",
+        "4f12",
+        "8b49"
+      ],
+      "dateCreated": "2024-10-18T12:23:06.527Z"
+    },
+    {
+      "id": "04bc",
+      "title": "Standard",
+      "cocktailIds": [
+        "8b49",
+        "4f12",
+        "7d65"
+      ],
+      "dateCreated": "2024-10-18T12:33:30.273Z"
+    },
+    {
+      "id": "1436",
+      "title": "Yes",
+      "cocktailIds": [
+        "9c74",
+        "4f12",
+        "8b49"
+      ],
+      "dateCreated": "2024-10-18T12:34:17.453Z"
     }
   ]
 }

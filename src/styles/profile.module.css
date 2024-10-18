@@ -159,35 +159,34 @@
 
   color: var(--primary-color);
 }
-
 @media (max-width: 768px) {
+  /* General container adjustments for mobile */
   .wrapper {
     flex-direction: column;
-    /* Stack sections vertically */
     padding: var(--spacing-md);
-    /* Reduce padding */
     max-width: 100%;
-    /* Full width for mobile */
     overflow-x: hidden;
   }
+  .bigSection {
+    flex-direction: column;
+    width: 100%;
+  }
 
+  /* Adjust sections for full-width stacking on mobile */
   .section {
     width: 100%;
-    /* Full width for sections */
     padding: var(--spacing-sm);
-    /* Reduce padding */
-    margin: 0 0;
-    /* Margin between sections */
     margin-bottom: var(--spacing-sm);
-    min-height: auto;
-    /* Remove fixed min-height */
     border-bottom: 1px solid var(--primary-color-dark);
+    display: flex;
+    flex-direction: column;
   }
 
   .section:last-child {
     border: none;
   }
 
+  /* Smaller font sizes and simplified heading styles */
   .section h1 {
     font-size: 1.1rem;
     border: none;
@@ -203,58 +202,150 @@
     margin-bottom: var(--spacing-xs);
   }
 
+  /* Adjust image container for smaller screens */
   .imageContainer {
     height: 200px;
+    width: 80vw;
     margin-bottom: var(--spacing-md);
   }
 
-  .deleteButton {
-    font-size: 0.9rem;
-    padding: var(--spacing-xs);
-    margin-top: var(--spacing-sm);
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
+  /* Adjust buttons and links for smaller screens */
   .linkButton {
     font-size: 0.9rem;
   }
 
+  /* Dialog box layout adjustments for mobile */
   .confirmationDialog {
-    width: 100%;
-    flex-direction: row;
-    /* Stack confirmation elements vertically */
+    flex-direction: column;
     gap: var(--spacing-sm);
-    /* Add space between elements */
     padding: var(--spacing-sm);
+    width: 100%;
   }
 
+  /* Adjust button size and padding for mobile */
   .confirmButton,
   .cancelButton {
-    width: 20%;
+    width: 100%;
     padding: var(--spacing-xs);
+    font-size: 0.9rem;
   }
 
+  /* Message layout adjustments for better readability */
   .deletedMessage {
     flex-direction: column;
     padding: var(--spacing-sm);
-
+    font-size: 0.9rem;
+    color: var(--primary-color);
   }
 
-
+  /* Adjust button container for mobile layout */
   .buttonContainer {
-    width: 90vw;
+    width: 100%;
     margin: 0 auto;
     display: flex;
-    align-items: flex-start;
-    ;
-    justify-content: flex-start;
     flex-direction: column;
     font-size: 0.9rem;
+    align-items: flex-start;
   }
 
   .buttonContainer p {
     margin: 0;
     padding: 0;
-    line-height: 0;
+  }
+}
 
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* General layout adjustments for tablets */
+  .wrapper {
+    flex-direction: column;
+    padding: var(--spacing-md);
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+
+
+  /* Adjust section widths for better display on tablets */
+  .section {
+    width: 45%;
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--primary-color-dark);
+    padding: var(--spacing-md);
+
+  }
+
+  .section:last-child {
+    border: none;
+  }
+
+  /* Adjust headings and text size for tablets */
+  .section h1 {
+    font-size: 1.2rem;
+  }
+
+  .section h2 {
+    font-size: 1.4rem;
+  }
+
+  .section h3 {
+    font-size: 1rem;
+  }
+
+  /* Slight reduction in image container height */
+  .imageContainer {
+    height: 220px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Adjust button sizes and padding for tablets */
+  .confirmButton,
+  .cancelButton {
+    width: 30%;
+    padding: var(--spacing-xs);
+    font-size: 0.9rem;
+  }
+
+  /* Better spacing for confirmation dialogs */
+  .confirmationDialog {
+    flex-direction: row;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    width: 100%;
+  }
+
+  /* Adjust message styles for tablets */
+  .deletedMessage {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    font-size: 1rem;
+    color: var(--primary-color);
+  }
+
+  /* Button container layout for tablets */
+  .buttonContainer {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1rem;
+  }
+
+  .buttonContainer p {
+    margin: 0;
+    padding: 0;
   }
 }

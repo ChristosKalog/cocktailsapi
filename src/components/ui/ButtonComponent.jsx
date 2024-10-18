@@ -8,7 +8,9 @@ import {
   faAdd,
   faSignIn,
   faUser,
-  faEye
+  faEye,
+  faDownload,
+  faRefresh
 } from "@fortawesome/free-solid-svg-icons";
 
 const ButtonComponent = ({ onClick, category, children, type }) => {
@@ -27,7 +29,12 @@ const ButtonComponent = ({ onClick, category, children, type }) => {
       ? faUser
       : category === "see"
       ? faEye
+      : category === "download"
+      ? faDownload
+      : category === "reset"
+      ? faRefresh
       : null;
+      
       
   const typeValue = type === "submit" ? "submit" : "";
 

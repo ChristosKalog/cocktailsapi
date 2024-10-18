@@ -1,57 +1,63 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { handleDownloadPDF } from "./download"; 
+import { handleDownloadPDF } from "./download";
 import styles from "../../styles/ViewMenu.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload } from "@fortawesome/free-solid-svg-icons"; // Import the download icon
-import menuService from "../../services/menuService"; // Adjust the path if needed
-
+import menuService from "../../services/menuService"; 
+import cocktailsData from "../../data/db.json"; 
+import ButtonComponent from "../../components/ui/ButtonComponent";
+import CocktailComponent from "../../components/ui/CocktailComponent";
 
 const ViewMenu = () => {
   const { id } = useParams();
   const [menu, setMenu] = useState(null);
-
+  const [cocktailDetails, setCocktailDetails] = useState([]); // Store the actual cocktail details
 
   useEffect(() => {
-    const fetchMenus = async () => {
+    const fetchMenu = async () => {
       try {
         const retrievedMenus = await menuService.fetchMenus();
         const foundMenu = retrievedMenus.find((menu) => menu.id === id);
-        setMenu(foundMenu);
-
+        if (foundMenu) {
+          setMenu(foundMenu);
+          const selectedCocktails = foundMenu.cocktailIds.map((cocktailId) =>
+            cocktailsData.savedCocktails.find(
+              (cocktail) => cocktail.id === cocktailId
+            )
+          );
+          setCocktailDetails(selectedCocktails);
+        }
       } catch (error) {
         console.error("Error fetching menus:", error);
       }
     };
 
-    fetchMenus(); // Call the fetchMenus function
+    fetchMenu();
   }, [id]);
+
   if (!menu) {
     return <p>Menu not found</p>;
   }
+
   return (
     <div className={styles.wrapper}>
+      <div className={styles.menuTitle}>
+        <h3>The</h3>
+        <h1>{menu.title}</h1>
+        <h3>Menu</h3>
+      </div>
       <div className={styles.viewMenu}>
-        <div className={styles.menuTitle}>
-          <h3>The</h3>
-          <h1>{menu.title}</h1>
-          <h3>Menu</h3>
-        </div>
-        <ul>
-          {menu.cocktails.map((cocktail) => (
-            <li key={cocktail.id}>
-              <p>{cocktail.name}</p>
-              <p>€{cocktail.price}</p>
-            </li>
-          ))}
-        </ul>
-        {/* Use the extracted PDF download function */}
-        <div className={styles.buttonContainer}>
-          <p>Download PDF</p>
-          <button onClick={() => handleDownloadPDF(menu)} className={styles.downloadButton}>
-            <FontAwesomeIcon icon={faDownload} />
-          </button>
-        </div>
+        {cocktailDetails.map((cocktail) => (
+          <CocktailComponent key={cocktail.id} cocktail={cocktail} />
+        ))}
+      </div>
+
+      <div className={styles.buttonContainer}>
+        <ButtonComponent 
+          onClick={() => handleDownloadPDF(menu, cocktailDetails)}  // Pass menu and cocktailDetails here
+          category="download"
+        >
+          PDF
+        </ButtonComponent>
       </div>
     </div>
   );
