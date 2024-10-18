@@ -1,6 +1,7 @@
 // src/services/mockUsers.js
 
-const mockUsers = [
+const mockUsers = 
+[
   {
     id: 0,
     username: "stelios",

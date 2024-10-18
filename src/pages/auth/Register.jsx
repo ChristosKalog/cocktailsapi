@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import styles from "../../styles/register.module.css"; // Import the CSS module
 import ButtonComponent from "../../components/ui/ButtonComponent";
+import {Link } from "react-router-dom";
+
 
 
 const Register = () => {
@@ -84,7 +86,10 @@ const Register = () => {
           Register
         </ButtonComponent>{" "}
       </form>
+      <Link to="/login">Already a user? Login Here</Link>
+
     </div>
+    
   );
 };
 

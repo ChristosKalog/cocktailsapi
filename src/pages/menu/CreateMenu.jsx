@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import cocktailsData from "../../data/db.json";
 import menuService from "../../services/menuService";
 import styles from "../../styles/CreateMenu.module.css";
@@ -7,9 +7,8 @@ import ButtonComponent from "../../components/ui/ButtonComponent";
 
 const CreateMenu = () => {
   const [title, setTitle] = useState("");
-  const [isSaved, setIsSaved] = useState(false);
   const [selectedCocktails, setSelectedCocktails] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const resetSelection = () => {
     setSelectedCocktails([]);
@@ -38,24 +37,22 @@ const CreateMenu = () => {
     try {
       const savedMenu = await menuService.createMenu(newMenu);
       console.log("Saved Menu:", savedMenu);
-      setIsSaved(true);
     } catch (error) {
       console.error("Error saving menu:", error);
       alert("There was an error saving your menu. Please try again.");
     }
   };
 
-  const handleViewMenu = () => {
-    const menus = JSON.parse(localStorage.getItem("menus")) || [];
-    const latestMenu = menus[menus.length - 1];
-    navigate(`/viewmenu/${latestMenu.id}`);
-  };
+  // const handleViewMenu = () => {
+  //   const menus = JSON.parse(localStorage.getItem("menus")) || [];
+  //   const latestMenu = menus[menus.length - 1];
+  //   navigate(`/viewmenu/${latestMenu.id}`);
+  // };
 
-  const handleCreateAnother = () => {
-    setIsSaved(false);
-    setTitle("");
-    setSelectedCocktails([]);
-  };
+  // const handleCreateAnother = () => {
+  //   setTitle("");
+  //   setSelectedCocktails([]);
+  // };
 
   return (
     <div className={styles.createMenu}>

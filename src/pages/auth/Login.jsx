@@ -1,45 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import styles from "../../styles/Login.module.css"; 
+import styles from "../../styles/Login.module.css";
 import ButtonComponent from "../../components/ui/ButtonComponent";
 import authService from "../../services/authService";
-import { useAuth } from "../../context/AuthContext"; 
+import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false); // State for "Remember Me"
   const navigate = useNavigate();
-  const { login } = useAuth(); // Access login function from Auth context
+  const { login: contextLogin } = useAuth(); // Access login function from Auth context
 
-  // Check local storage for saved user data
+  // Check local storage for saved user data on mount
   useEffect(() => {
-    const savedUser = localStorage.getItem("user");
+    const savedUser = localStorage.getItem("loggedInUser");
     if (savedUser) {
       const user = JSON.parse(savedUser);
-      setUsername(user.username);
-      setPassword(user.password); // Make sure you securely handle this
-      setRememberMe(true);
+      // If a user is found in local storage, redirect to the dashboard
+      if (user && user.isAuthenticated) {
+        navigate("/"); // Redirect to the dashboard
+      }
     }
-  }, []);
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const user = await authService.login(username, password);
+      // console.log("Logged in user:", user); // Log the logged-in user
 
-      if (user) {
-        login(user); // Update authentication context
+      contextLogin(user); // Update authentication context
 
-        if (rememberMe) {
-          localStorage.setItem("user", JSON.stringify(user));
-        } else {
-          localStorage.removeItem("user");
-        }
-
-        navigate("/"); // Redirect to the dashboard
+      if (rememberMe) {
+        localStorage.setItem("loggedInUser", JSON.stringify({ ...user, isAuthenticated: true }));
+      } else {
+        localStorage.removeItem("loggedInUser");
       }
+
+      navigate("/"); // Redirect to the dashboard
     } catch (error) {
       alert("Invalid username or password");
     }

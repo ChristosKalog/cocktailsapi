@@ -1,39 +1,40 @@
-import React, { createContext, useState, useEffect } from "react";
-import authService from "../services/authService"; // Import your authService for login/logout functions
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import authService from '../services/authService';
 
-const AuthContext = createContext();
+// Create AuthContext
+export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  // Function to log in the user
-  const login = async (username, password) => {
-    const loggedInUser = await authService.login(username, password);
-    setUser(loggedInUser);
-    localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
-  };
-
-  // Function to log out the user
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('loggedInUser');
-  };
-
-  // Rehydrate the user on app load from localStorage
-  useEffect(() => {
-    const storedUser = localStorage.getItem('loggedInUser');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-    setLoading(false); // Indicate that rehydration has finished
-  }, []);
-
-  return (
-    <AuthContext.Provider value={{ user, login, logout, loading }}>
-      {children}
-    </AuthContext.Provider>
-  );
+// Create a custom hook to use the AuthContext
+export const useAuth = () => {
+  return useContext(AuthContext);
 };
 
-export const useAuth = () => React.useContext(AuthContext);
+// Create AuthProvider component
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (loggedInUser) {
+      setUser(loggedInUser); // Set user state if found in local storage
+    }
+  }, []);
+
+  const login = async (userData) => {
+    setUser(userData); // Set user state upon login
+    localStorage.setItem('loggedInUser', JSON.stringify(userData)); // Save to local storage
+  };
+
+  const logout = () => {
+    setUser(null); // Clear user state
+    localStorage.removeItem('loggedInUser'); // Clear local storage
+  };
+
+  const value = {
+    user,
+    login,
+    logout,
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};

@@ -1,42 +1,49 @@
-import mockUsers from '../data/mockUsers'; // Import initial mock user data
-
-// Load users from localStorage, or use initial mock data if not available
-let users = JSON.parse(localStorage.getItem('users')) || mockUsers;
+const API_URL = "http://localhost:5001/users"; // Your JSON server endpoint
 
 // Simulate an API call for logging in
-const login = (username, password) => {
-  return new Promise((resolve, reject) => {
-    const user = users.find(user => user.username === username);
+const login = async (username, password) => {
+  try {
+    const response = await fetch(API_URL);
+    const users = await response.json();
+
+    // Find the user based on the username and password
+    const user = users.find(user => user.username === username && user.password === password);
+
     if (user) {
-      if (user.password === password) {
-         // Store the user in localStorage to persist the session
-         localStorage.setItem('loggedInUser', JSON.stringify({ ...user, isAuthenticated: true }));
-        resolve({ ...user, isAuthenticated: true });        
-      } else {
-        reject(new Error('Invalid password'));
-      }
+      return { ...user, isAuthenticated: true }; // Return user data with authentication status
     } else {
-      reject(new Error('User not found'));
+      throw new Error('Invalid credentials'); // Handle invalid login
     }
-  });
+  } catch (error) {
+    console.error("Login error:", error);
+    throw error; // Propagate the error
+  }
 };
 
 // Simulate an API call for user registration
-const register = (newUser) => {
-  return new Promise((resolve) => {
-    users.push(newUser); // Add the new user to the mock data
-    localStorage.setItem('users', JSON.stringify(users)); // Persist to localStorage
-    resolve(newUser);
-  });
-};
+const register = async (newUser) => {
+  try {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newUser),
+    });
 
-// Simulate checking if the user is authenticated
-const isAuthenticated = (username) => {
-  return users.some(user => user.username === username);
+    if (!response.ok) {
+      throw new Error('Failed to register user');
+    }
+
+    const createdUser = await response.json();
+    return createdUser;
+  } catch (error) {
+    console.error("Registration error:", error);
+    throw error; // Handle errors
+  }
 };
 
 export default {
   login,
   register,
-  isAuthenticated,
 };

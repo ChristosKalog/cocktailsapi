@@ -138,13 +138,14 @@
   margin-top: var(--spacing-xl);
 }
 
-h1 {
-  font-size: var(--font-size-xl);
+.rightContainer h1 {
+  font-size: 2.2rem;
   font-weight: 600;
   margin-bottom: var(--spacing-md);
   color: var(--primary-color);
   letter-spacing: 0.5px;
-  text-transform: uppercase;
+  font-family: "EB Garamond";
+  
 }
 
 h2,
