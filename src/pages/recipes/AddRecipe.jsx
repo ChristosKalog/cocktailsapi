@@ -21,7 +21,6 @@ const AddRecipe = () => {
     date: "",
   });
 
-  const [isSubmitted, setIsSubmitted] = useState(false); // Control buttons visibility
   const navigate = useNavigate(); // Initialize useNavigate
 
   const ingredientSuggestions = [
@@ -65,9 +64,8 @@ const AddRecipe = () => {
     "Tequila",
     "Triple Sec",
     "Vodka",
-    "Whiskey"
+    "Whiskey",
   ];
-  
 
   const handleChange = (e, index) => {
     const { name, value } = e.target;
@@ -80,14 +78,14 @@ const AddRecipe = () => {
       const newIngredients = [...recipe.ingredients];
       if (name === "name") {
         newIngredients[index][name] = capitalizeFirstLetter(value);
-      }  else {
+      } else {
         newIngredients[index][name] = value;
       }
       setRecipe({ ...recipe, ingredients: newIngredients });
     } else {
       if (name === "name") {
         setRecipe({ ...recipe, [name]: capitalizeFirstLetter(value) });
-      }  else {
+      } else {
         setRecipe({ ...recipe, [name]: value });
       }
     }
@@ -110,46 +108,41 @@ const AddRecipe = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
-  };
+  
+      try {
+        const currentDate = new Date();
+        const formattedDate = `${String(currentDate.getHours()).padStart(
+          2,
+          "0"
+        )}:${String(currentDate.getMinutes()).padStart(2, "0")} ${String(
+          currentDate.getDate()
+        ).padStart(2, "0")}/${String(currentDate.getMonth() + 1).padStart(
+          2,
+          "0"
+        )}/${currentDate.getFullYear()}`;
+        await saveRecipe({ ...recipe, date: formattedDate });
+        console.log("Recipe created successfully!");
+        // Reset the form fields
+        setRecipe({
+          name: "",
+          cocktailStyle: "",
+          complexityLevel: "",
+          glassType: "",
+          ingredients: [{ name: "", quantity: "", id: Date.now() }],
+          recipe: "",
+          alcoholValue: 0,
+          price: "",
+          date: "",
+        });
+      } catch (error) {
+        console.error("Error saving recipe:", error);
+      } 
+      navigate("/whereto", { state: { key: recipe.id } })
+    };
+ 
 
-  const handleViewRecipe = () => {
-    handleAddNewRecipe();
-    navigate(`/recipes/`); // Adjust to your actual recipe view route
-  };
+ 
 
-  const handleAddNewRecipe = async () => {
-    try {
-      const currentDate = new Date();
-      const formattedDate = `${String(currentDate.getHours()).padStart(
-        2,
-        "0"
-      )}:${String(currentDate.getMinutes()).padStart(2, "0")} ${String(
-        currentDate.getDate()
-      ).padStart(2, "0")}/${String(currentDate.getMonth() + 1).padStart(
-        2,
-        "0"
-      )}/${currentDate.getFullYear()}`;
-      await saveRecipe({ ...recipe, date: formattedDate });
-      console.log("Recipe created successfully!");
-      // Reset the form fields
-      setRecipe({
-        name: "",
-        cocktailStyle: "",
-        complexityLevel: "",
-        glassType: "",
-        ingredients: [{ name: "", quantity: "", id: Date.now() }],
-        recipe: "",
-        alcoholValue: 0,
-        price: "",
-        date: "",
-      });
-      // Hide the action buttons after adding the new recipe
-      setIsSubmitted(false);
-    } catch (error) {
-      console.error("Error saving recipe:", error);
-    }
-  };
 
   return (
     <div className={styles.formContainer}>
@@ -315,23 +308,11 @@ const AddRecipe = () => {
         </div>
 
         {/* Submit Button */}
-        {!isSubmitted && (
+   
           <ButtonComponent type="submit" category="save">
             Save Recipe
           </ButtonComponent>
-        )}
 
-        {/* Show buttons after submission */}
-        {isSubmitted && (
-          <div className={styles.actionButtons}>
-            <ButtonComponent onClick={handleAddNewRecipe} category="primary">
-              Add New Recipe
-            </ButtonComponent>
-            <ButtonComponent onClick={handleViewRecipe} category="secondary">
-              View Recipes
-            </ButtonComponent>
-          </div>
-        )}
       </form>
     </div>
   );

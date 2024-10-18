@@ -115,32 +115,27 @@
       "price": "9"
     },
     {
-      "id": "1729163414246",
-      "name": "Fire",
+      "id": "1729209706868",
+      "name": "Christos",
       "cocktailStyle": "Modern",
-      "complexityLevel": "medium",
-      "glassType": "Highball",
+      "complexityLevel": "easy",
+      "glassType": "Martini",
       "ingredients": [
         {
           "name": "Simple syrup",
-          "quantity": "20",
-          "id": 1729163414246
+          "quantity": "30",
+          "id": 1729209706868
         },
         {
-          "name": "St-germain",
-          "quantity": "210",
-          "id": 1729163436157
-        },
-        {
-          "name": "Absinthe",
-          "quantity": "21",
-          "id": 1729163448708
+          "name": "Cognac",
+          "quantity": "",
+          "id": 1729209721548
         }
       ],
-      "recipe": "Alright.",
-      "alcoholValue": "30",
-      "price": "112",
-      "date": "14:11 17/10/2024"
+      "recipe": "Well",
+      "alcoholValue": "100",
+      "price": "10",
+      "date": "03:02 18/10/2024"
     }
   ],
   "savedMenus": [

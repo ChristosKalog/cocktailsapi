@@ -12,10 +12,11 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import RecipeList from "./pages/recipes/RecipeList";
 import RecipeDetail from "./pages/recipes/RecipeDetail";
 import AddRecipe from "./pages/recipes/AddRecipe";
+import EditRecipe from "./pages/recipes/EditRecipe";
+import WhereToPage from "./pages/recipes/WhereToPage";
 import CreateMenu from "./pages/menu/CreateMenu";
 import ViewMenu from "./pages/menu/ViewMenu";
 import Profile from "./pages/profile/Profile";
-import EditRecipe from "./pages/recipes/EditRecipe";
 
 // import ForgotPassword from "./pages/auth/ForgotPassword";
 // import Settings from "./pages/settings/Settings";
@@ -57,6 +58,8 @@ function App() {
                   <Route path="/menu/create" element={<PrivateRoute><CreateMenu /></PrivateRoute>} />
                   <Route path="/viewmenu/:id" element={<PrivateRoute><ViewMenu /></PrivateRoute>} />
                   <Route path="/recipe/add" element={<PrivateRoute><AddRecipe /></PrivateRoute>} />
+                  <Route path="/whereto" element={<PrivateRoute><WhereToPage /></PrivateRoute>} />
+
                 </Routes>
               </main>
 
