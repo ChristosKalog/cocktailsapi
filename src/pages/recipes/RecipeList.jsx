@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import cocktailsData from "../../data/db.json";
 import ButtonComponent from "../../components/ui/ButtonComponent";
+import RecipeComponent from "../../components/ui/RecipeComponent"; // Import RecipeComponent
 import styles from "../../styles/recipelist.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -125,25 +126,7 @@ const RecipeList = () => {
 
       <div className={styles.recipeGrid}>
         {filteredCocktails.map((cocktail) => (
-          <Link
-            key={cocktail.id}
-            to={`/recipes/${cocktail.id}`}
-            className={styles.recipeLink}
-          >
-            <div className={styles.recipeCard}>
-              <div className={styles.infoContainer}>
-                <h2>{cocktail.name}</h2>
-                <div className={styles.moreInfo}>
-                  <p>
-                    <strong>Style:</strong> {cocktail.cocktailStyle}
-                  </p>
-                  <p>
-                    <strong>Complexity:</strong> {cocktail.complexityLevel}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Link>
+          <RecipeComponent key={cocktail.id} cocktail={cocktail} />
         ))}
       </div>
 
