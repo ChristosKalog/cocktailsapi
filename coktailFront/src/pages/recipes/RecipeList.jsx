@@ -14,19 +14,21 @@ const RecipeList = () => {
   const [filter, setFilter] = useState("");
   const [complexity, setComplexity] = useState("");
   const [ingredient, setIngredient] = useState(""); // New state for ingredient filter
+  const [searchTerm, setSearchTerm] = useState(""); // New state for search bar
   const [sortOrder, setSortOrder] = useState("asc");
 
   const clearFilters = () => {
     setFilter("");
     setComplexity("");
     setIngredient("");
+    setSearchTerm(""); // Clear search bar as well
   };
 
   const toggleSortOrder = () => {
     setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
   };
 
-  // Filter cocktails by style, complexity, and ingredient
+  // Filter cocktails by style, complexity, ingredient, and search term
   const filteredCocktails = cocktailsData.savedCocktails
     .filter((cocktail) => {
       const matchesStyle = filter ? cocktail.cocktailStyle === filter : true;
@@ -38,7 +40,18 @@ const RecipeList = () => {
             ing.name.toLowerCase().includes(ingredient.toLowerCase())
           )
         : true;
-      return matchesStyle && matchesComplexity && matchesIngredient;
+
+      // Check if search term matches the name, ingredients, or other details
+      const matchesSearchTerm = searchTerm
+        ? cocktail.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          cocktail.ingredients.some((ing) =>
+            ing.name.toLowerCase().includes(searchTerm.toLowerCase())
+          ) ||
+          cocktail.cocktailStyle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          cocktail.description?.toLowerCase().includes(searchTerm.toLowerCase()) // Optional description
+        : true;
+
+      return matchesStyle && matchesComplexity && matchesIngredient && matchesSearchTerm;
     })
     .sort((a, b) => {
       if (sortOrder === "asc") {
@@ -72,9 +85,20 @@ const RecipeList = () => {
     <div className={styles.recipeList}>
       <h1>Cocktail Recipes</h1>
 
+      {/* New search bar */}
+      <div className={styles.searchBar}>
+        <input
+          type="text"
+          placeholder="Search for recipes..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className={styles.inputField}
+        />
+      </div>
+
       <div className={styles.filters}>
         <label>
-          Filter by Style:
+          Style:
           <select onChange={(e) => setFilter(e.target.value)} value={filter}>
             <option value="">All</option>
             {stylesOptions.map((style) => (
@@ -86,7 +110,7 @@ const RecipeList = () => {
         </label>
 
         <label>
-          Filter by Complexity:
+          Complexity:
           <select
             onChange={(e) => setComplexity(e.target.value)}
             value={complexity}
@@ -100,9 +124,8 @@ const RecipeList = () => {
           </select>
         </label>
 
-        {/* New Ingredient Filter */}
         <label>
-          Filter by Ingredient:
+          Ingredient:
           <select
             onChange={(e) => setIngredient(e.target.value)}
             value={ingredient}
