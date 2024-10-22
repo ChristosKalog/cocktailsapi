@@ -10,7 +10,8 @@
 }
 
 .recipeList::-webkit-scrollbar {
-  display: none;}
+  display: none;
+}
 
 .recipeList h1 {
   margin-bottom: var(--spacing-sm);
@@ -44,9 +45,10 @@
   font-size: 1.1rem;
   font-family: "Montserrat";
 }
+
 .searchBar input:focus {
   border: none;
-  
+
 }
 
 .filtersContainer select {
@@ -92,6 +94,7 @@
 .recipeGrid::-webkit-scrollbar {
   display: none;
 }
+
 .buttonContainer {
   width: 100%;
   max-width: 1200px;
@@ -102,7 +105,69 @@
 
 
 @media (max-width: 768px) {
+  .recipeList {
+    padding: var(--spacing-sm);
+    /* Adjust padding for smaller screens */
+    max-height: none;
+  }
 
+  .recipeList h1 {
+    font-size: 1.75rem;
+  }
 
+  .filtersContainer {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    padding: var(--spacing-sm) 0;
+  }
 
+  .mobileWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .searchBar {
+    width: 100%;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .searchBar input {
+    padding: var(--spacing-xs);
+    /* Reduce padding for smaller screens */
+    font-size: 1rem;
+    /* Adjust font size for readability */
+  }
+
+  .filtersContainer select {
+    margin: var(--spacing-xs) 0;
+    /* Add vertical spacing between selects */
+    width: 100%;
+    /* Full width for selects */
+  }
+
+  .sortButton {
+    width: 50%;
+    margin: var(--spacing-xs) 0;
+    font-size: var(--font-size-md);
+  }
+
+  .recipeGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.8rem;
+    padding: var(--spacing-sm) 0;
+    height: auto;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: var(--spacing-sm);
+  }
 }

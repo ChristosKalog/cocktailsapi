@@ -69,7 +69,14 @@
   font-size: 0.82rem;  
 }
 
-/* Mobile styles */
+/* Existing styles for .recipeCard and its child elements remain unchanged */
+
 @media (max-width: 768px) {
-  
+.recipeCard {
+  width: 95%;
+  margin: 0 auto;;
+}
+.moreInfo p {
+  font-size: 0.85rem;
+}
 }

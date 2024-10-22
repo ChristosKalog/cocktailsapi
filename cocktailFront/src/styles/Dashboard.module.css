@@ -7,7 +7,6 @@
   padding: var(--spacing-lg);
   background-color: var(--dark-bg);
   color: var(--text-color);
-  border-radius: var(--border-radius-md);
   min-height: 79vh;
 }
 
@@ -16,14 +15,14 @@
 }
 
 .welcomeMessage {
-
   border-bottom: 1px solid var(--primary-color);
 }
+
 .bigLetter {
   font-family: "EB Garamond";
   color: var(--primary-color);
   font-size: 3rem;
-  margin:0;
+  margin: 0;
   padding: 0
 }
 
@@ -33,7 +32,6 @@
   align-items: flex-start;
   gap: var(--spacing-lg);
   padding: var(--spacing-lg);
-
 }
 
 .menusList {
@@ -147,86 +145,38 @@
 }
 
 @media (max-width: 768px) {
-
-
   .dashboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: var(--spacing-md);
-    /* Reduce padding for mobile */
-    background-color: var(--dark-bg);
-    color: var(--text-color);
-    border-radius: var(--border-radius-md);
-    min-height: 50vh;
-
-  }
-
-  .dashboard::-webkit-scrollbar {
-    display: none;
-  }
-
-  .dashboard h1 {
-    font-size: var(--font-size-lg);
-    
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .dashboard h2 {
-    font-size: var(--font-size-md);
-    /* Reduce font size */
-    margin-bottom: var(--spacing-sm);
-    text-align: center;
-  }
-
-  .searchBar {
     width: 100%;
-    /* Full width on mobile */
-    margin-bottom: var(--spacing-sm);
-    /* Reduce margin */
+  }
+
+  .bigContainer {
+    padding: 0;
+    padding: var(--spacing-md) 0;
+    flex-direction: column;
+    width: 100%;
   }
 
   .menusList {
-    width: 100%;
-    /* Full width on mobile */
-    padding: var(--spacing-md);
-    margin-top: var(--spacing-md);
-  }
-
-  .menuItemsContainer {
-    width: 100%;
-    /* Full width on mobile */
     padding: var(--spacing-sm);
-    /* Adjust padding */
-    max-height: 300px;
-    /* Reduce max height for smaller screens */
+    width: 97%;
+    margin: 0 auto;
+    border-radius: var(--spacing-sm);
   }
 
-  .itemContainer {
-    width: 100%;
-    margin: var(--spacing-xs);
-  }
-
-  .menuLink {
-    font-size: var(--font-size-md);
-    /* Smaller font for mobile */
-    padding: var(--spacing-sm);
-    /* Adjust padding */
-    width: 100%;
-  }
-
-  .menusSection {
-    margin-top: var(--spacing-md);
-    /* Reduce margin */
-    padding: var(--spacing-sm);
-    /* Adjust padding */
-  }
-
-  .favorites {
+  .menusList h3 {
+    margin: 0;
     margin-top: var(--spacing-sm);
-    /* Reduce margin */
-    padding: var(--spacing-sm);
-    /* Adjust padding */
+  }
+
+  .viewAllLink {
+    opacity: 1;
+    margin-top: var(--spacing-md);
+  }
+  .buttonContainer {
+    margin-bottom: var(--spacing-xs);
+    flex-direction: row;
+    gap: var(--spacing-sm)
+
   }
 
 }

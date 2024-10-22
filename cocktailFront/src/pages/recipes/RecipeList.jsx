@@ -101,64 +101,67 @@ const RecipeList = () => {
             className={styles.inputField}
           />
         </div>
-        <select
-          aria-label="Filter by Style"
-          onChange={(e) => setFilter(e.target.value)}
-          value={filter}
-        >
-          <option value="header" disabled>
-            Style
-          </option>
-          <option value="">All Styles</option>
-          {stylesOptions.map((style) => (
-            <option key={style} value={style}>
-              {style}
+        <div className={styles.mobileWrap}>
+          <select
+            aria-label="Filter by Style"
+            onChange={(e) => setFilter(e.target.value)}
+            value={filter}
+          >
+            <option value="header" disabled>
+              Style
             </option>
-          ))}
-        </select>
+            <option value="">All Styles</option>
+            {stylesOptions.map((style) => (
+              <option key={style} value={style}>
+                {style}
+              </option>
+            ))}
+          </select>
 
-        <select
-          aria-label="Filter by Complexity"
-          onChange={(e) => setComplexity(e.target.value)}
-          value={complexity}
-        >
-          <option value="header" disabled>
-            Complexity
-          </option>
-
-          <option value="">All</option>
-          {complexityOptions.map((level) => (
-            <option key={level} value={level}>
-              {level}
+          <select
+            aria-label="Filter by Complexity"
+            onChange={(e) => setComplexity(e.target.value)}
+            value={complexity}
+          >
+            <option value="header" disabled>
+              Complexity
             </option>
-          ))}
-        </select>
 
-        <select
-          aria-label="Filter by Ingredient"
-          onChange={(e) => setIngredient(e.target.value)}
-          value={ingredient}
-        >
-          <option value="header" disabled>
-            Ingredient
-          </option>
+            <option value="">All</option>
+            {complexityOptions.map((level) => (
+              <option key={level} value={level}>
+                {level}
+              </option>
+            ))}
+          </select>
 
-          <option value="">All ingredients</option>
-          {ingredientOptions.map((ing) => (
-            <option key={ing} value={ing}>
-              {ing}
+          <select
+            aria-label="Filter by Ingredient"
+            onChange={(e) => setIngredient(e.target.value)}
+            value={ingredient}
+          >
+            <option value="header" disabled>
+              Ingredient
             </option>
-          ))}
-        </select>
 
-        <button onClick={toggleSortOrder} className={styles.sortButton}>
-          <FontAwesomeIcon
-            icon={sortOrder === "asc" ? faSortAlphaAsc : faSortAlphaDesc}
-          />
-        </button>
-        <button className={styles.sortButton} onClick={clearFilters}>
-          Clear Filters
-        </button>
+            <option value="">All ingredients</option>
+            {ingredientOptions.map((ing) => (
+              <option key={ing} value={ing}>
+                {ing}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className={styles.mobileWrap2}>
+          <button onClick={toggleSortOrder} className={styles.sortButton}>
+            <FontAwesomeIcon
+              icon={sortOrder === "asc" ? faSortAlphaAsc : faSortAlphaDesc}
+            />
+          </button>
+          <button className={styles.sortButton} onClick={clearFilters}>
+            Clear Filters
+          </button>
+        </div>
       </div>
 
       <div className={styles.recipeGrid}>

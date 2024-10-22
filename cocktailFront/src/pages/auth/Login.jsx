@@ -19,7 +19,7 @@ const Login = () => {
       const user = JSON.parse(savedUser);
       // If a user is found in local storage, redirect to the dashboard
       if (user && user.isAuthenticated) {
-        navigate("/recipes"); // Redirect to the dashboard
+        navigate("/"); // Redirect to the dashboard
       }
     }
   }, [navigate]);
