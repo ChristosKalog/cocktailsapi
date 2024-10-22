@@ -46,7 +46,6 @@ const RecipeDetail = () => {
     await recipeService.deleteRecipe(id); // Call deleteRecipe function
     setDeletedMessage(true); // Show deletion message
     setShowConfirmation(false); // Close confirmation dialog
-    // Redirect or perform any additional actions after deletion if needed
     navigate("/recipes");
     setTimeout(() => {
       setDeletedMessage(false);
@@ -73,7 +72,7 @@ const RecipeDetail = () => {
             {images.map((image) => (
               <img
                 key={image.id}
-                src={image.src} // Use static image source
+                src={image.src} 
                 alt={image.alt}
                 className={`${styles.carouselImage} ${
                   image.src === mainImage ? styles.carouselImageActive : ""

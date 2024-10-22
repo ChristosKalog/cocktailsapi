@@ -8,15 +8,11 @@
   margin: 0 auto;
   max-width: 80%;
   padding: var(--spacing-lg);
-
+  max-height: 80vh;
 }
-
 .bigSection {
   display: flex;
-
 }
-
-
 .section {
   width: 25vw;
   display: flex;
@@ -25,7 +21,6 @@
   margin: var(--spacing-md);
   flex-direction: column;
   padding: var(--spacing-lg);
-
 }
 
 .section h1 {

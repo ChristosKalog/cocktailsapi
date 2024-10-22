@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import styles from "../../styles/recipecomponent.module.css";
 
 const RecipeComponent = ({ cocktail }) => {
+  const truncateDescription = (description, maxLength = 80) => {
+    if (description.length > maxLength) {
+      return description.slice(0, maxLength) + "...";
+    }
+    return description;
+  };
+
   return (
     <Link
       key={cocktail.id}
@@ -10,15 +17,21 @@ const RecipeComponent = ({ cocktail }) => {
       className={styles.recipeLink}
     >
       <div className={styles.recipeCard}>
+        <div className={styles.imageContainer}>
+          <img
+            src={require(`../../assets/images/${cocktail.smallPicture}`)}
+            alt=""
+          />
+        </div>
         <div className={styles.infoContainer}>
+          <div className={styles.headerInfo}>
+            <p>{cocktail.cocktailStyle}</p>
+            <p>|</p>
+            <p>{cocktail.complexityLevel}</p>
+          </div>
           <h2>{cocktail.name}</h2>
           <div className={styles.moreInfo}>
-            <p>
-              <strong>Style:</strong> {cocktail.cocktailStyle}
-            </p>
-            <p>
-              <strong>Complexity:</strong> {cocktail.complexityLevel}
-            </p>
+            <p>{truncateDescription(cocktail.description)}</p>
           </div>
         </div>
       </div>

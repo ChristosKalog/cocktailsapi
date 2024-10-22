@@ -1,3 +1,6 @@
+@import './variables.css';
+
+
 .recipeList {
   padding: var(--spacing-lg);
   background-color: var(--background-color);
@@ -7,8 +10,7 @@
 }
 
 .recipeList::-webkit-scrollbar {
-  display: none;
-}
+  display: none;}
 
 .recipeList h1 {
   margin-bottom: var(--spacing-sm);
@@ -19,7 +21,7 @@
   margin-left: var(--spacing-lg);
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   height: 66px;
   width: 100%;
   max-width: 1200px;
@@ -76,7 +78,7 @@
 
 .recipeGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
   gap: 1rem;
   margin: var(--spacing-lg) auto;
   width: 100%;

@@ -6,13 +6,15 @@
   --secondary-color: #6c757d; /* Example grey */
   --background-color: #121212; /* Dark background */
   --background-color-card: rgb(35 40 45);
+  --gradient-card: linear-gradient(135deg, rgba(35, 40, 45, 1) 0%, rgba(50, 55, 60, 1) 100%);
+  --gradient-card-hover: linear-gradient(45deg, rgba(35, 40, 45, 1) 0%, rgba(50, 55, 60, 1) 100%);
   --background-color-light: #4b4b4b; /* Light dark background for contrast */
   --text-color: #ffffff; /* Light text */
   --success-color: #28a745; /* Green for success */
   --warning-color: #ffc107; /* Yellow for warnings */
   --error-color: #dc3545; /* Red for errors */
   --edit-color: rgb(255, 238, 0);
---edit-color-dark: rgb(177, 165, 0);
+  --edit-color-dark: rgb(177, 165, 0);
 
   /* Spacing */
   --spacing-xs: 4px;  /* Extra small spacing */
