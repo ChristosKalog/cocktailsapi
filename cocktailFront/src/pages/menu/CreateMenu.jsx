@@ -84,8 +84,6 @@ const CreateMenu = () => {
         </div>
       </div>
       <h3>Selected Cocktails ({selectedCocktails.length})</h3>
-
-
         <>
           <ButtonComponent onClick={resetSelection} category="reset">
             Reset Menu

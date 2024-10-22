@@ -392,36 +392,30 @@ h5 {
 
 .abv0 {
   color: #b0b0b0 !important;
-  /* No alcohol - gray */
   border: 1px solid #b0b0b0;
 }
 
 .abv05 {
   color: #8bc34a !important;
-  /* 0 to 5% - soft green */
   border: 1px solid #8bc34a;
 }
 
 .abv515 {
   color: #cddc39 !important;
-  /* 5 to 15% - light yellow */
   border: 1px solid #cddc39;
 }
 
 .abv1525 {
   color: #ffeb3b !important;
-  /* 15 to 25% - yellow */
   border: 1px solid #ffeb3b;
 }
 
 .abv2540 {
   color: #ffc107 !important;
-  /* 25 to 40% - orange */
   border: 1px solid #ffc107;
 }
 
 .abv40 {
   color: #ff9800 !important;
-  /* 40% and above - darker orange */
   border: 1px solid #ff9800;
 }

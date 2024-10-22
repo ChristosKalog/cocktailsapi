@@ -177,19 +177,74 @@
       "price": "50",
       "smallPicture": "placeholder_small.png",
       "id": "1729600787828"
+    },
+    {
+      "id": "1729605396802",
+      "name": "Lo siento",
+      "description": "This is description",
+      "date": "16:57 22/10/2024",
+      "cocktailStyle": "Highballs",
+      "complexityLevel": "hard",
+      "glassType": "Highball",
+      "recipe": "I like this drink very much.",
+      "alcoholValue": "100",
+      "price": "20",
+      "ingredients": [
+        {
+          "name": "Aperol",
+          "quantity": "1000",
+          "id": 1729605396802
+        }
+      ],
+      "smallPicture": "placeholder_small.png"
+    },
+    {
+      "id": "1729606957937",
+      "name": "Please save me",
+      "description": "This is description",
+      "date": "17:23 22/10/2024",
+      "cocktailStyle": "Highballs",
+      "complexityLevel": "easy",
+      "glassType": "Old Fashioned",
+      "recipe": "Add all ingredients and then enjoy.",
+      "alcoholValue": "100",
+      "price": "520",
+      "ingredients": [
+        {
+          "name": "Cachaça",
+          "quantity": "100",
+          "id": 1729606957937
+        },
+        {
+          "name": "Campari",
+          "quantity": "100",
+          "id": 1729606976782
+        }
+      ],
+      "smallPicture": "placeholder_small.png"
     }
   ],
   "savedMenus": [
     {
       "id": "0ee5",
       "title": "Standard",
-      "cocktailIds": ["9c74", "2a34", "7d65", "8b49", "4f12"],
+      "cocktailIds": [
+        "9c74",
+        "2a34",
+        "7d65",
+        "8b49",
+        "4f12"
+      ],
       "dateCreated": "2024-10-22T08:03:06.052Z"
     },
     {
       "id": "39b2",
       "title": "New",
-      "cocktailIds": ["9c74", "2a34", "7d65"],
+      "cocktailIds": [
+        "9c74",
+        "2a34",
+        "7d65"
+      ],
       "dateCreated": "2024-10-22T08:52:14.215Z"
     }
   ],
@@ -202,7 +257,12 @@
       "fullName": "Stelios Alexandrakis",
       "role": "the boss",
       "bar": "The Cocktail Lounge",
-      "favorites": [20, 4, 17, 18],
+      "favorites": [
+        20,
+        4,
+        17,
+        18
+      ],
       "menusCreated": 5,
       "lastLogin": "2020-10-10",
       "barAddress": "Kordelio City",
@@ -217,7 +277,11 @@
       "fullName": "Alkis Tzaras",
       "role": "the bartender",
       "bar": "Shaken Not Stirred",
-      "favorites": [2, 10, 12],
+      "favorites": [
+        2,
+        10,
+        12
+      ],
       "menusCreated": 3,
       "lastLogin": "2020-10-10",
       "barAddress": "Kordelio City",
@@ -232,7 +296,11 @@
       "fullName": "Christos Kalogridakis",
       "role": "the employ",
       "bar": "The Boozy Bar",
-      "favorites": [1, 5, 7],
+      "favorites": [
+        1,
+        5,
+        7
+      ],
       "menusCreated": 10,
       "lastLogin": "2020-10-10",
       "barAddress": "Kordelio City",

@@ -26,7 +26,7 @@ const Menus = () => {
           {menus.map((menu) => (
             <Link to={`/viewmenu/${menu.id}`} className={styles.menuLink}>
               <div key={menu.id} className={styles.menuCard}>
-                {menu.title}
+                <p>{menu.title}</p>
                 <span className={styles.menuDate}>
                   Created on {new Date(menu.dateCreated).toLocaleDateString()}
                 </span>
