@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/AddRecipe.module.css";
 import rangeStyles from "../../styles/Range.module.css";
-import { saveRecipe } from "../../services/recipeService";
+import recipeService from "../../services/recipeService";
 import ButtonComponent from "../../components/ui/ButtonComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faAdd } from "@fortawesome/free-solid-svg-icons";
@@ -120,7 +120,7 @@ const AddRecipe = () => {
           2,
           "0"
         )}/${currentDate.getFullYear()}`;
-        await saveRecipe({ ...recipe, date: formattedDate });
+        await recipeService.saveRecipe({ ...recipe, date: formattedDate });
         console.log("Recipe created successfully!");
         // Reset the form fields
         setRecipe({

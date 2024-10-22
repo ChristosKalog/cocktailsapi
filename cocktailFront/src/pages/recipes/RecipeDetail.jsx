@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import cocktailsData from "../../data/db.json";
 import styles from "../../styles/recipedetail.module.css";
-import { deleteRecipe } from "../../services/recipeService";
+import recipeService from "../../services/recipeService"; 
 import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent";
 import ButtonComponent from "../../components/ui/ButtonComponent";
 import placeholder1 from "../../assets/images/placeholder1.png";
@@ -43,7 +43,7 @@ const RecipeDetail = () => {
   };
 
   const confirmDelete = async () => {
-    await deleteRecipe(id); // Call deleteRecipe function
+    await recipeService.deleteRecipe(id); // Call deleteRecipe function
     setDeletedMessage(true); // Show deletion message
     setShowConfirmation(false); // Close confirmation dialog
     // Redirect or perform any additional actions after deletion if needed

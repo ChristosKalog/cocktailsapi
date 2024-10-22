@@ -143,7 +143,7 @@
   ],
   "savedMenus": [
     {
-      "id": "e1da",
+      "id": "b76e",
       "title": "Standard",
       "cocktailIds": [
         "9c74",
@@ -152,49 +152,7 @@
         "4f12",
         "8b49"
       ],
-      "dateCreated": "2024-10-18T10:48:17.433Z"
-    },
-    {
-      "id": "d427",
-      "title": "Basic",
-      "cocktailIds": [
-        "9c74",
-        "2a34",
-        "7d65"
-      ],
-      "dateCreated": "2024-10-18T10:59:39.213Z"
-    },
-    {
-      "id": "a8a0",
-      "title": "Everything",
-      "cocktailIds": [
-        "9c74",
-        "2a34",
-        "7d65",
-        "4f12",
-        "8b49"
-      ],
-      "dateCreated": "2024-10-18T12:23:06.527Z"
-    },
-    {
-      "id": "04bc",
-      "title": "Standard",
-      "cocktailIds": [
-        "8b49",
-        "4f12",
-        "7d65"
-      ],
-      "dateCreated": "2024-10-18T12:33:30.273Z"
-    },
-    {
-      "id": "1436",
-      "title": "Yes",
-      "cocktailIds": [
-        "9c74",
-        "4f12",
-        "8b49"
-      ],
-      "dateCreated": "2024-10-18T12:34:17.453Z"
+      "dateCreated": "2024-10-22T07:26:10.273Z"
     }
   ],
   "users": [
@@ -255,50 +213,6 @@
       "barAddress": "Kordelio City",
       "fbPage": "https://en.wikipedia.org/wiki/Bar_(establishment)",
       "instaPage": "https://en.wikipedia.org/wiki/Bar_(establishment)"
-    },
-    {
-      "id": 3,
-      "username": "chris",
-      "email": "christos@example.com",
-      "password": "test",
-      "fullName": "Christos Kalogridakis",
-      "role": "the employ",
-      "bar": "The Boozy Bar",
-      "favorites": [
-        1,
-        5,
-        7
-      ],
-      "menusCreated": 10,
-      "lastLogin": "2020-10-10",
-      "barAddress": "Kordelio City",
-      "fbPage": "https://en.wikipedia.org/wiki/Bar_(establishment)",
-      "instaPage": "https://en.wikipedia.org/wiki/Bar_(establishment)"
-    },
-    {
-      "id": "3257",
-      "username": "christos",
-      "password": "test"
-    },
-    {
-      "id": "adea",
-      "username": "christos",
-      "password": "test"
-    },
-    {
-      "id": "9789",
-      "username": "christos",
-      "password": "test"
-    },
-    {
-      "id": "558b",
-      "username": "christos",
-      "password": "test"
-    },
-    {
-      "id": "e01b",
-      "username": "sdgsdg",
-      "password": "sdggds"
     }
   ]
 }

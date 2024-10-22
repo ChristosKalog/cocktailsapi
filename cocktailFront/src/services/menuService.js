@@ -26,4 +26,4 @@ const fetchMenus = async () => {
   }
 };
 
-export default { createMenu,  fetchMenus,};
+export default { createMenu,  fetchMenus};

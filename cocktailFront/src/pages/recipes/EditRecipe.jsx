@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import cocktailsData from "../../data/db.json"; // import the cocktails data
-import { updateRecipe } from "../../services/recipeService"; // Import the update function
+import recipeService from "../../services/recipeService";
 import styles from "../../styles/EditRecipe.module.css"; // Import CSS module
 import rangeStyles from "../../styles/Range.module.css"; // Import CSS module
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import FontAwesome
@@ -72,7 +72,7 @@ const EditRecipe = () => {
     e.preventDefault();
     try {
       // Update the recipe with the updated data
-      await updateRecipe(id, { ...recipe }); // Pass the updated recipe
+      await recipeService.updateRecipe(id, { ...recipe }); // Pass the updated recipe
       navigate(`/recipes/${id}`); // Redirect to the recipe detail page after saving
     } catch (error) {
       console.error("Error updating recipe:", error);

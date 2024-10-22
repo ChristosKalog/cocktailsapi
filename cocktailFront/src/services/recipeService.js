@@ -59,4 +59,4 @@ const updateRecipe = async (id, recipeData) => {
 };
 
 
-export { saveRecipe, getAllRecipes, deleteRecipe, updateRecipe };
+export default { saveRecipe, getAllRecipes, deleteRecipe, updateRecipe };

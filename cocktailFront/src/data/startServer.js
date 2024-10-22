@@ -1,1 +1,1 @@
-// npx json-server --watch src/data/db.json --port 5001
+// npx json-server --watch cocktailFront/src/data/db.json --port 5001
