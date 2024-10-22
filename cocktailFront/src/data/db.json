@@ -197,31 +197,6 @@
         }
       ],
       "smallPicture": "placeholder_small.png"
-    },
-    {
-      "id": "1729606957937",
-      "name": "Please save me",
-      "description": "This is description",
-      "date": "17:23 22/10/2024",
-      "cocktailStyle": "Highballs",
-      "complexityLevel": "easy",
-      "glassType": "Old Fashioned",
-      "recipe": "Add all ingredients and then enjoy.",
-      "alcoholValue": "100",
-      "price": "520",
-      "ingredients": [
-        {
-          "name": "Cachaça",
-          "quantity": "100",
-          "id": 1729606957937
-        },
-        {
-          "name": "Campari",
-          "quantity": "100",
-          "id": 1729606976782
-        }
-      ],
-      "smallPicture": "placeholder_small.png"
     }
   ],
   "savedMenus": [
