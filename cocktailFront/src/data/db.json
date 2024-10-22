@@ -1,10 +1,17 @@
 {
   "savedCocktails": [
     {
+      "id": "9c74",
+      "date": "15:40 22/10/2024",
       "name": "Mimosa",
       "description": "A timeless blend of tangy lime and tequila, delivering the ultimate refreshment.",
+      "recipe": "Mix equal parts champagne and orange juice in a flute.",
       "cocktailStyle": "Brunch",
       "complexityLevel": "easy",
+      "glassType": "Martini",
+      "alcoholValue": "8",
+      "price": "10",
+      "smallPicture": "paloma.png",
       "ingredients": [
         {
           "name": "Champagne",
@@ -14,21 +21,22 @@
         {
           "name": "Orange Juice",
           "quantity": "250",
-          "id": 1729584459682
+          "id": 1729584455682
         }
-      ],
-      "recipe": "Mix equal parts champagne and orange juice in a flute.",
-      "alcoholValue": "8",
-      "price": "10",
-      "id": "9c74",
-      "smallPicture": "paloma.png"
+      ]
     },
     {
       "id": "2a34",
-      "smallPicture": "margarita.png",
+      "date": "14:40 22/10/2024",
       "name": "Margarita",
+      "description": "A timeless blend of tangy lime and tequila, delivering the ultimate refreshment.",
+      "recipe": "Shake tequila, lime juice, and triple sec with ice. Strain into a salt-rimmed glass.",
       "cocktailStyle": "Classic",
       "complexityLevel": "medium",
+      "glassType": "Martini",
+      "alcoholValue": "14",
+      "price": "12",
+      "smallPicture": "margarita.png",
       "ingredients": [
         {
           "name": "Tequila",
@@ -45,18 +53,20 @@
           "quantity": "25",
           "id": 1728998837159
         }
-      ],
-      "description": "A timeless blend of tangy lime and tequila, delivering the ultimate refreshment.",
-      "recipe": "Shake tequila, lime juice, and triple sec with ice. Strain into a salt-rimmed glass.",
-      "alcoholValue": "14",
-      "price": "12"
+      ]
     },
     {
       "id": "7d65",
-      "smallPicture": "negroni.png",
+      "date": "11:40 22/10/2024",
       "name": "Old Fashioned",
+      "description": "A bold whiskey cocktail with citrus and bitters, full of classic character.",
+      "recipe": "Muddle sugar and bitters, add bourbon, and serve with ice. Garnish with orange peel.",
       "cocktailStyle": "Classic",
       "complexityLevel": "medium",
+      "glassType": "Martini",
+      "alcoholValue": "16",
+      "price": "10",
+      "smallPicture": "negroni.png",
       "ingredients": [
         {
           "name": "Bourbon",
@@ -78,18 +88,20 @@
           "quantity": "1",
           "id": 1728998837162
         }
-      ],
-      "description": "A bold whiskey cocktail with citrus and bitters, full of classic character.",
-      "recipe": "Muddle sugar and bitters, add bourbon, and serve with ice. Garnish with orange peel.",
-      "alcoholValue": "16",
-      "price": "10"
+      ]
     },
     {
       "id": "4f12",
-      "smallPicture": "pinacolada.png",
+      "date": "14:40 22/10/2024",
       "name": "Pina Colada",
+      "description": "A tropical escape in a glass with creamy coconut and sweet pineapple.",
+      "recipe": "Blend rum, coconut cream, and pineapple juice with ice. Serve in a chilled glass.",
       "cocktailStyle": "Tropical",
       "complexityLevel": "easy",
+      "glassType": "Martini",
+      "alcoholValue": "12",
+      "price": "10",
+      "smallPicture": "pinacolada.png",
       "ingredients": [
         {
           "name": "Rum",
@@ -106,16 +118,15 @@
           "quantity": "100",
           "id": 1728998837164
         }
-      ],
-      "description": "A tropical escape in a glass with creamy coconut and sweet pineapple.",
-      "recipe": "Blend rum, coconut cream, and pineapple juice with ice. Serve in a chilled glass.",
-      "alcoholValue": "12",
-      "price": "10"
+      ]
     },
     {
-      "name": "Cosmopolitan",
+      "name": "Cosmopolitan Light",
+      "date": "14:40 22/10/2024",
+      "description": "A timeless blend of tangy lime and tequila, delivering the ultimate refreshment.",
+      "recipe": "Shake all ingredients with ice and strain into a martini glass.",
       "cocktailStyle": "Classic",
-      "complexityLevel": "medium",
+      "complexityLevel": "hard",
       "ingredients": [
         {
           "name": "Vodka",
@@ -138,33 +149,47 @@
           "id": 1729598503444
         }
       ],
-      "recipe": "Shake all ingredients with ice and strain into a martini glass.",
       "alcoholValue": "100",
-      "price": "12",
+      "glassType": "Martini",
+      "price": "18",
+      "smallPicture": "cosmo.png",
       "id": "8b49"
+    },
+    {
+      "name": "Heavy Duty",
+      "description": "This is just a text that means nothing",
+      "recipe": "Yes",
+      "cocktailStyle": "Classic",
+      "complexityLevel": "hard",
+      "ingredients": [
+        {
+          "name": "orange juice",
+          "quantity": "500",
+          "id": 1729600787828
+        },
+        {
+          "name": "Whisky",
+          "quantity": "150",
+          "id": 1729601019676
+        }
+      ],
+      "alcoholValue": "45",
+      "price": "50",
+      "smallPicture": "placeholder_small.png",
+      "id": "1729600787828"
     }
   ],
   "savedMenus": [
     {
       "id": "0ee5",
       "title": "Standard",
-      "cocktailIds": [
-        "9c74",
-        "2a34",
-        "7d65",
-        "8b49",
-        "4f12"
-      ],
+      "cocktailIds": ["9c74", "2a34", "7d65", "8b49", "4f12"],
       "dateCreated": "2024-10-22T08:03:06.052Z"
     },
     {
       "id": "39b2",
       "title": "New",
-      "cocktailIds": [
-        "9c74",
-        "2a34",
-        "7d65"
-      ],
+      "cocktailIds": ["9c74", "2a34", "7d65"],
       "dateCreated": "2024-10-22T08:52:14.215Z"
     }
   ],
@@ -177,12 +202,7 @@
       "fullName": "Stelios Alexandrakis",
       "role": "the boss",
       "bar": "The Cocktail Lounge",
-      "favorites": [
-        20,
-        4,
-        17,
-        18
-      ],
+      "favorites": [20, 4, 17, 18],
       "menusCreated": 5,
       "lastLogin": "2020-10-10",
       "barAddress": "Kordelio City",
@@ -197,11 +217,7 @@
       "fullName": "Alkis Tzaras",
       "role": "the bartender",
       "bar": "Shaken Not Stirred",
-      "favorites": [
-        2,
-        10,
-        12
-      ],
+      "favorites": [2, 10, 12],
       "menusCreated": 3,
       "lastLogin": "2020-10-10",
       "barAddress": "Kordelio City",
@@ -216,11 +232,7 @@
       "fullName": "Christos Kalogridakis",
       "role": "the employ",
       "bar": "The Boozy Bar",
-      "favorites": [
-        1,
-        5,
-        7
-      ],
+      "favorites": [1, 5, 7],
       "menusCreated": 10,
       "lastLogin": "2020-10-10",
       "barAddress": "Kordelio City",

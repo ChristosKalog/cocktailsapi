@@ -9,17 +9,20 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const AddRecipe = () => {
   const [recipe, setRecipe] = useState({
-    id: Date.now().toString(),
-    name: "",
-    cocktailStyle: "",
-    complexityLevel: "",
-    glassType: "",
-    ingredients: [{ name: "", quantity: "", id: Date.now() }],
-    recipe: "",
-    alcoholValue: 0,
-    price: "",
-    date: "",
+    id: Date.now().toString(), 
+    name: "",                  
+    description: "This is description",
+    date: "",                 
+    cocktailStyle: "",       
+    complexityLevel: "",      
+    glassType: "",             
+    recipe: "",                
+    alcoholValue: 0,       
+    price: "",          
+    ingredients: [{ name: "", quantity: "", id: Date.now() }],      
+    smallPicture: "placeholder_small.png", 
   });
+  
 
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -108,39 +111,39 @@ const AddRecipe = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-      try {
-        const currentDate = new Date();
-        const formattedDate = `${String(currentDate.getHours()).padStart(
-          2,
-          "0"
-        )}:${String(currentDate.getMinutes()).padStart(2, "0")} ${String(
-          currentDate.getDate()
-        ).padStart(2, "0")}/${String(currentDate.getMonth() + 1).padStart(
-          2,
-          "0"
-        )}/${currentDate.getFullYear()}`;
-        await recipeService.saveRecipe({ ...recipe, date: formattedDate });
-        console.log("Recipe created successfully!");
-        // Reset the form fields
-        setRecipe({
-          name: "",
-          cocktailStyle: "",
-          complexityLevel: "",
-          glassType: "",
-          ingredients: [{ name: "", quantity: "", id: Date.now() }],
-          recipe: "",
-          alcoholValue: 0,
-          price: "",
-          date: "",
-        });
-      } catch (error) {
-        console.error("Error saving recipe:", error);
-      } 
-      navigate("/whereto", { state: { key: recipe.id } })
-    };
- 
 
+    try {
+      const currentDate = new Date();
+      const formattedDate = `${String(currentDate.getHours()).padStart(
+        2,
+        "0"
+      )}:${String(currentDate.getMinutes()).padStart(2, "0")} ${String(
+        currentDate.getDate()
+      ).padStart(2, "0")}/${String(currentDate.getMonth() + 1).padStart(
+        2,
+        "0"
+      )}/${currentDate.getFullYear()}`;
+      await recipeService.saveRecipe({ ...recipe, date: formattedDate });
+      console.log("Recipe created successfully!");
+      setRecipe({      // Reset the form fields
+        id: Date.now().toString(), // Reset ID for new recipe
+        name: "",
+        cocktailStyle: "",
+        complexityLevel: "",
+        glassType: "",
+        ingredients: [{ name: "", quantity: "", id: Date.now() }],
+        recipe: "",
+        alcoholValue: 0,
+        price: "",
+        date: "",
+        description: "",
+        smallPicture: "placeholder_small.png", // Reset to placeholder
+      });
+    } catch (error) {
+      console.error("Error saving recipe:", error);
+    }
+    navigate("/whereto", { state: { key: recipe.id } });
+  };
 
   return (
     <div className={styles.formContainer}>
@@ -306,11 +309,9 @@ const AddRecipe = () => {
         </div>
 
         {/* Submit Button */}
-   
-          <ButtonComponent type="submit" category="save">
-            Save Recipe
-          </ButtonComponent>
-
+        <ButtonComponent type="submit" category="save">
+          Save Recipe
+        </ButtonComponent>
       </form>
     </div>
   );

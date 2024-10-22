@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import styles from "../../styles/recipecomponent.module.css";
 
 const RecipeComponent = ({ cocktail }) => {
+
   const truncateDescription = (description, maxLength = 80) => {
+    if (!description) return ""; // Return empty string if description is undefined
+
     if (description.length > maxLength) {
       return description.slice(0, maxLength) + "...";
     }
     return description;
   };
-
   return (
     <Link
       key={cocktail.id}
@@ -19,9 +21,11 @@ const RecipeComponent = ({ cocktail }) => {
       <div className={styles.recipeCard}>
         <div className={styles.imageContainer}>
           <img
-            // src={require(`../../assets/images/${cocktail.smallPicture}`)}
+            src={require(`../../assets/images/${cocktail.smallPicture}`)}
             alt=""
           />
+
+
         </div>
         <div className={styles.infoContainer}>
           <div className={styles.headerInfo}>

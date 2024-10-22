@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import cocktailsData from "../../data/db.json";
 import styles from "../../styles/recipedetail.module.css";
-import recipeService from "../../services/recipeService"; 
+import recipeService from "../../services/recipeService";
 import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent";
 import ButtonComponent from "../../components/ui/ButtonComponent";
 import placeholder1 from "../../assets/images/placeholder1.png";
@@ -30,6 +30,16 @@ const RecipeDetail = () => {
   const [mainImage, setMainImage] = useState(images[0].src); // Set the first image as default
   const [showConfirmation, setShowConfirmation] = useState(false); // State to manage confirmation dialog
   const [deletedMessage, setDeletedMessage] = useState(false); // State for deletion message
+
+  const getABVClass = (alcoholValue) => {
+    if (alcoholValue < 0) return styles["abv0"];
+    if (alcoholValue <= 5) return styles["abv05"];
+    if (alcoholValue <= 15) return styles["abv515"];
+    if (alcoholValue <= 25) return styles["abv1525"];
+    if (alcoholValue <= 40) return styles["abv2540"];
+    if (alcoholValue > 41) return styles["abv40"];
+    return styles["abv-40"]; // For 40% and above
+  };
 
   if (!cocktail) {
     return <div className={styles.error}>Cocktail not found!</div>;
@@ -72,12 +82,12 @@ const RecipeDetail = () => {
             {images.map((image) => (
               <img
                 key={image.id}
-                src={image.src} 
+                src={image.src}
                 alt={image.alt}
                 className={`${styles.carouselImage} ${
                   image.src === mainImage ? styles.carouselImageActive : ""
                 }`}
-                onClick={() => setMainImage(image.src)} 
+                onClick={() => setMainImage(image.src)}
               />
             ))}
           </div>
@@ -117,8 +127,17 @@ const RecipeDetail = () => {
                 ></div>
               </div>
             </div>
-            <div>
+            <div className={styles.startInfo}>
               <h2>Style: {cocktail.cocktailStyle}</h2>
+            </div>
+            <div className={styles.startInfo}>
+              <h2>
+                ABV:{" "}
+                <span className={`${styles.abv} ${getABVClass(cocktail.alcoholValue)}`}>
+                  {" "}
+                  {cocktail.alcoholValue}%
+                </span>
+              </h2>
             </div>
           </div>
           <h4>Ingredients:</h4>

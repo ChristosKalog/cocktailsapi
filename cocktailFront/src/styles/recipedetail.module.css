@@ -1,5 +1,41 @@
 @import './variables.css';
 
+
+.abv {border-radius: 5px;
+  padding:  5px 9px;
+  margin-left: var(--spacing-sm); 
+}
+.abv0 {
+  color: #b0b0b0!important; /* No alcohol - gray */
+  border: 1px solid #b0b0b0;
+}
+
+.abv05 {
+  color: #8bc34a!important; /* 0 to 5% - soft green */
+  border: 1px solid #8bc34a;
+}
+
+.abv515 {
+  color: #cddc39!important; /* 5 to 15% - light yellow */
+  border: 1px solid #cddc39;
+}
+
+.abv1525 {
+  color: #ffeb3b!important; /* 15 to 25% - yellow */
+  border: 1px solid #ffeb3b;
+}
+
+.abv2540 {
+  color: #ffc107!important; /* 25 to 40% - orange */
+  border: 1px solid #ffc107;
+}
+
+.abv40 {
+  color: #ff9800!important; /* 40% and above - darker orange */
+  border: 1px solid #ff9800;
+}
+
+
 .recipeDetail {
   display: flex;
   flex-direction: row;
@@ -54,7 +90,6 @@
 
 .carouselImage {
   width: 60px;
-  /* Set a fixed width for carousel images */
   height: auto;
   margin: 0 10px;
   cursor: pointer;
@@ -84,7 +119,6 @@
 }
 
 .recipeDetail h1 {
-  margin-bottom: var(--spacing-sm);
   font-size: 2rem;
 }
 
@@ -130,6 +164,11 @@
   opacity: 1;
 }
 
+.startInfo h2 {
+  color: white;
+  margin-bottom: var(--font-size-sm);
+}
+
 .error {
   color: var(--error-color);
   text-align: center;
@@ -140,13 +179,10 @@
 .rightContainer h1 {
   font-size: 2.2rem;
   font-weight: 600;
-  margin-bottom: var(--spacing-md);
   color: var(--primary-color);
   letter-spacing: 0.5px;
   font-family: "EB Garamond";
-  
 }
-
 h2,
 h3 {
   font-size: var(--font-size-md);
@@ -231,7 +267,7 @@ h5 {
 }
 
 .bigContainer {
-display: flex;
+  display: flex;
 }
 
 .confirmationContainer {
@@ -371,3 +407,4 @@ display: flex;
     font-size: var(--font-size-sm);
   }
 }
+

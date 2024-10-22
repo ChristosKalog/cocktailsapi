@@ -15,13 +15,14 @@ const EditRecipe = () => {
   
   const [recipe, setRecipe] = useState({
     name: "",
+    description: "",
+    recipe: "",
     cocktailStyle: "",
     complexityLevel: "",
-    ingredients: [{ name: "", quantity: "", id: Date.now() }],
-    recipe: "",
+    ingredients: [{ name: "", quantity: "", id: Date.now() }], // Temporary for adding new ingredients
     alcoholValue: 0,
     price: "",
-    date: "",
+    smallPicture: "" // Added for smallPicture
   });
 
   // Load the cocktail data into state for editing
@@ -29,13 +30,14 @@ const EditRecipe = () => {
     if (cocktail) {
       setRecipe({
         name: cocktail.name,
+        description: cocktail.description,
+        recipe: cocktail.recipe,
         cocktailStyle: cocktail.cocktailStyle,
         complexityLevel: cocktail.complexityLevel,
-        ingredients: cocktail.ingredients.map(ing => ({ ...ing, id: Date.now() })), // Ensure each ingredient has a unique id
-        recipe: cocktail.recipe,
+        ingredients: cocktail.ingredients, // Keep existing IDs
         alcoholValue: cocktail.alcoholValue,
         price: cocktail.price,
-        date: cocktail.date
+        smallPicture: cocktail.smallPicture // Added for smallPicture
       });
     }
   }, [cocktail]);
@@ -53,7 +55,7 @@ const EditRecipe = () => {
   };
 
   const handleAddIngredient = () => {
-    const newId = Date.now();
+    const newId = Date.now(); // Temporary ID for new ingredient
     setRecipe({
       ...recipe,
       ingredients: [
@@ -91,6 +93,16 @@ const EditRecipe = () => {
             value={recipe.name}
             onChange={handleChange}
             placeholder="Recipe Name"
+            required
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <textarea
+            className={styles.recipeArea}
+            name="description"
+            value={recipe.description}
+            onChange={handleChange}
+            placeholder="Description"
             required
           />
         </div>
