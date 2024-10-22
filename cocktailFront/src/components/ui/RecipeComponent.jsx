@@ -19,7 +19,7 @@ const RecipeComponent = ({ cocktail }) => {
       <div className={styles.recipeCard}>
         <div className={styles.imageContainer}>
           <img
-            src={require(`../../assets/images/${cocktail.smallPicture}`)}
+            // src={require(`../../assets/images/${cocktail.smallPicture}`)}
             alt=""
           />
         </div>

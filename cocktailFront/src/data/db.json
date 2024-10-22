@@ -3,7 +3,6 @@
     {
       "name": "Mimosa",
       "description": "A timeless blend of tangy lime and tequila, delivering the ultimate refreshment.",
-
       "cocktailStyle": "Brunch",
       "complexityLevel": "easy",
       "ingredients": [
@@ -22,11 +21,11 @@
       "alcoholValue": "8",
       "price": "10",
       "id": "9c74",
-      "smallPicture" : "paloma.png"
+      "smallPicture": "paloma.png"
     },
     {
       "id": "2a34",
-      "smallPicture" : "margarita.png",
+      "smallPicture": "margarita.png",
       "name": "Margarita",
       "cocktailStyle": "Classic",
       "complexityLevel": "medium",
@@ -54,7 +53,7 @@
     },
     {
       "id": "7d65",
-      "smallPicture" : "negroni.png",
+      "smallPicture": "negroni.png",
       "name": "Old Fashioned",
       "cocktailStyle": "Classic",
       "complexityLevel": "medium",
@@ -87,7 +86,7 @@
     },
     {
       "id": "4f12",
-      "smallPicture" : "pinacolada.png",
+      "smallPicture": "pinacolada.png",
       "name": "Pina Colada",
       "cocktailStyle": "Tropical",
       "complexityLevel": "easy",
@@ -114,8 +113,6 @@
       "price": "10"
     },
     {
-      "id": "8b49",
-      "smallPicture" : "ginfizz.png",
       "name": "Cosmopolitan",
       "cocktailStyle": "Classic",
       "complexityLevel": "medium",
@@ -123,28 +120,28 @@
         {
           "name": "Vodka",
           "quantity": "40",
-          "id": 1728998788166
+          "id": 1729598503444
         },
         {
           "name": "Triple Sec",
           "quantity": "15",
-          "id": 1728998837165
+          "id": 1729598503444
         },
         {
           "name": "Cranberry Juice",
           "quantity": "30",
-          "id": 1728998837166
+          "id": 1729598503444
         },
         {
           "name": "Lime Juice",
           "quantity": "10",
-          "id": 1728998837167
+          "id": 1729598503444
         }
       ],
-      "description": "A stylish and vibrant mix of vodka, cranberry, and lime for any party.",
       "recipe": "Shake all ingredients with ice and strain into a martini glass.",
-      "alcoholValue": "14",
-      "price": "12"
+      "alcoholValue": "100",
+      "price": "12",
+      "id": "8b49"
     }
   ],
   "savedMenus": [
