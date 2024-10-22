@@ -45,8 +45,8 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/menu/create" activeclassname={styles.active}>
-            Create Menu
+          <NavLink to="/menus" activeclassname={styles.active}>
+            Menus
           </NavLink>
         </li>
         <li>

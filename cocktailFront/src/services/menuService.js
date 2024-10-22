@@ -26,4 +26,16 @@ const fetchMenus = async () => {
   }
 };
 
-export default { createMenu,  fetchMenus};
+const deleteMenu = async (id) => {
+  try {
+    const response = await axios.delete(`${API_URL}/${id}`);
+    console.log('Menu deleted successfully!', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting menu:', error);
+    throw error;
+  }
+};
+
+
+export default { createMenu, deleteMenu,  fetchMenus};

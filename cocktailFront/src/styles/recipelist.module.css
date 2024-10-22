@@ -4,12 +4,10 @@
   color: var(--text-color);
   overflow: scroll;
   max-height: 80vh;
-
 }
 
 .recipeList::-webkit-scrollbar {
   display: none;
-
 }
 
 .recipeList h1 {
@@ -19,19 +17,45 @@
 .filters {
   margin: var(--spacing-lg) auto;
   margin-left: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: 66px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--background-color-light);
+
 }
 
-.filters label {
-  margin-right: var(--spacing-md);
+.searchBar {
+  width: 300px;
+  margin: 0 var(--spacing-xs);
+}
+
+.searchBar input {
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  border-radius: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: white;
+  font-size: 1.1rem;
+  font-family: "Montserrat";
+}
+.searchBar input:focus {
+  border: none;
+  
 }
 
 .filters select {
-  margin-left: var(--spacing-sm);
-  padding: var(--spacing-xs);
+  margin: 0 var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
   border: none;
   border-radius: var(--border-radius-md);
   background-color: rgba(255, 255, 255, 0.1);
   color: var(--text-color);
+  text-align: center;
 }
 
 .sortButton {
@@ -40,9 +64,9 @@
   color: var(--button-text-color);
   border: none;
   cursor: pointer;
-  margin-top: var(--spacing-md);
   opacity: 0.65;
-  transition: 250ms
+  transition: 250ms;
+  margin: 0 var(--spacing-xs);
 }
 
 .sortButton:hover {
@@ -65,22 +89,15 @@
 
 .recipeGrid::-webkit-scrollbar {
   display: none;
-
 }
+.buttonContainer {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
 
-
-
-
-
-
-
-
-
-.buttonContainer a {
-  color: black;
+  margin: 0 auto;
+  justify-content: center;
 }
-
-
 
 
 @media (max-width: 768px) {
@@ -104,10 +121,10 @@
     text-align: center;
   }
 
-  .filters label:last-child{
+  .filters label:last-child {
     margin: 0
   }
-  
+
   .filters select {
     width: 100%;
     margin-left: 0;

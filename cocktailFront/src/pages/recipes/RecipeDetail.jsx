@@ -78,7 +78,7 @@ const RecipeDetail = () => {
                 className={`${styles.carouselImage} ${
                   image.src === mainImage ? styles.carouselImageActive : ""
                 }`}
-                onClick={() => setMainImage(image.src)} // Update the main image on click
+                onClick={() => setMainImage(image.src)} 
               />
             ))}
           </div>

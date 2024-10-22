@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { handleDownloadPDF } from "./download";
 import styles from "../../styles/ViewMenu.module.css";
-import menuService from "../../services/menuService"; 
-import cocktailsData from "../../data/db.json"; 
+import menuService from "../../services/menuService";
+import cocktailsData from "../../data/db.json";
 import ButtonComponent from "../../components/ui/ButtonComponent";
 import CocktailComponent from "../../components/ui/CocktailComponent";
+import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent"; // Import the confirmation dialog
 
 const ViewMenu = () => {
   const { id } = useParams();
+  const navigate = useNavigate(); // For navigation after deletion
   const [menu, setMenu] = useState(null);
   const [cocktailDetails, setCocktailDetails] = useState([]); // Store the actual cocktail details
+  const [showConfirmation, setShowConfirmation] = useState(false); // State to manage confirmation dialog
+  const [deletedMessage, setDeletedMessage] = useState(false); // State for deletion message
 
   useEffect(() => {
     const fetchMenu = async () => {
@@ -38,6 +42,28 @@ const ViewMenu = () => {
     return <p>Menu not found</p>;
   }
 
+  const deleteHandle = () => {
+    setShowConfirmation(true); // Show confirmation dialog
+  };
+
+  const confirmDelete = async () => {
+    try {
+      await menuService.deleteMenu(id); // Call deleteMenu function
+      setDeletedMessage(true); // Show deletion message
+      setShowConfirmation(false); // Close confirmation dialog
+      navigate("/"); // Redirect to menus list after deletion
+      setTimeout(() => {
+        setDeletedMessage(false);
+      }, 2000); // Remove message after 2 seconds
+    } catch (error) {
+      console.error("Error deleting menu:", error);
+    }
+  };
+
+  const cancelDelete = () => {
+    setShowConfirmation(false); // Close confirmation dialog without deletion
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.menuTitle}>
@@ -52,13 +78,31 @@ const ViewMenu = () => {
       </div>
 
       <div className={styles.buttonContainer}>
-        <ButtonComponent 
-          onClick={() => handleDownloadPDF(menu, cocktailDetails)}  // Pass menu and cocktailDetails here
+        <ButtonComponent
+          onClick={() => handleDownloadPDF(menu, cocktailDetails)} // Pass menu and cocktailDetails here
           category="download"
         >
           PDF
         </ButtonComponent>
+        <ButtonComponent onClick={deleteHandle} category="delete">
+          Delete Menu
+        </ButtonComponent>
       </div>
+
+      <div className={styles.confirmationContainer}>
+        {showConfirmation && (
+          <DeleteConfirmation
+            onConfirm={confirmDelete}
+            onCancel={cancelDelete}
+          />
+        )}
+      </div>
+
+      {deletedMessage && (
+        <div className={styles.deletedMessage}>
+          <p>Menu deleted successfully!</p>
+        </div>
+      )}
     </div>
   );
 };

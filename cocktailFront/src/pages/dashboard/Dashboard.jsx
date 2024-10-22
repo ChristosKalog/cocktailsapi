@@ -39,73 +39,81 @@ const Dashboard = () => {
 
   return (
     <div className={styles.dashboard}>
-      <h1>Dashboard</h1>
+      <div className={styles.welcomeMessage}>You have <span className={styles.bigLetter}>{menus.length}</span> menus and <span className={styles.bigLetter}>{recipes.length}</span> recipes!</div>
       <div className={styles.bigContainer}>
-              {/* Menus Section */}
-      <div className={styles.menusList}>
-        <h3>Your Latest Menus</h3>
-        {latestMenus.length > 0 ? (
-          <div className={styles.menuItemsContainer}>
-            {latestMenus.map((menu) => (
-              <div key={menu.id} className={styles.itemContainer}>
-                <Link className={styles.menuLink} to={`/viewmenu/${menu.id}`}>
-                  {menu.title}
-                </Link>
-              </div>
-            ))}
-            <Link to="/menus" className={styles.viewAllLink}>
-              View All Menus
-            </Link>
-          </div>
-        ) : (
-          <>
-            <p>
-              No menus yet!
-              <Link className={styles.link} to="/menu/create">
-                {" "}
-                Create your first!
+        {/* Menus Section */}
+        <div className={styles.menusList}>
+          <h3>Your Latest Menus</h3>
+          {latestMenus.length > 0 ? (
+            <div className={styles.menuItemsContainer}>
+              {latestMenus.map((menu) => (
+                <div key={menu.id} className={styles.itemContainer}>
+                  <Link className={styles.menuLink} to={`/viewmenu/${menu.id}`}>
+                    {menu.title}
+                  </Link>
+                </div>
+              ))}
+              <Link to="/menus" className={styles.viewAllLink}>
+                View All Menus
               </Link>
-            </p>
-          </>
-        )}
-      </div>
-
-      {/* Cocktails Section */}
-      <div className={styles.menusList}>
-        <h3>Your Latest Cocktails</h3>
-        {latestRecipes.length > 0 ? (
-          <div className={styles.menuItemsContainer}>
-            {latestRecipes.map((recipe) => (
-              <div key={recipe.id} className={styles.itemContainer}>
-                <Link className={styles.menuLink} to={`/viewrecipe/${recipe.id}`}>
-                  {recipe.name}
+            </div>
+          ) : (
+            <>
+              <p>
+                No menus yet!
+                <Link className={styles.link} to="/menu/create">
+                  {" "}
+                  Create your first!
                 </Link>
-              </div>
-            ))}
-            <Link to="/recipes" className={styles.viewAllLink}>
-              View All Cocktails
-            </Link>
-          </div>
-        ) : (
-          <>
-            <p>
-              No cocktails yet!
-              <Link className={styles.link} to="/recipe/Add">
-                {" "}
-                Add your first!
-              </Link>
-            </p>
-          </>
-        )}
-      </div>
+              </p>
+            </>
+          )}
+        </div>
 
-      {/* Add Recipe Button */}
-      <div className={styles.buttonContainer}>
-        <ButtonComponent category="add">
-          <Link to="/recipe/Add">Add a recipe!</Link>
-        </ButtonComponent>
+        {/* Cocktails Section */}
+        <div className={styles.menusList}>
+          <h3>Your Latest Cocktails</h3>
+          {latestRecipes.length > 0 ? (
+            <div className={styles.menuItemsContainer}>
+              {latestRecipes.map((recipe) => (
+                <div key={recipe.id} className={styles.itemContainer}>
+                  <Link
+                    className={styles.menuLink}
+                    to={`/recipes/${recipe.id}`}
+                  >
+                    {recipe.name}
+                  </Link>
+                </div>
+              ))}
+              <Link to="/recipes" className={styles.viewAllLink}>
+                View All Cocktails
+              </Link>
+            </div>
+          ) : (
+            <>
+              <p>
+                No cocktails yet!
+                <Link className={styles.link} to="/recipe/Add">
+                  {" "}
+                  Add your first!
+                </Link>
+              </p>
+            </>
+          )}
+        </div>
+
+        <div className={styles.menusList}>
+          <h3>Quick Actions</h3>
+          <div className={styles.buttonContainer}>
+            <ButtonComponent category="add">
+              <Link to="/recipe/Add">Add recipe</Link>
+            </ButtonComponent>
+            <ButtonComponent category="add">
+              <Link to="/menu/create">Create menu</Link>
+            </ButtonComponent>
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   );
 };

@@ -43,20 +43,10 @@ const CreateMenu = () => {
     }
   };
 
-  // const handleViewMenu = () => {
-  //   const menus = JSON.parse(localStorage.getItem("menus")) || [];
-  //   const latestMenu = menus[menus.length - 1];
-  //   navigate(`/viewmenu/${latestMenu.id}`);
-  // };
-
-  // const handleCreateAnother = () => {
-  //   setTitle("");
-  //   setSelectedCocktails([]);
-  // };
 
   return (
     <div className={styles.createMenu}>
-      <h1>Create a Menu</h1>
+      <h1>Create Menu</h1>
       <input
         type="text"
         value={title}

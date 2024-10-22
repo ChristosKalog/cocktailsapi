@@ -8,6 +8,7 @@
   color: var(--text-color);
   border-radius: var(--border-radius-lg);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .createMenu h1 {
@@ -16,6 +17,8 @@
   color: var(--primary-color);
   text-align: center;
 }
+
+
 
 .inputField {
   width: 100%;
@@ -50,6 +53,7 @@
   user-select: none;
   border-radius: var(--border-radius-lg);
   overflow-y: auto;
+  width: 300px;
 
 }
 
@@ -72,10 +76,12 @@ h3 {
   border: 1px solid transparent;
   transition: var(--transition);
   cursor: pointer;
+  border: 1px solid var(--background-color-light);
+
 }
 
 .cocktailLabel:hover {
-  background-color: var(--background-color-light);
+  border: 1px solid white;
 }
 
 .cocktailCheckbox {

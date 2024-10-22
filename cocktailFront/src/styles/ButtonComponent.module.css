@@ -15,6 +15,10 @@
   transition: 250ms;
 }
 
+.buttonComponent a {
+  color: black;
+}
+
 
 .buttonComponent:hover {
   background-color: var(--primary-color-lightdark);
@@ -22,7 +26,7 @@
 }
 
 .buttonIcon {
-  color: black;
+  color: black!;
   margin-right: var(--spacing-sm);
 }
 

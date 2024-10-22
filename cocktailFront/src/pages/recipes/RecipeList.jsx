@@ -47,11 +47,18 @@ const RecipeList = () => {
           cocktail.ingredients.some((ing) =>
             ing.name.toLowerCase().includes(searchTerm.toLowerCase())
           ) ||
-          cocktail.cocktailStyle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          cocktail.cocktailStyle
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase()) ||
           cocktail.description?.toLowerCase().includes(searchTerm.toLowerCase()) // Optional description
         : true;
 
-      return matchesStyle && matchesComplexity && matchesIngredient && matchesSearchTerm;
+      return (
+        matchesStyle &&
+        matchesComplexity &&
+        matchesIngredient &&
+        matchesSearchTerm
+      );
     })
     .sort((a, b) => {
       if (sortOrder === "asc") {
@@ -84,67 +91,74 @@ const RecipeList = () => {
   return (
     <div className={styles.recipeList}>
       <h1>Cocktail Recipes</h1>
-
-      {/* New search bar */}
-      <div className={styles.searchBar}>
-        <input
-          type="text"
-          placeholder="Search for recipes..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className={styles.inputField}
-        />
-      </div>
-
       <div className={styles.filters}>
-        <label>
-          Style:
-          <select onChange={(e) => setFilter(e.target.value)} value={filter}>
-            <option value="">All</option>
-            {stylesOptions.map((style) => (
-              <option key={style} value={style}>
-                {style}
-              </option>
-            ))}
-          </select>
-        </label>
+        <div className={styles.searchBar}>
+          <input
+            type="text"
+            placeholder="Search for recipes..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className={styles.inputField}
+          />
+        </div>
+        <select
+          aria-label="Filter by Style"
+          onChange={(e) => setFilter(e.target.value)}
+          value={filter}
+        >
+          <option value="header" disabled>
+            Style
+          </option>
+          <option value="">All Styles</option>
+          {stylesOptions.map((style) => (
+            <option key={style} value={style}>
+              {style}
+            </option>
+          ))}
+        </select>
 
-        <label>
-          Complexity:
-          <select
-            onChange={(e) => setComplexity(e.target.value)}
-            value={complexity}
-          >
-            <option value="">All</option>
-            {complexityOptions.map((level) => (
-              <option key={level} value={level}>
-                {level}
-              </option>
-            ))}
-          </select>
-        </label>
+        <select
+          aria-label="Filter by Complexity"
+          onChange={(e) => setComplexity(e.target.value)}
+          value={complexity}
+        >
+          <option value="header" disabled>
+            Complexity
+          </option>
 
-        <label>
-          Ingredient:
-          <select
-            onChange={(e) => setIngredient(e.target.value)}
-            value={ingredient}
-          >
-            <option value="">All</option>
-            {ingredientOptions.map((ing) => (
-              <option key={ing} value={ing}>
-                {ing}
-              </option>
-            ))}
-          </select>
-        </label>
+          <option value="">All</option>
+          {complexityOptions.map((level) => (
+            <option key={level} value={level}>
+              {level}
+            </option>
+          ))}
+        </select>
+
+        <select
+          aria-label="Filter by Ingredient"
+          onChange={(e) => setIngredient(e.target.value)}
+          value={ingredient}
+        >
+          <option value="header" disabled>
+            Ingredient
+          </option>
+
+          <option value="">All ingredients</option>
+          {ingredientOptions.map((ing) => (
+            <option key={ing} value={ing}>
+              {ing}
+            </option>
+          ))}
+        </select>
 
         <button onClick={toggleSortOrder} className={styles.sortButton}>
           <FontAwesomeIcon
             icon={sortOrder === "asc" ? faSortAlphaAsc : faSortAlphaDesc}
           />
         </button>
-        <button onClick={clearFilters}>Clear Filters</button>
+        <button className={styles.sortButton} onClick={clearFilters}>
+          Clear Filters
+        </button>
       </div>
 
       <div className={styles.recipeGrid}>
