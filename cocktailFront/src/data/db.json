@@ -122,7 +122,6 @@
     },
     {
       "name": "Cosmopolitan Light",
-      "date": "14:40 22/10/2024",
       "description": "A timeless blend of tangy lime and tequila, delivering the ultimate refreshment.",
       "recipe": "Shake all ingredients with ice and strain into a martini glass.",
       "cocktailStyle": "Classic",
@@ -149,8 +148,7 @@
           "id": 1729598503444
         }
       ],
-      "alcoholValue": "100",
-      "glassType": "Martini",
+      "alcoholValue": "0",
       "price": "18",
       "smallPicture": "cosmo.png",
       "id": "8b49"

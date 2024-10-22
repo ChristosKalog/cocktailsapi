@@ -16,7 +16,7 @@
   flex-direction: row;
   margin: var(--spacing-lg) auto;
   align-items: flex-start;
-  justify-content: start;
+  justify-content: flex-start;
   max-width: 60vw;
   padding: 0 var(--spacing-sm);
   user-select: none;
