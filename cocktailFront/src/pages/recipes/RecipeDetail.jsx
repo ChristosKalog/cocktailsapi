@@ -5,6 +5,8 @@ import styles from "../../styles/recipedetail.module.css";
 import recipeService from "../../services/recipeService";
 import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent";
 import ButtonComponent from "../../components/ui/ButtonComponent";
+import GoBackButton from "../../components/ui/GoBackButton";
+
 import placeholder1 from "../../assets/images/placeholder1.png";
 import placeholder2 from "../../assets/images/placeholder2.png";
 import placeholder3 from "../../assets/images/placeholder3.png";
@@ -68,123 +70,130 @@ const RecipeDetail = () => {
 
   return (
     <>
-      <div className={styles.recipeDetail}>
-        <div className={styles.leftContainer}>
-          <div className={styles.imageContainer}>
-            <img
-              src={mainImage} // Use the static main image
-              className={styles.image}
-              alt={cocktail.name}
-            />
-          </div>
 
-          <div className={styles.carousel}>
-            {images.map((image) => (
+      <div className={styles.recipeDetailWrapper}>
+        <div className={styles.recipeDetail}>
+          <div className={styles.leftContainer}>
+            <div className={styles.imageContainer}>
               <img
-                key={image.id}
-                src={image.src}
-                alt={image.alt}
-                className={`${styles.carouselImage} ${
-                  image.src === mainImage ? styles.carouselImageActive : ""
-                }`}
-                onClick={() => setMainImage(image.src)}
+                src={mainImage} // Use the static main image
+                className={styles.image}
+                alt={cocktail.name}
               />
-            ))}
-          </div>
-        </div>
-        <div className={styles.rightContainer}>
-          <div className={styles.mobileTitle}>
-            <h1>{cocktail.name}</h1>
-          </div>
-          <div className={styles.info}>
-            <div className={styles.complexicityContainer}>
-              <h2>Complexity:</h2>
-              <div className={styles.barContainer}>
-                <div
-                  className={`${styles.bar} ${
-                    ["easy", "medium", "hard"].includes(
-                      cocktail.complexityLevel.toLowerCase()
-                    )
-                      ? styles.barActive
-                      : ""
+            </div>
+
+            <div className={styles.carousel}>
+              {images.map((image) => (
+                <img
+                  key={image.id}
+                  src={image.src}
+                  alt={image.alt}
+                  className={`${styles.carouselImage} ${
+                    image.src === mainImage ? styles.carouselImageActive : ""
                   }`}
-                ></div>
-                <div
-                  className={`${styles.bar} ${
-                    ["medium", "hard"].includes(
-                      cocktail.complexityLevel.toLowerCase()
-                    )
-                      ? styles.barActive
-                      : ""
-                  }`}
-                ></div>
-                <div
-                  className={`${styles.bar} ${
-                    cocktail.complexityLevel.toLowerCase() === "hard"
-                      ? styles.barActive
-                      : ""
-                  }`}
-                ></div>
-              </div>
-            </div>
-            <div className={styles.startInfo}>
-              <h2>Style: {cocktail.cocktailStyle}</h2>
-            </div>
-            <div className={styles.startInfo}>
-              <h2>
-                ABV:{" "}
-                <span className={`${styles.abv} ${getABVClass(cocktail.alcoholValue)}`}>
-                  {" "}
-                  {cocktail.alcoholValue}%
-                </span>
-              </h2>
-            </div>
-          </div>
-          <h4>Ingredients:</h4>
-          <div className={styles.ingredientsContainer}>
-            {cocktail.ingredients.map((ingredient, index) => (
-              <div className={styles.ingredient} key={index}>
-                {ingredient.name} {ingredient.quantity}ml
-              </div>
-            ))}
-          </div>
-          <h4>Recipe:</h4>
-          <div className={styles.recipeContainer}>
-            <p>{cocktail.recipe}</p>
-          </div>
-          <h5>Made At:</h5>
-          <div className={styles.recipeContainer}>
-            <p>{cocktail.date}</p>
-          </div>
-          <div className={styles.bigContainer}>
-            <div className={styles.buttonsContainer}>
-              <ButtonComponent onClick={editHandle} category="edit">
-                Edit Recipe
-              </ButtonComponent>
-              <ButtonComponent onClick={deleteHandle} category="delete">
-                Delete Recipe
-              </ButtonComponent>
-            </div>
-            <div className={styles.confirmationContainer}>
-              {showConfirmation && (
-                <DeleteConfirmation
-                  onConfirm={confirmDelete}
-                  onCancel={cancelDelete}
+                  onClick={() => setMainImage(image.src)}
                 />
-              )}
+              ))}
             </div>
           </div>
-          {deletedMessage && (
-            <div className={styles.deletedMessage}>
-              <p>Recipe deleted successfully!</p>
+          <div className={styles.rightContainer}>
+            <div className={styles.mobileTitle}>
+              <h1>{cocktail.name}</h1>
             </div>
-          )}
+            <div className={styles.info}>
+              <div className={styles.complexicityContainer}>
+                <h2>Complexity:</h2>
+                <div className={styles.barContainer}>
+                  <div
+                    className={`${styles.bar} ${
+                      ["easy", "medium", "hard"].includes(
+                        cocktail.complexityLevel.toLowerCase()
+                      )
+                        ? styles.barActive
+                        : ""
+                    }`}
+                  ></div>
+                  <div
+                    className={`${styles.bar} ${
+                      ["medium", "hard"].includes(
+                        cocktail.complexityLevel.toLowerCase()
+                      )
+                        ? styles.barActive
+                        : ""
+                    }`}
+                  ></div>
+                  <div
+                    className={`${styles.bar} ${
+                      cocktail.complexityLevel.toLowerCase() === "hard"
+                        ? styles.barActive
+                        : ""
+                    }`}
+                  ></div>
+                </div>
+              </div>
+              <div className={styles.startInfo}>
+                <h2>Style: {cocktail.cocktailStyle}</h2>
+              </div>
+              <div className={styles.startInfo}>
+                <h2>
+                  ABV:{" "}
+                  <span
+                    className={`${styles.abv} ${getABVClass(
+                      cocktail.alcoholValue
+                    )}`}
+                  >
+                    {" "}
+                    {cocktail.alcoholValue}%
+                  </span>
+                </h2>
+              </div>
+            </div>
+            <h4>Ingredients:</h4>
+            <div className={styles.ingredientsContainer}>
+              {cocktail.ingredients.map((ingredient, index) => (
+                <div className={styles.ingredient} key={index}>
+                  {ingredient.name} {ingredient.quantity}ml
+                </div>
+              ))}
+            </div>
+            <h4>Recipe:</h4>
+            <div className={styles.recipeContainer}>
+              <p>{cocktail.recipe}</p>
+            </div>
+            <h5>Made At:</h5>
+            <div className={styles.recipeContainer}>
+              <p>{cocktail.date}</p>
+            </div>
+            <div className={styles.bigContainer}>
+              <div className={styles.buttonsContainer}>
+                <ButtonComponent onClick={editHandle} category="edit">
+                  Edit Recipe
+                </ButtonComponent>
+                <ButtonComponent onClick={deleteHandle} category="delete">
+                  Delete Recipe
+                </ButtonComponent>
+              </div>
+              <div className={styles.confirmationContainer}>
+                {showConfirmation && (
+                  <DeleteConfirmation
+                    onConfirm={confirmDelete}
+                    onCancel={cancelDelete}
+                  />
+                )}
+              </div>
+            </div>
+            {deletedMessage && (
+              <div className={styles.deletedMessage}>
+                <p>Recipe deleted successfully!</p>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-      <div className={styles.goBackContainer}>
-        <Link to="/recipes" className={styles.goBackLink}>
-          Go Back
-        </Link>
+        <div className={styles.goBackContainer}>
+          <Link to="/recipes">
+            <GoBackButton category="back"> Go Back</GoBackButton>
+          </Link>
+        </div>
       </div>
     </>
   );

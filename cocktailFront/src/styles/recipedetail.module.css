@@ -1,50 +1,24 @@
 @import './variables.css';
 
-
-.abv {border-radius: 5px;
-  padding:  5px 9px;
-  margin-left: var(--spacing-sm); 
-}
-.abv0 {
-  color: #b0b0b0!important; /* No alcohol - gray */
-  border: 1px solid #b0b0b0;
+.recipeDetailWrapper {
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
 }
 
-.abv05 {
-  color: #8bc34a!important; /* 0 to 5% - soft green */
-  border: 1px solid #8bc34a;
+.recipeDetailWrapper::-webkit-scrollbar {
+  display: none;
 }
-
-.abv515 {
-  color: #cddc39!important; /* 5 to 15% - light yellow */
-  border: 1px solid #cddc39;
-}
-
-.abv1525 {
-  color: #ffeb3b!important; /* 15 to 25% - yellow */
-  border: 1px solid #ffeb3b;
-}
-
-.abv2540 {
-  color: #ffc107!important; /* 25 to 40% - orange */
-  border: 1px solid #ffc107;
-}
-
-.abv40 {
-  color: #ff9800!important; /* 40% and above - darker orange */
-  border: 1px solid #ff9800;
-}
-
-
 .recipeDetail {
   display: flex;
   flex-direction: row;
   margin: var(--spacing-lg) auto;
   align-items: flex-start;
-  /* Changed 'start' to 'flex-start' for clarity */
-  justify-content: center;
+  justify-content: start;
   max-width: 60vw;
-  padding: var(--spacing-lg);
+  padding: 0 var(--spacing-sm);
   user-select: none;
 }
 
@@ -183,6 +157,7 @@
   letter-spacing: 0.5px;
   font-family: "EB Garamond";
 }
+
 h2,
 h3 {
   font-size: var(--font-size-md);
@@ -252,9 +227,10 @@ h5 {
 }
 
 .goBackContainer {
-
   margin: 0 auto;
   text-align: center;
+  display: flex;
+  justify-content: center;
   background-color: transparent;
   user-select: none;
   max-width: 60vw;
@@ -408,3 +384,44 @@ h5 {
   }
 }
 
+.abv {
+  border-radius: 5px;
+  padding: 5px 9px;
+  margin-left: var(--spacing-sm);
+}
+
+.abv0 {
+  color: #b0b0b0 !important;
+  /* No alcohol - gray */
+  border: 1px solid #b0b0b0;
+}
+
+.abv05 {
+  color: #8bc34a !important;
+  /* 0 to 5% - soft green */
+  border: 1px solid #8bc34a;
+}
+
+.abv515 {
+  color: #cddc39 !important;
+  /* 5 to 15% - light yellow */
+  border: 1px solid #cddc39;
+}
+
+.abv1525 {
+  color: #ffeb3b !important;
+  /* 15 to 25% - yellow */
+  border: 1px solid #ffeb3b;
+}
+
+.abv2540 {
+  color: #ffc107 !important;
+  /* 25 to 40% - orange */
+  border: 1px solid #ffc107;
+}
+
+.abv40 {
+  color: #ff9800 !important;
+  /* 40% and above - darker orange */
+  border: 1px solid #ff9800;
+}
