@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // Layout components
@@ -20,6 +20,7 @@ import ViewMenu from "./pages/menu/ViewMenu";
 import Profile from "./pages/profile/Profile";
 import FAQ from "./pages/settings/FAQ";
 
+
 // import ForgotPassword from "./pages/auth/ForgotPassword";
 // import Settings from "./pages/settings/Settings";
 
@@ -40,28 +41,19 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <AuthProvider>
-        <div className="App">
-          <Navbar />
-          <main>
-            <Routes>
-              <Route
-                path="/recipe/add"
-                element={
-                  <PrivateRoute>
-                    {" "}
-                    <AddRecipe />
-                  </PrivateRoute>
-                }
-              />
+      <Router>
+        <AuthProvider>
+            <div className="App">
+              <Navbar />
+              <main>
+                <Routes>        
+                <Route path="/recipe/add" element={ <PrivateRoute> <AddRecipe /></PrivateRoute>} />
 
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              {/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
-              {/* Private Routes - Require Authentication */}
-
-              {/* <Route path="/" element={ <PrivateRoute> <Dashboard /></PrivateRoute>} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  {/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
+                  {/* Private Routes - Require Authentication */}
+                  <Route path="/" element={ <PrivateRoute> <Dashboard /></PrivateRoute>} />
                   <Route path="/recipes" element={<PrivateRoute><RecipeList /></PrivateRoute>} />
                   <Route path="/recipes/:id"  element={<PrivateRoute><RecipeDetail /></PrivateRoute>} />
                   <Route path="/edit-recipe/:id" element={<PrivateRoute><EditRecipe /></PrivateRoute>} />                  
@@ -71,26 +63,14 @@ function App() {
                   <Route path="/viewmenu/:id" element={<PrivateRoute><ViewMenu /></PrivateRoute>} />
                   <Route path="/recipe/add" element={<PrivateRoute><AddRecipe /></PrivateRoute>} />
                   <Route path="/whereto" element={<PrivateRoute><WhereToPage /></PrivateRoute>} />
-                  <Route path="/faq" element={<PrivateRoute><FAQ /></PrivateRoute>} /> */}
+                  <Route path="/faq" element={<PrivateRoute><FAQ /></PrivateRoute>} />
+                </Routes>
+              </main>
 
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/recipes" element={<RecipeList />} />
-              <Route path="/recipes/:id" element={<RecipeDetail />} />
-              <Route path="/edit-recipe/:id" element={<EditRecipe />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/menus" element={<Menus />} />
-              <Route path="/menu/create" element={<CreateMenu />} />
-              <Route path="/viewmenu/:id" element={<ViewMenu />} />
-              <Route path="/recipe/add" element={<AddRecipe />} />
-              <Route path="/whereto" element={<WhereToPage />} />
-              <Route path="/faq" element={<FAQ />} />
-            </Routes>
-          </main>
-
-          <Footer />
-        </div>
-      </AuthProvider>
-    </Router>
+              <Footer />
+            </div>
+    </AuthProvider>
+      </Router>
   );
 }
 
