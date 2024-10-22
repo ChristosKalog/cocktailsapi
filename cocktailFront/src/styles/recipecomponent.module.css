@@ -18,12 +18,19 @@
   border-bottom: 1px solid var(--primary-color-lightdark);
   transition: 250ms;
 }
+
 .headerInfo {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   gap: var(--spacing-xs);
-  color: var(--secondary-color)
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-xs);
 }
+
+.headerInfo p {
+  font-size: 0.9rem;
+}
+
 .infoContainer {
   height: 100%;
   width: 70%;
@@ -44,20 +51,13 @@
   text-align: left;
   font-size: 1.5rem;
   font-family: "EB Garamond";
-  margin-bottom: var(--spacing-sm);
-}
-
-.recipeCard:hover  h2{
-  color: var(--primary-color);
-}
-
-
-.infoContainer p {
-  font-size: 0.9rem;
   margin-bottom: var(--spacing-xs);
 
 }
 
+.recipeCard:hover h2 {
+  color: var(--primary-color);
+}
 .moreInfo {
   display: flex;
   justify-content: space-between;
@@ -66,53 +66,10 @@
 }
 
 .moreInfo p {
-  font-size: 0.82rem;
+  font-size: 0.82rem;  
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
-  .recipeCard {
-    flex-direction: row;
-    align-items: center;
-    transition: none;
-    height: 80px;
-  }
-
-  .imageContainer {
-    width: 100px;
-    height: 60px;
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    object-position: top;
-  }
-
-  .infoContainer {
-    width: 95%;
-    flex-direction: column;
-    align-items: start;
-    height: auto;
-    padding-left: var(--spacing-sm);
-  }
-
-  .moreInfo {
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    width: 100%;
-  }
-
-  .infoContainer h2 {
-    font-size: 1rem;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .infoContainer p {
-    font-size: 0.8rem;
-    margin-bottom: var(--spacing-sm);
-  }
+  
 }

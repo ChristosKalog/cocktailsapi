@@ -91,7 +91,7 @@ const RecipeList = () => {
   return (
     <div className={styles.recipeList}>
       <h1>Cocktail Recipes</h1>
-      <div className={styles.filters}>
+      <div className={styles.filtersContainer}>
         <div className={styles.searchBar}>
           <input
             type="text"
