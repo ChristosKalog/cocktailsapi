@@ -29,9 +29,41 @@ const RecipeDetail = () => {
     { id: 5, src: placeholder5, alt: "Pic 5" },
   ];
 
-  const [mainImage, setMainImage] = useState(images[0].src); // Set the first image as default
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
   const [showConfirmation, setShowConfirmation] = useState(false); // State to manage confirmation dialog
   const [deletedMessage, setDeletedMessage] = useState(false); // State for deletion message
+
+  const mainImage = images[currentImageIndex].src; // Set the main image based on index
+
+  const handleTouchStart = (e) => {
+    const touchStartX = e.touches[0].clientX;
+    setTouchStart(touchStartX);
+  };
+
+  const handleTouchEnd = (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+
+    if (touchStart - touchEndX > 50) {
+      // Swipe left
+      nextImage();
+    } else if (touchStart - touchEndX < -50) {
+      // Swipe right
+      previousImage();
+    }
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex < images.length - 1 ? prevIndex + 1 : prevIndex
+    );
+  };
+
+  const previousImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex > 0 ? prevIndex - 1 : prevIndex
+    );
+  };
 
   const getABVClass = (alcoholValue) => {
     if (alcoholValue < 0) return styles["abv0"];
@@ -50,6 +82,7 @@ const RecipeDetail = () => {
   const deleteHandle = async () => {
     setShowConfirmation(true); // Show confirmation dialog
   };
+
   const editHandle = async () => {
     navigate(`/edit-recipe/${id}`); // Navigate to the EditRecipe component
   };
@@ -70,18 +103,20 @@ const RecipeDetail = () => {
 
   return (
     <>
-
       <div className={styles.recipeDetailWrapper}>
         <div className={styles.recipeDetail}>
           <div className={styles.leftContainer}>
-            <div className={styles.imageContainer}>
+            <div
+              className={styles.imageContainer}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <img
-                src={mainImage} // Use the static main image
+                src={mainImage}
                 className={styles.image}
                 alt={cocktail.name}
               />
             </div>
-
             <div className={styles.carousel}>
               {images.map((image) => (
                 <img
@@ -91,7 +126,7 @@ const RecipeDetail = () => {
                   className={`${styles.carouselImage} ${
                     image.src === mainImage ? styles.carouselImageActive : ""
                   }`}
-                  onClick={() => setMainImage(image.src)}
+                  onClick={() => setCurrentImageIndex(image.id - 1)} // Change image on click
                 />
               ))}
             </div>
@@ -142,7 +177,6 @@ const RecipeDetail = () => {
                       cocktail.alcoholValue
                     )}`}
                   >
-                    {" "}
                     {cocktail.alcoholValue}%
                   </span>
                 </h2>

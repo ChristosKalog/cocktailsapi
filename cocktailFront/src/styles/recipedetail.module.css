@@ -11,6 +11,7 @@
 .recipeDetailWrapper::-webkit-scrollbar {
   display: none;
 }
+
 .recipeDetail {
   display: flex;
   flex-direction: row;
@@ -49,7 +50,7 @@
   align-items: center;
   transition: opacity var(--transition);
   width: 100%;
-
+  /* Transition effect for transform */
 }
 
 .carousel {
@@ -70,12 +71,13 @@
   transition: 250ms;
   object-fit: cover;
   opacity: 0.55;
-
 }
 
 .carouselImageActive {
   opacity: 1;
   transition: 250ms;
+  border: 1px solid white;
+
 }
 
 .carouselImage:hover {

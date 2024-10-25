@@ -40,11 +40,14 @@ const Dashboard = () => {
 
   return (
     <div className={styles.dashboard}>
-      <div className={styles.welcomeMessage}>You have <span className={styles.bigLetter}>{menus.length}</span> menus and <span className={styles.bigLetter}>{recipes.length}</span> recipes!</div>
+      <div className={styles.welcomeMessage}>
+        You have <span className={styles.bigLetter}>{menus.length}</span> menus
+        and <span className={styles.bigLetter}>{recipes.length}</span> recipes!
+      </div>
       <div className={styles.bigContainer}>
         {/* Menus Section */}
         <div className={styles.menusList}>
-          <h3>Your Latest Menus</h3>
+          <h3>Your Latest Menus</h3> 
           {latestMenus.length > 0 ? (
             <div className={styles.menuItemsContainer}>
               {latestMenus.map((menu) => (
@@ -55,10 +58,9 @@ const Dashboard = () => {
                 </div>
               ))}
               <SmallButtonComponent>
-
-              <Link to="/menus" className={styles.viewAllLink}>
-                View All Menus
-              </Link>
+                <Link to="/menus" className={styles.viewAllLink}>
+                  View All
+                </Link>
               </SmallButtonComponent>
             </div>
           ) : (
@@ -89,9 +91,11 @@ const Dashboard = () => {
                   </Link>
                 </div>
               ))}
-              <Link to="/recipes" className={styles.viewAllLink}>
-                View All Cocktails
-              </Link>
+              <SmallButtonComponent>
+                <Link to="/recipes" className={styles.viewAllLink}>
+                  View All
+                </Link>
+              </SmallButtonComponent>
             </div>
           ) : (
             <>

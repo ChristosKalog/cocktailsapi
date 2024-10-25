@@ -133,16 +133,8 @@
   color: black;
 }
 
-.viewAllLink {
-  opacity: 0.5;
-  transition: 150ms;
-  margin-top: var(--spacing-md);
-}
 
-.viewAllLink:hover {
-  opacity: 1;
-  transition: 150ms;
-}
+
 
 @media (max-width: 768px) {
   .dashboard {
@@ -168,10 +160,6 @@
     margin-top: var(--spacing-sm);
   }
 
-  .viewAllLink {
-    opacity: 1;
-    margin-top: var(--spacing-md);
-  }
   .buttonContainer {
     margin-bottom: var(--spacing-xs);
     flex-direction: row;
