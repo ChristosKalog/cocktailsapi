@@ -195,6 +195,29 @@
         }
       ],
       "smallPicture": "placeholder_small.png"
+    },
+    {
+      "name": "Tiritompa",
+      "description": "This is description",
+      "recipe": "Mplou mplou mplou",
+      "cocktailStyle": "Tropical",
+      "complexityLevel": "hard",
+      "ingredients": [
+        {
+          "name": "Havana",
+          "quantity": "15",
+          "id": 1729630370659
+        },
+        {
+          "name": "Lime ",
+          "quantity": "",
+          "id": 1729630523043
+        }
+      ],
+      "alcoholValue": "20",
+      "price": "8",
+      "smallPicture": "placeholder_small.png",
+      "id": "1729630370659"
     }
   ],
   "savedMenus": [
