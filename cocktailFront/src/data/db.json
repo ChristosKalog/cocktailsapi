@@ -218,6 +218,36 @@
       "price": "8",
       "smallPicture": "placeholder_small.png",
       "id": "1729630370659"
+    },
+    {
+      "id": "1729855764388",
+      "name": "Malakar pelatis",
+      "description": "This is description",
+      "date": "14:32 25/10/2024",
+      "cocktailStyle": "Modern",
+      "complexityLevel": "hard",
+      "glassType": "Old Fashioned",
+      "recipe": "Stir until failure ",
+      "alcoholValue": "40",
+      "price": "15",
+      "ingredients": [
+        {
+          "name": "Amaretto",
+          "quantity": "12",
+          "id": 1729855764388
+        },
+        {
+          "name": "Angostura bitters",
+          "quantity": "55",
+          "id": 1729855924117
+        },
+        {
+          "name": "Gin",
+          "quantity": "11",
+          "id": 1729855929865
+        }
+      ],
+      "smallPicture": "placeholder_small.png"
     }
   ],
   "savedMenus": [

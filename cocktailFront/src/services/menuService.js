@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = "http://192.168.1.4:5001/savedMenus";
+const API_URL = "http://192.168.77.124:5001/savedMenus";
 
 const createMenu = async (createMenu) => {
   try {

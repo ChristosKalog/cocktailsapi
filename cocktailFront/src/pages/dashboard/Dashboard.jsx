@@ -4,6 +4,7 @@ import styles from "../../styles/Dashboard.module.css";
 import menuService from "../../services/menuService";
 import recipeService from "../../services/recipeService";
 import ButtonComponent from "../../components/ui/ButtonComponent";
+import SmallButtonComponent from "../../components/ui/SmallButtonComponent";
 
 const Dashboard = () => {
   const [menus, setMenus] = useState([]);
@@ -53,9 +54,12 @@ const Dashboard = () => {
                   </Link>
                 </div>
               ))}
+              <SmallButtonComponent>
+
               <Link to="/menus" className={styles.viewAllLink}>
                 View All Menus
               </Link>
+              </SmallButtonComponent>
             </div>
           ) : (
             <>
