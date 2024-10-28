@@ -46,13 +46,30 @@
   height: 100%;
 }
 
+
 .menusList h3 {
-  font-size: 1rem;
   color: white;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 70%;
 }
 
 .menusList:last-child {
   border: none;
+}
+
+.menuTitle {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-direction: row;
+}
+
+.viewAllLink {
+  display: flex;
+  flex-direction: row;
+  color: var(--primary-color)
 }
 
 .menuItemsContainer {

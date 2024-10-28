@@ -72,9 +72,9 @@ const ViewMenu = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.menuTitle}>
-        <h3>The</h3>
+        <h3>the</h3>
         <h1>{menu.title}</h1>
-        <h3>Menu</h3>
+        <h3>menu</h3>
       </div>
       <div className={styles.viewMenu}>
         {cocktailDetails.map((cocktail) => (

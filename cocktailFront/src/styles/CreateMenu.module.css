@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: var(--background-color);
   padding: var(--spacing-lg);
   color: var(--text-color);
@@ -39,7 +39,9 @@
   border-bottom: 1px solid white;
   margin-bottom: var(--spacing-sm);
   min-width: 250px;
-
+  font-family: 'EB Garamond';
+  color: var(--primary-color);
+  font-size: 1.2rem;
 }
 
 
@@ -146,8 +148,8 @@ h3 {
 }
 
 .selectedCocktail {
-  border: 1px solid var(--primary-color) !important;
-  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color-lightdark) !important;
+  background-color: var(--primary-color-lightdark);
   color: black
 }
 

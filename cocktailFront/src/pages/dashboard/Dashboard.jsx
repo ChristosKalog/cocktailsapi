@@ -10,7 +10,7 @@ const Dashboard = () => {
   const [menus, setMenus] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const { state } = useLocation();
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     if (state?.status) {
@@ -50,7 +50,12 @@ const Dashboard = () => {
     <div className={styles.dashboard}>
       <div className={styles.bigContainer}>
         <div className={styles.menusList}>
-          <h3>Your Latest Menus</h3>
+          <div className={styles.menuTitle}>
+            <h3>Your Latest Menus</h3>{" "}
+            <Link to="/menus" className={styles.viewAllLink}>
+              <p>View All</p>{" "}
+            </Link>
+          </div>
           {latestMenus.length > 0 ? (
             <div className={styles.menuItemsContainer}>
               {latestMenus.map((menu) => (
@@ -60,11 +65,9 @@ const Dashboard = () => {
                   </Link>
                 </div>
               ))}
-              <SmallButtonComponent>
-                <Link to="/menus" className={styles.viewAllLink}>
-                  View All
-                </Link>
-              </SmallButtonComponent>
+              <ButtonComponent category="add">
+                <Link to="/menu/create">Create Menu</Link>
+              </ButtonComponent>
             </div>
           ) : (
             <>
@@ -80,7 +83,12 @@ const Dashboard = () => {
         </div>
 
         <div className={styles.menusList}>
-          <h3>Your Latest Cocktails</h3>
+          <div className={styles.menuTitle}>
+            <h3>Your Latest Cocktails</h3>{" "}
+            <Link to="/recipes" className={styles.viewAllLink}>
+              <p>View All</p>
+            </Link>
+          </div>
           {latestRecipes.length > 0 ? (
             <div className={styles.menuItemsContainer}>
               {latestRecipes.map((recipe) => (
@@ -93,11 +101,9 @@ const Dashboard = () => {
                   </Link>
                 </div>
               ))}
-              <SmallButtonComponent>
-                <Link to="/recipes" className={styles.viewAllLink}>
-                  View All
-                </Link>
-              </SmallButtonComponent>
+              <ButtonComponent category="add">
+                <Link to="/recipe/Add">Add Recipe</Link>
+              </ButtonComponent>
             </div>
           ) : (
             <>
@@ -111,20 +117,8 @@ const Dashboard = () => {
             </>
           )}
         </div>
-
-        <div className={styles.menusList}>
-          <h3>Quick Actions</h3>
-          <div className={styles.buttonContainer}>
-            <ButtonComponent category="add">
-              <Link to="/recipe/Add">Add recipe</Link>
-            </ButtonComponent>
-            <ButtonComponent category="add">
-              <Link to="/menu/create">Create menu</Link>
-            </ButtonComponent>
-          </div>
-        </div>
       </div>
-      {message && <div className={styles.messageContainer}>{message}</div> }
+      {message && <div className={styles.messageContainer}>{message}</div>}
     </div>
   );
 };

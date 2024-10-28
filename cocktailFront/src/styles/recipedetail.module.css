@@ -120,6 +120,7 @@
 .infoContainer h2 {
   margin-right: var(--spacing-sm);
 }
+
 .infoContainer p {
   color: var(--primary-color)
 }
@@ -284,6 +285,8 @@ h5 {
     /* Full width for containers on mobile */
   }
 
+
+
   .leftContainer {
     flex-direction: column-reverse;
   }
@@ -317,14 +320,21 @@ h5 {
     border: 1px solid white;
   }
 
+
+
   .info {
-    margin: var(--spacing-sm) 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: var(--spacing-md) 0;
   }
 
   .infoContainer,
   .barContainer {
     flex-direction: row;
     align-items: center;
+    margin: var(--spacing-xs) 0;
   }
 
   .bar {
@@ -340,10 +350,13 @@ h5 {
 
   .mobileTitle {
     font-size: var(--font-size-lg);
-    /* Adjust font size */
-    border-left: 3px solid var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
     padding-left: var(--spacing-sm);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .rightContainer h1 {
+    border: none;
   }
 
   .mobileTitle h1 {
