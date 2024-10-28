@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import cocktailsData from "../../data/db.json";
 import menuService from "../../services/menuService";
 import styles from "../../styles/CreateMenu.module.css";
 import ButtonComponent from "../../components/ui/ButtonComponent";
+import { useNavigate } from "react-router-dom";
 
 const CreateMenu = () => {
   const [title, setTitle] = useState("");
   const [selectedCocktails, setSelectedCocktails] = useState([]);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const resetSelection = () => {
     setSelectedCocktails([]);
@@ -41,8 +41,9 @@ const CreateMenu = () => {
       console.error("Error saving menu:", error);
       alert("There was an error saving your menu. Please try again.");
     }
-  };
+    navigate("/", { state: { status: 'menuCreated'} });
 
+  };
 
   return (
     <div className={styles.createMenu}>
@@ -84,15 +85,14 @@ const CreateMenu = () => {
         </div>
       </div>
       <h3>Selected Cocktails ({selectedCocktails.length})</h3>
-        <>
-          <ButtonComponent onClick={resetSelection} category="reset">
-            Reset Menu
-          </ButtonComponent>
-          <ButtonComponent onClick={handleSaveMenu} category="save">
-            Save Menu
-          </ButtonComponent>
-        </>
-
+      <>
+        <ButtonComponent onClick={resetSelection} category="reset">
+          Reset Menu
+        </ButtonComponent>
+        <ButtonComponent onClick={handleSaveMenu} category="save">
+          Save Menu
+        </ButtonComponent>
+      </>
     </div>
   );
 };

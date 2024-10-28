@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import cocktailsData from "../../data/db.json";
 import ButtonComponent from "../../components/ui/ButtonComponent";
 import RecipeComponent from "../../components/ui/RecipeComponent"; // Import RecipeComponent
-import styles from "../../styles/recipelist.module.css";
+import styles from "../../styles/RecipeList.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSortAlphaAsc,
@@ -172,7 +172,7 @@ const RecipeList = () => {
 
       <div className={styles.buttonContainer}>
         <ButtonComponent category="add">
-          <Link to="/recipe/Add">add more</Link>
+          <Link to="/recipe/Add">Add Recipe</Link>
         </ButtonComponent>
       </div>
     </div>

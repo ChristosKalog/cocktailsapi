@@ -151,14 +151,16 @@
       "alcoholValue": "0",
       "price": "18",
       "smallPicture": "cosmo.png",
-      "id": "8b49"
+      "id": "8b49",
+      "glassType": "Highball"
     },
     {
       "name": "Heavy Duty",
-      "description": "This is just a text that means nothing",
-      "recipe": "Yes",
-      "cocktailStyle": "Classic",
+      "description": "This is just a text that means nothing.\nThis is just a text that means nothing.\nThis is just a text that means nothing.",
+      "recipe": "Step 1\nDo this.\nStep 2\nDo this as well.",
+      "cocktailStyle": "Tiki",
       "complexityLevel": "hard",
+      "glassType": "Highball",
       "ingredients": [
         {
           "name": "orange juice",
@@ -169,6 +171,11 @@
           "name": "Whisky",
           "quantity": "150",
           "id": 1729601019676
+        },
+        {
+          "name": "Wine",
+          "quantity": "",
+          "id": 1730107294092
         }
       ],
       "alcoholValue": "45",
@@ -177,31 +184,12 @@
       "id": "1729600787828"
     },
     {
-      "id": "1729605396802",
-      "name": "Lo siento",
-      "description": "This is description",
-      "date": "16:57 22/10/2024",
-      "cocktailStyle": "Highballs",
-      "complexityLevel": "hard",
-      "glassType": "Highball",
-      "recipe": "I like this drink very much.",
-      "alcoholValue": "100",
-      "price": "20",
-      "ingredients": [
-        {
-          "name": "Aperol",
-          "quantity": "1000",
-          "id": 1729605396802
-        }
-      ],
-      "smallPicture": "placeholder_small.png"
-    },
-    {
       "name": "Tiritompa",
       "description": "This is description",
       "recipe": "Mplou mplou mplou",
       "cocktailStyle": "Tropical",
       "complexityLevel": "hard",
+      "glassType": "Highball",
       "ingredients": [
         {
           "name": "Havana",
@@ -242,6 +230,20 @@
         "7d65"
       ],
       "dateCreated": "2024-10-22T08:52:14.215Z"
+    },
+    {
+      "id": "138d",
+      "title": "12346/",
+      "cocktailIds": [
+        "2a34",
+        "8b49",
+        "1729630370659",
+        "1729600787828",
+        "7d65",
+        "9c74",
+        "4f12"
+      ],
+      "dateCreated": "2024-10-28T10:47:56.426Z"
     }
   ],
   "users": [

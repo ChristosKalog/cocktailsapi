@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import cocktailsData from "../../data/db.json";
-import styles from "../../styles/recipedetail.module.css";
+import styles from "../../styles/RecipeDetail.module.css";
 import recipeService from "../../services/recipeService";
 import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent";
 import ButtonComponent from "../../components/ui/ButtonComponent";
@@ -45,10 +45,8 @@ const RecipeDetail = () => {
     const touchEndX = e.changedTouches[0].clientX;
 
     if (touchStart - touchEndX > 50) {
-      // Swipe left
       nextImage();
     } else if (touchStart - touchEndX < -50) {
-      // Swipe right
       previousImage();
     }
   };
@@ -136,7 +134,7 @@ const RecipeDetail = () => {
               <h1>{cocktail.name}</h1>
             </div>
             <div className={styles.info}>
-              <div className={styles.complexicityContainer}>
+              <div className={styles.infoContainer}>
                 <h2>Complexity:</h2>
                 <div className={styles.barContainer}>
                   <div
@@ -166,12 +164,13 @@ const RecipeDetail = () => {
                   ></div>
                 </div>
               </div>
-              <div className={styles.startInfo}>
-                <h2>Style: {cocktail.cocktailStyle}</h2>
+              <div className={styles.infoContainer}>
+                <h2>Style:</h2>
+                <p>{cocktail.cocktailStyle}</p>
               </div>
-              <div className={styles.startInfo}>
-                <h2>
-                  ABV:{" "}
+              <div className={styles.infoContainer}>
+                <h2>ABV: </h2>
+                <p>
                   <span
                     className={`${styles.abv} ${getABVClass(
                       cocktail.alcoholValue
@@ -179,14 +178,15 @@ const RecipeDetail = () => {
                   >
                     {cocktail.alcoholValue}%
                   </span>
-                </h2>
+                </p>
               </div>
             </div>
             <h4>Ingredients:</h4>
             <div className={styles.ingredientsContainer}>
               {cocktail.ingredients.map((ingredient, index) => (
                 <div className={styles.ingredient} key={index}>
-                  {ingredient.name} {ingredient.quantity}ml
+                  {ingredient.name} {ingredient.quantity}
+                  {ingredient.quantity && "ml"}
                 </div>
               ))}
             </div>
@@ -225,7 +225,7 @@ const RecipeDetail = () => {
         </div>
         <div className={styles.goBackContainer}>
           <Link to="/recipes">
-            <GoBackButton category="back"> Go Back</GoBackButton>
+            <GoBackButton> Go Back</GoBackButton>
           </Link>
         </div>
       </div>

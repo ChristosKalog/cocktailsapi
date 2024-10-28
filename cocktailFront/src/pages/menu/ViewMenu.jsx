@@ -54,10 +54,12 @@ const ViewMenu = () => {
       navigate("/"); // Redirect to menus list after deletion
       setTimeout(() => {
         setDeletedMessage(false);
-      }, 2000); // Remove message after 2 seconds
+      }, 2000);
     } catch (error) {
       console.error("Error deleting menu:", error);
     }
+    navigate("/", { state: { status: 'menuDeleted'} });
+
   };
 
   const cancelDelete = () => {

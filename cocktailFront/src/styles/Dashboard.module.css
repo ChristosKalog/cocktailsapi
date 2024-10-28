@@ -14,16 +14,15 @@
   display: none;
 }
 
-.welcomeMessage {
-  border-bottom: 1px solid var(--primary-color);
-}
 
-.bigLetter {
-  font-family: "EB Garamond";
-  color: var(--primary-color);
-  font-size: 3rem;
-  margin: 0;
-  padding: 0
+
+.messageContainer {
+  display: flex;
+  margin: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  flex-direction: column;
+  background: var(--gradient-card);
+  border-radius: var(--spacing-sm);
 }
 
 .bigContainer {
@@ -164,7 +163,6 @@
     margin-bottom: var(--spacing-xs);
     flex-direction: row;
     gap: var(--spacing-sm)
-
   }
 
 }

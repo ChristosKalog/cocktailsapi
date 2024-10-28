@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; // Import useNavigate
 import styles from "../../styles/Dashboard.module.css";
 import menuService from "../../services/menuService";
 import recipeService from "../../services/recipeService";
@@ -9,6 +9,26 @@ import SmallButtonComponent from "../../components/ui/SmallButtonComponent";
 const Dashboard = () => {
   const [menus, setMenus] = useState([]);
   const [recipes, setRecipes] = useState([]);
+  const { state } = useLocation();
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    if (state) {
+      if (state.status === "menuCreated") {
+        setMessage("Menu Created");
+        setTimeout(() => setMessage(""), 1500);
+      } else if (state.status === "menuDeleted") {
+        setMessage("Menu Deleted");
+        setTimeout(() => setMessage(""), 1500);
+      } else if (state.status === "recipeCreated") {
+        setMessage("Recipe Created");
+        setTimeout(() => setMessage(""), 1500);
+      } else if (state.status === "recipeDeleted") {
+        setMessage("Recipe Created");
+        setTimeout(() => setMessage(""), 1500);
+      }
+    }
+  }, [state]);
 
   useEffect(() => {
     const fetchMenus = async () => {
@@ -34,20 +54,14 @@ const Dashboard = () => {
     fetchCocktails();
   }, []);
 
-  // Get the last 5 items for menus and recipes
   const latestMenus = menus.slice(-5);
   const latestRecipes = recipes.slice(-5);
 
   return (
     <div className={styles.dashboard}>
-      <div className={styles.welcomeMessage}>
-        You have <span className={styles.bigLetter}>{menus.length}</span> menus
-        and <span className={styles.bigLetter}>{recipes.length}</span> recipes!
-      </div>
       <div className={styles.bigContainer}>
-        {/* Menus Section */}
         <div className={styles.menusList}>
-          <h3>Your Latest Menus</h3> 
+          <h3>Your Latest Menus</h3>
           {latestMenus.length > 0 ? (
             <div className={styles.menuItemsContainer}>
               {latestMenus.map((menu) => (
@@ -76,7 +90,6 @@ const Dashboard = () => {
           )}
         </div>
 
-        {/* Cocktails Section */}
         <div className={styles.menusList}>
           <h3>Your Latest Cocktails</h3>
           {latestRecipes.length > 0 ? (
@@ -122,6 +135,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      {message && <div className={styles.messageContainer}>{message}</div> }
     </div>
   );
 };
