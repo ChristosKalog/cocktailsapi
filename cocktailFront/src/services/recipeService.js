@@ -5,7 +5,6 @@ const API_URL = "http://localhost:5001/savedCocktails";
 const saveRecipe = async (recipe) => {
   try {
     const response = await axios.post(API_URL, recipe);
-    console.log("Recipe saved successfully!", response.data);
     return response.data;
   } catch (error) {
     console.error("Error saving recipe:", error);
@@ -26,7 +25,6 @@ const getAllRecipes = async () => {
 const deleteRecipe = async (id) => {
   try {
     const response = await axios.delete(`${API_URL}/${id}`);
-    console.log("Recipe deleted successfully!", response.data);
     return response.data; // You can return any useful information after deletion
   } catch (error) {
     console.error("Error deleting recipe:", error);

@@ -5,7 +5,6 @@ const API_URL = "http://localhost:5001/savedMenus";
 const createMenu = async (createMenu) => {
   try {
     const response = await axios.post(API_URL, createMenu);
-    console.log("Recipe saved successfully!", response.data);
     return response.data;
   } catch (error) {
     console.error("Error saving recipe:", error);
@@ -30,7 +29,6 @@ const fetchMenus = async () => {
 const deleteMenu = async (id) => {
   try {
     const response = await axios.delete(`${API_URL}/${id}`);
-    console.log("Menu deleted successfully!", response.data);
     return response.data;
   } catch (error) {
     console.error("Error deleting menu:", error);
@@ -41,7 +39,6 @@ const deleteMenu = async (id) => {
 const updateMenu = async (menu, id) => {
   try {
     const response = await axios.put(`${API_URL}/${id}`, menu); // Pass menu data here
-    console.log("Menu updated successfully!", response.data);
     return response.data;
   } catch (error) {
     console.error("Error updating menu:", error);

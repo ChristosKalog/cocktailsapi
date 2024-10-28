@@ -36,7 +36,6 @@ const CreateMenu = () => {
 
     try {
       const savedMenu = await menuService.createMenu(newMenu);
-      console.log("Saved Menu:", savedMenu);
     } catch (error) {
       console.error("Error saving menu:", error);
       alert("There was an error saving your menu. Please try again.");

@@ -123,7 +123,6 @@ const AddRecipe = () => {
         "0"
       )}/${currentDate.getFullYear()}`;
       await recipeService.saveRecipe({ ...recipe, date: formattedDate });
-      console.log("Recipe created successfully!");
       setRecipe({
         // Reset the form fields
         id: Date.now().toString(), // Reset ID for new recipe

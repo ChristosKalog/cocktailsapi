@@ -48,7 +48,6 @@ const EditMenu = () => {
 
     try {
       const savedMenu = await menuService.updateMenu(newMenu, id); // Assuming updateMenu for editing
-      console.log("Saved Menu:", savedMenu);
     } catch (error) {
       console.error("Error saving menu:", error);
       alert("There was an error saving your menu. Please try again.");
