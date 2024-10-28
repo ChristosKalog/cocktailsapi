@@ -10,6 +10,7 @@ import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent"
 
 const ViewMenu = () => {
   const { id } = useParams();
+
   const navigate = useNavigate(); // For navigation after deletion
   const [menu, setMenu] = useState(null);
   const [cocktailDetails, setCocktailDetails] = useState([]); // Store the actual cocktail details
@@ -23,20 +24,24 @@ const ViewMenu = () => {
         const foundMenu = retrievedMenus.find((menu) => menu.id === id);
         if (foundMenu) {
           setMenu(foundMenu);
-          const selectedCocktails = foundMenu.cocktailIds.map((cocktailId) =>
-            cocktailsData.savedCocktails.find(
-              (cocktail) => cocktail.id === cocktailId
+          const selectedCocktails = foundMenu.cocktailIds
+            .map((cocktailId) =>
+              cocktailsData.savedCocktails.find(
+                (cocktail) => cocktail.id === cocktailId
+              )
             )
-          );
+            .filter(Boolean); // Filters out any undefined cocktails
           setCocktailDetails(selectedCocktails);
         }
       } catch (error) {
         console.error("Error fetching menus:", error);
       }
     };
-
+  
     fetchMenu();
   }, [id]);
+  
+
 
   if (!menu) {
     return <p>Menu not found</p>;
@@ -51,22 +56,21 @@ const ViewMenu = () => {
       await menuService.deleteMenu(id); // Call deleteMenu function
       setDeletedMessage(true); // Show deletion message
       setShowConfirmation(false); // Close confirmation dialog
-      navigate("/"); // Redirect to menus list after deletion
+      navigate("/", { state: { status: "Menu was deleted" } });
       setTimeout(() => {
         setDeletedMessage(false);
       }, 2000); // Remove message after 2 seconds
     } catch (error) {
       console.error("Error deleting menu:", error);
     }
-    navigate("/", { state: { status: "Menu was deleted" } });
   };
 
   const cancelDelete = () => {
-    setShowConfirmation(false); // Close confirmation dialog without deletion
+    setShowConfirmation(false);
   };
 
   const editHandle = async () => {
-    navigate(`/menu/edit-menu/${id}`); // Navigate to the EditRecipe component
+    navigate(`/menu/edit-menu/${id}`); 
   };
 
   return (

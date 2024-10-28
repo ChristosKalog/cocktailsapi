@@ -62,8 +62,14 @@
 .menuTitle {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   flex-direction: row;
+}
+
+.menuTitle h3 {
+  margin: 0;
+  padding: 0;
 }
 
 .viewAllLink {
@@ -171,9 +177,14 @@
     border-radius: var(--spacing-sm);
   }
 
-  .menusList h3 {
-    margin: 0;
-    margin-top: var(--spacing-sm);
+  .menuTitle {
+    margin: var(--spacing-md) 0;
+    padding: 0 var(--spacing-md);
+
+  }
+
+  .menuItemsContainer {
+    padding: var(--spacing-sm)
   }
 
   .buttonContainer {

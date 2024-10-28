@@ -40,14 +40,14 @@ const EditMenu = () => {
     }
 
     const newMenu = {
-      id, // Keep the original id to update instead of creating a new menu
+      id,
       title,
       cocktailIds: selectedCocktails,
       dateCreated: new Date().toISOString(),
     };
 
     try {
-      const savedMenu = await menuService.updateMenu(newMenu, id); // Assuming updateMenu for editing
+      const savedMenu = await menuService.updateMenu(newMenu, id); 
     } catch (error) {
       console.error("Error saving menu:", error);
       alert("There was an error saving your menu. Please try again.");

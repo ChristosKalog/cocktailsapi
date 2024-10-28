@@ -3,6 +3,8 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import cocktailsData from "../../data/db.json";
 import styles from "../../styles/RecipeDetail.module.css";
 import recipeService from "../../services/recipeService";
+import menuService from "../../services/menuService";
+
 import DeleteConfirmation from "../../components/ui/DeleteConfirmationComponent";
 import ButtonComponent from "../../components/ui/ButtonComponent";
 import GoBackButton from "../../components/ui/GoBackButton";
@@ -86,13 +88,46 @@ const RecipeDetail = () => {
   };
 
   const confirmDelete = async () => {
-    await recipeService.deleteRecipe(id); // Call deleteRecipe function
-    setDeletedMessage(true); // Show deletion message
-    setShowConfirmation(false); // Close confirmation dialog
-    navigate("/recipes");
-    setTimeout(() => {
-      setDeletedMessage(false);
-    }, 2000); // Remove message after 2 seconds
+    try {
+      // Fetch all menus to find where this cocktail ID is used
+      const menus = await menuService.fetchMenus();
+      const updatedMenus = menus.map((menu) => {
+        if (menu.cocktailIds.includes(id)) {
+          // Filter out the current cocktail ID
+          return {
+            ...menu,
+            cocktailIds: menu.cocktailIds.filter(
+              (cocktailId) => cocktailId !== id
+            ),
+          };
+        }
+        return menu;
+      });
+
+      // Update menus in the database where changes were made
+      for (const menu of updatedMenus) {
+        if (
+          menu.cocktailIds.length !==
+          menus.find((m) => m.id === menu.id).cocktailIds.length
+        ) {
+          await menuService.updateMenu(menu, menu.id);
+          
+        }
+      }
+
+      // Delete the cocktail from the recipe service
+      await recipeService.deleteRecipe(id);
+
+      // Show deletion message, hide confirmation, and navigate back
+      setDeletedMessage(true);
+      setShowConfirmation(false);
+      navigate("/recipes");
+      setTimeout(() => {
+        setDeletedMessage(false);
+      }, 2000);
+    } catch (error) {
+      console.error("Error deleting cocktail or updating menus:", error);
+    }
   };
 
   const cancelDelete = () => {
@@ -216,7 +251,6 @@ const RecipeDetail = () => {
                 )}
               </div>
             </div>
-       
           </div>
         </div>
         <div className={styles.goBackContainer}>
