@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const API_URL = "http://localhost:5001/savedMenus";
 
@@ -30,13 +30,23 @@ const fetchMenus = async () => {
 const deleteMenu = async (id) => {
   try {
     const response = await axios.delete(`${API_URL}/${id}`);
-    console.log('Menu deleted successfully!', response.data);
+    console.log("Menu deleted successfully!", response.data);
     return response.data;
   } catch (error) {
-    console.error('Error deleting menu:', error);
+    console.error("Error deleting menu:", error);
     throw error;
   }
 };
 
+const updateMenu = async (menu, id) => {
+  try {
+    const response = await axios.put(`${API_URL}/${id}`, menu); // Pass menu data here
+    console.log("Menu updated successfully!", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating menu:", error);
+    throw error;
+  }
+};
 
-export default { createMenu, deleteMenu,  fetchMenus};
+export default { createMenu, deleteMenu, fetchMenus, updateMenu };

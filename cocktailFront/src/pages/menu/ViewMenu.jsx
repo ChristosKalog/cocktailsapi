@@ -54,16 +54,19 @@ const ViewMenu = () => {
       navigate("/"); // Redirect to menus list after deletion
       setTimeout(() => {
         setDeletedMessage(false);
-      }, 2000);
+      }, 2000); // Remove message after 2 seconds
     } catch (error) {
       console.error("Error deleting menu:", error);
     }
-    navigate("/", { state: { status: 'menuDeleted'} });
-
+    navigate("/", { state: { status: "Menu was deleted" } });
   };
 
   const cancelDelete = () => {
     setShowConfirmation(false); // Close confirmation dialog without deletion
+  };
+
+  const editHandle = async () => {
+    navigate(`/menu/edit-menu/${id}`); // Navigate to the EditRecipe component
   };
 
   return (
@@ -87,7 +90,10 @@ const ViewMenu = () => {
           PDF
         </ButtonComponent>
         <ButtonComponent onClick={deleteHandle} category="delete">
-          Delete Menu
+          Delete
+        </ButtonComponent>
+        <ButtonComponent onClick={editHandle} category="edit">
+          Edit
         </ButtonComponent>
       </div>
 

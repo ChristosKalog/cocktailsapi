@@ -13,20 +13,9 @@ const Dashboard = () => {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    if (state) {
-      if (state.status === "menuCreated") {
-        setMessage("Menu Created");
-        setTimeout(() => setMessage(""), 1500);
-      } else if (state.status === "menuDeleted") {
-        setMessage("Menu Deleted");
-        setTimeout(() => setMessage(""), 1500);
-      } else if (state.status === "recipeCreated") {
-        setMessage("Recipe Created");
-        setTimeout(() => setMessage(""), 1500);
-      } else if (state.status === "recipeDeleted") {
-        setMessage("Recipe Created");
-        setTimeout(() => setMessage(""), 1500);
-      }
+    if (state?.status) {
+      setMessage(state.status);
+      setTimeout(() => setMessage(""), 2000);
     }
   }, [state]);
 

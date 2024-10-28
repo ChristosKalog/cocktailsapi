@@ -201,10 +201,10 @@ const RecipeDetail = () => {
             <div className={styles.bigContainer}>
               <div className={styles.buttonsContainer}>
                 <ButtonComponent onClick={editHandle} category="edit">
-                  Edit Recipe
+                  Edit
                 </ButtonComponent>
                 <ButtonComponent onClick={deleteHandle} category="delete">
-                  Delete Recipe
+                  Delete
                 </ButtonComponent>
               </div>
               <div className={styles.confirmationContainer}>
@@ -216,11 +216,7 @@ const RecipeDetail = () => {
                 )}
               </div>
             </div>
-            {deletedMessage && (
-              <div className={styles.deletedMessage}>
-                <p>Recipe deleted successfully!</p>
-              </div>
-            )}
+       
           </div>
         </div>
         <div className={styles.goBackContainer}>

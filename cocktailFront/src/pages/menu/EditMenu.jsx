@@ -1,18 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import cocktailsData from "../../data/db.json";
 import menuService from "../../services/menuService";
 import styles from "../../styles/CreateMenu.module.css";
 import ButtonComponent from "../../components/ui/ButtonComponent";
-import { useNavigate } from "react-router-dom";
 
-const CreateMenu = () => {
+const EditMenu = () => {
   const [title, setTitle] = useState("");
   const [selectedCocktails, setSelectedCocktails] = useState([]);
+  const { id } = useParams();
   const navigate = useNavigate();
+
+  const menu = cocktailsData.savedMenus.find((menu) => menu.id === id);
 
   const resetSelection = () => {
     setSelectedCocktails([]);
   };
+
+  // Load the menu data into state for editing
+  useEffect(() => {
+    if (menu) {
+      setTitle(menu.title);
+      setSelectedCocktails(menu.cocktailIds || []);
+    }
+  }, [menu]);
 
   const handleCocktailSelect = (cocktailId) => {
     setSelectedCocktails((prevSelected) =>
@@ -29,24 +40,25 @@ const CreateMenu = () => {
     }
 
     const newMenu = {
+      id, // Keep the original id to update instead of creating a new menu
       title,
       cocktailIds: selectedCocktails,
       dateCreated: new Date().toISOString(),
     };
 
     try {
-      const savedMenu = await menuService.createMenu(newMenu);
+      const savedMenu = await menuService.updateMenu(newMenu, id); // Assuming updateMenu for editing
       console.log("Saved Menu:", savedMenu);
     } catch (error) {
       console.error("Error saving menu:", error);
       alert("There was an error saving your menu. Please try again.");
     }
-    navigate("/", { state: { status: "Menu was created" } });
+    navigate("/", { state: { status: "Menu was updated" } });
   };
 
   return (
     <div className={styles.createMenu}>
-      <h1>Create Menu</h1>
+      <h1>Edit Menu</h1>
       <input
         type="text"
         value={title}
@@ -96,4 +108,4 @@ const CreateMenu = () => {
   );
 };
 
-export default CreateMenu;
+export default EditMenu;
