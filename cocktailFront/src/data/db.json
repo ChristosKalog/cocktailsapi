@@ -156,7 +156,7 @@
     },
     {
       "name": "Heavy Duty",
-      "description": "This is just a text that means nothing.",
+      "description": "Really heavy duty stuff.",
       "recipe": "Step 1\nDo this.\nStep 2\nDo this as well.",
       "cocktailStyle": "Tiki",
       "complexityLevel": "hard",
@@ -178,7 +178,7 @@
         }
       ],
       "alcoholValue": "45",
-      "price": "50",
+      "price": "1",
       "smallPicture": "placeholder_small.png",
       "id": "1729600787828"
     },
@@ -221,16 +221,26 @@
       "dateCreated": "2024-10-22T08:03:06.052Z"
     },
     {
-      "id": "39b2",
-      "title": "What",
+      "id": "747b",
+      "title": "Heavy Duty",
+      "cocktailIds": [
+        "4f12",
+        "2a34",
+        "1729630370659",
+        "8b49",
+        "7d65"
+      ],
+      "dateCreated": "2024-10-28T11:23:36.557Z"
+    },
+    {
+      "id": "4ac2",
+      "title": "3 cocktails",
       "cocktailIds": [
         "9c74",
         "2a34",
-        "7d65",
-        "8b49",
-        "1729630370659"
+        "7d65"
       ],
-      "dateCreated": "2024-10-28T11:15:59.253Z"
+      "dateCreated": "2024-10-28T12:23:33.102Z"
     }
   ],
   "users": [
@@ -279,7 +289,7 @@
       "email": "christos@example.com",
       "password": "test",
       "fullName": "Christos Kalogridakis",
-      "role": "the employ",
+      "role": "the Employ",
       "bar": "The Boozy Bar",
       "favorites": [
         1,
