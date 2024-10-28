@@ -156,11 +156,10 @@
     },
     {
       "name": "Heavy Duty",
-      "description": "This is just a text that means nothing.\nThis is just a text that means nothing.\nThis is just a text that means nothing.",
+      "description": "This is just a text that means nothing.",
       "recipe": "Step 1\nDo this.\nStep 2\nDo this as well.",
       "cocktailStyle": "Tiki",
       "complexityLevel": "hard",
-      "glassType": "Highball",
       "ingredients": [
         {
           "name": "orange juice",
