@@ -12,6 +12,11 @@
   height: 130px;
 }
 
+.recipeImage {
+  height: 100px
+}
+
+
 .recipeCard:hover {
   background: var(--gradient-card-hover);
   border: 1px solid var(--background-color);
@@ -61,6 +66,7 @@
 .recipeCard:hover .headerInfo {
   color: var(--primary-color-lightdark);
 }
+
 .moreInfo {
   display: flex;
   justify-content: space-between;
@@ -69,17 +75,19 @@
 }
 
 .moreInfo p {
-  font-size: 0.82rem;  
+  font-size: 0.82rem;
 }
 
 /* Existing styles for .recipeCard and its child elements remain unchanged */
 
 @media (max-width: 768px) {
-.recipeCard {
-  width: 95%;
-  margin: 0 auto;;
-}
-.moreInfo p {
-  font-size: 0.85rem;
-}
+  .recipeCard {
+    width: 95%;
+    margin: 0 auto;
+    ;
+  }
+
+  .moreInfo p {
+    font-size: 0.85rem;
+  }
 }

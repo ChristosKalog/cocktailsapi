@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://192.168.1.4:5001/savedCocktails";
+const API_URL = "http://localhost:5001/savedCocktails";
 
 const saveRecipe = async (recipe) => {
   try {
@@ -8,7 +8,7 @@ const saveRecipe = async (recipe) => {
     return response.data;
   } catch (error) {
     console.error("Error saving recipe:", error);
-    throw error; 
+    throw error;
   }
 };
 

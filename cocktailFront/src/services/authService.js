@@ -1,4 +1,4 @@
-const API_URL = "http://192.168.1.4:5001/users";
+const API_URL = "http://localhost:5001/users";
 
 // Simulate an API call for logging in
 const login = async (username, password) => {

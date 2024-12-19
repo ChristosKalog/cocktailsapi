@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "../../styles/AddRecipe.module.css";
 import rangeStyles from "../../styles/Range.module.css";
-import recipeService from "../../services/recipeService";
 import ButtonComponent from "../../components/ui/ButtonComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faAdd } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
+import {
+  handleChange,
+  handleAddIngredient,
+  handleRemove,
+  handleSubmit,
+} from "../../services/recipeFormService";
+import ReactCropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
 
 const AddRecipe = () => {
   const [recipe, setRecipe] = useState({
@@ -20,142 +27,71 @@ const AddRecipe = () => {
     alcoholValue: 0,
     price: "",
     ingredients: [{ name: "", quantity: "", id: Date.now() }],
-    smallPicture: "placeholder_small.png",
+    smallPicture: "",
   });
 
-  const navigate = useNavigate(); // Initialize useNavigate
+  const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
+  const [isCropped, setIsCropped] = useState(false); // Track whether the image has been cropped
+  const [hasImage, setHasImage] = useState(false); // Track whether the image has been cropped
+  const cropperRef = useRef(null);
+  const navigate = useNavigate();
 
-  const ingredientSuggestions = [
-    "Absinthe",
-    "Amaretto",
-    "Angostura Bitters",
-    "Aperol",
-    "Aquavit",
-    "Bénédictine",
-    "Brandy",
-    "Campari",
-    "Cachaça",
-    "Chartreuse",
-    "Cider",
-    "Cognac",
-    "Creme de Cacao",
-    "Creme de Cassis",
-    "Curaçao",
-    "Dry Vermouth",
-    "Falernum",
-    "Galliano",
-    "Gin",
-    "Grand Marnier",
-    "Grenadine",
-    "Irish Whiskey",
-    "Kahlúa",
-    "Limoncello",
-    "Mezcal",
-    "Orange Bitters",
-    "Pimm's",
-    "Port",
-    "Rye Whiskey",
-    "Rum",
-    "Sake",
-    "Scotch",
-    "Sherry",
-    "Simple Syrup",
-    "Sloe Gin",
-    "St-Germain",
-    "Sweet Vermouth",
-    "Tequila",
-    "Triple Sec",
-    "Vodka",
-    "Whiskey",
-  ];
-
-  const handleChange = (e, index) => {
-    const { name, value } = e.target;
-
-    const capitalizeFirstLetter = (string) => {
-      return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-    };
-
-    if (index !== undefined) {
-      const newIngredients = [...recipe.ingredients];
-      if (name === "name") {
-        newIngredients[index][name] = capitalizeFirstLetter(value);
-      } else {
-        newIngredients[index][name] = value;
-      }
-      setRecipe({ ...recipe, ingredients: newIngredients });
-    } else {
-      if (name === "name") {
-        setRecipe({ ...recipe, [name]: capitalizeFirstLetter(value) });
-      } else {
-        setRecipe({ ...recipe, [name]: value });
-      }
+  const handleImageChange = (e) => {
+    setHasImage(true);
+    const file = e.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setImage(imageUrl); // Set image for cropping
+      setImageUrl(imageUrl); // Store the original image URL
+      setIsCropped(false); // Reset cropped status
     }
   };
 
-  const handleAddIngredient = () => {
-    setRecipe({
-      ...recipe,
-      ingredients: [
-        ...recipe.ingredients,
-        { name: "", quantity: "", id: Date.now() },
-      ],
-    });
-  };
-
-  const handleRemove = (index) => {
-    const updatedIngredients = recipe.ingredients.filter((_, i) => i !== index);
-    setRecipe({ ...recipe, ingredients: updatedIngredients });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const currentDate = new Date();
-      const formattedDate = `${String(currentDate.getHours()).padStart(
-        2,
-        "0"
-      )}:${String(currentDate.getMinutes()).padStart(2, "0")} ${String(
-        currentDate.getDate()
-      ).padStart(2, "0")}/${String(currentDate.getMonth() + 1).padStart(
-        2,
-        "0"
-      )}/${currentDate.getFullYear()}`;
-      await recipeService.saveRecipe({ ...recipe, date: formattedDate });
-      setRecipe({
-        // Reset the form fields
-        id: Date.now().toString(), // Reset ID for new recipe
-        name: "",
-        cocktailStyle: "",
-        complexityLevel: "",
-        glassType: "",
-        ingredients: [{ name: "", quantity: "", id: Date.now() }],
-        recipe: "",
-        alcoholValue: 0,
-        price: "",
-        date: "",
-        description: "",
-        smallPicture: "placeholder_small.png", // Reset to placeholder
+  const handleCrop = () => {
+    if (cropperRef.current) {
+      const croppedCanvas = cropperRef.current?.cropper.getCroppedCanvas({
+        width: 400,
+        height: 400,
       });
-    } catch (error) {
-      console.error("Error saving recipe:", error);
+
+      // Convert canvas to Base64
+      const croppedImage = croppedCanvas.toDataURL();
+
+      // Use a fixed localStorage key for the recipe's image
+      const imageName = `recipe_${recipe.id}_image`; // Unique per recipe ID
+      try {
+        localStorage.setItem(imageName, croppedImage); // Overwrite existing storage item
+        setRecipe({
+          ...recipe,
+          smallPicture: imageName, // Save the same key in recipe state
+        });
+        setIsCropped(true);
+      } catch (error) {
+        if (error.name === "QuotaExceededError") {
+          alert(
+            "LocalStorage quota exceeded. Consider clearing space or using a smaller image."
+          );
+          console.error(
+            "QuotaExceededError: Could not save image in localStorage.",
+            error
+          );
+        }
+      }
     }
-    navigate("/whereto", { state: { key: recipe.id } });
   };
 
   return (
     <div className={styles.formContainer}>
       <h1>Add New Recipe</h1>
-      <form onSubmit={handleSubmit}>
-        {/* Recipe form inputs */}
+      <form onSubmit={(e) => handleSubmit(e, recipe, setRecipe, navigate)}>
         <div className={styles.formGroup}>
           <input
             className={styles.textarea}
             type="text"
             name="name"
             value={recipe.name}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e, recipe, setRecipe)}
             placeholder="Recipe Name"
             required
           />
@@ -164,7 +100,7 @@ const AddRecipe = () => {
           <select
             name="cocktailStyle"
             value={recipe.cocktailStyle}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e, recipe, setRecipe)}
             required
             className={styles.selectInput}
           >
@@ -181,7 +117,7 @@ const AddRecipe = () => {
           <select
             name="complexityLevel"
             value={recipe.complexityLevel}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e, recipe, setRecipe)}
             required
             className={styles.selectInput}
           >
@@ -195,7 +131,7 @@ const AddRecipe = () => {
           <select
             name="glassType"
             value={recipe.glassType}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e, recipe, setRecipe)}
             required
             className={styles.selectInput}
           >
@@ -221,12 +157,11 @@ const AddRecipe = () => {
             max="100"
             step="5"
             value={recipe.alcoholValue}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e, recipe, setRecipe)}
             className={rangeStyles.rangeInput}
           />
           <p>{recipe.alcoholValue} %</p>
         </div>
-
         {recipe.ingredients.map((ingredient, index) => (
           <div className={styles.formGroup} key={ingredient.id}>
             <div className={styles.ingredients}>
@@ -235,16 +170,11 @@ const AddRecipe = () => {
                 type="text"
                 name="name"
                 value={ingredient.name}
-                onChange={(e) => handleChange(e, index)}
+                onChange={(e) => handleChange(e, recipe, setRecipe, index)}
                 placeholder="Ingredient"
                 required
                 list="suggestions"
               />
-              <datalist id="suggestions">
-                {ingredientSuggestions.map((suggestion, idx) => (
-                  <option key={idx} value={suggestion} />
-                ))}
-              </datalist>
               <input
                 className={styles.ingredient}
                 type="number"
@@ -253,12 +183,12 @@ const AddRecipe = () => {
                 min="1"
                 max="1500"
                 value={ingredient.quantity}
-                onChange={(e) => handleChange(e, index)}
+                onChange={(e) => handleChange(e, recipe, setRecipe, index)}
                 placeholder="Quantity (ml)"
               />
               {index > 0 && (
                 <div
-                  onClick={() => handleRemove(index)}
+                  onClick={() => handleRemove(index, recipe, setRecipe)}
                   className={styles.removeIngredient}
                 >
                   <FontAwesomeIcon icon={faClose} />
@@ -270,13 +200,14 @@ const AddRecipe = () => {
 
         <button
           type="button"
-          onClick={handleAddIngredient}
+          onClick={() => handleAddIngredient(recipe, setRecipe)}
           className={styles.addMoreButton}
         >
           <FontAwesomeIcon icon={faAdd} />
           <p>Add More</p>
         </button>
 
+        {/* Recipe Price input */}
         <div className={styles.formGroup}>
           <label htmlFor="price">Recipe Price</label>
           <input
@@ -285,7 +216,7 @@ const AddRecipe = () => {
             name="price"
             min="1"
             value={recipe.price}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e, recipe, setRecipe)}
             placeholder="--"
             required
           />
@@ -297,13 +228,55 @@ const AddRecipe = () => {
             className={styles.recipeArea}
             name="recipe"
             value={recipe.recipe}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e, recipe, setRecipe)}
             placeholder="Recipe Instructions"
             required
           />
         </div>
 
-        <ButtonComponent type="submit" category="save">
+        <div className={styles.formGroup}>
+          <label htmlFor="imageUpload">Upload Image</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            id="imageUpload"
+          />
+        </div>
+
+        {image && (
+          <div className={styles.flexer}>
+            <ReactCropper
+              src={image}
+              background={true}
+              style={{ width: "100%", height: "400px" }}
+              initialAspectRatio={1}
+              aspectRatio={1}
+              ref={cropperRef}
+              viewMode={2}
+              center={true}
+              highlight={true}
+              crop={() => setIsCropped(false)} // Reset crop state when the crop region changes
+            />
+            <button
+              className={
+                isCropped
+                  ? `${styles.cropped} ${styles.cropButton}`
+                  : styles.cropButton
+              }
+              type="button"
+              onClick={handleCrop}
+            >
+              {isCropped ? "Cropped!" : "Crop"}
+            </button>
+          </div>
+        )}
+
+        <ButtonComponent
+          type="submit"
+          category="save"
+          disabled={!isCropped} // Disable the save button if the image is not cropped
+        >
           Save Recipe
         </ButtonComponent>
       </form>

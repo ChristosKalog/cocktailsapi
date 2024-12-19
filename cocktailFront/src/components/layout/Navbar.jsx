@@ -1,11 +1,9 @@
-import React, {  useState } from "react";
-
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from "../../context/AuthContext";
 import styles from "../../styles/Navbar.module.css"; // Import the CSS module
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons"; // Import the download icon
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons"; // Import the download icon
+import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons"; // Import the icons
 
 const Navbar = () => {
   const [isHidden, setIsHidden] = useState(true);
@@ -35,22 +33,34 @@ const Navbar = () => {
       </div>
       <ul className={styles.navbar__links}>
         <li>
-          <NavLink to="/" activeclassname={styles.active}>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? styles.active : undefined)}
+          >
             Dashboard
           </NavLink>
         </li>
         <li>
-          <NavLink to="/recipes" activeclassname={styles.active}>
+          <NavLink
+            to="/recipes"
+            className={({ isActive }) => (isActive ? styles.active : undefined)}
+          >
             Recipes
           </NavLink>
         </li>
         <li>
-          <NavLink to="/menus" activeclassname={styles.active}>
+          <NavLink
+            to="/menus"
+            className={({ isActive }) => (isActive ? styles.active : undefined)}
+          >
             Menus
           </NavLink>
         </li>
         <li>
-          <NavLink to="/profile" activeclassname={styles.active}>
+          <NavLink
+            to="/profile"
+            className={({ isActive }) => (isActive ? styles.active : undefined)}
+          >
             Profile
           </NavLink>
         </li>
@@ -61,7 +71,10 @@ const Navbar = () => {
             Logout
           </button> // Show Logout button if user is logged in
         ) : (
-          <NavLink to="/login" activeclassname={styles.active}>
+          <NavLink
+            to="/login"
+            className={({ isActive }) => (isActive ? styles.active : undefined)}
+          >
             Login
           </NavLink> // Show Login link if user is not logged in
         )}

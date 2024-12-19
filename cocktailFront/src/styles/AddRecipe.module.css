@@ -1,5 +1,13 @@
 @import './variables.css';
 
+
+.flexer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -7,7 +15,6 @@
   justify-content: center;
   color: var(--text-color);
   padding: var(--spacing-lg);
-
 }
 
 h1 {
@@ -28,7 +35,7 @@ form {
 .formGroup {
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   margin-bottom: var(--spacing-md);
   width: 100%;
 }
@@ -97,7 +104,7 @@ label {
   transition: 250ms;
 }
 
-.removeIngredient:hover{
+.removeIngredient:hover {
   color: white;
   transition: 250ms;
 }
@@ -134,8 +141,6 @@ textarea {
   margin-right: var(--spacing-sm);
 }
 
-
-
 .alcoholValue {
   display: flex;
   align-items: center;
@@ -161,22 +166,22 @@ label[for="price"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px; 
+  width: 60px;
   padding: var(--spacing-sm);
   font-size: var(--font-size-md);
   color: var(--text-color);
-  background-color: var(--background-color-light); 
-  border: 1px solid var(--primary-color); 
+  background-color: var(--background-color-light);
+  border: 1px solid var(--primary-color);
   border-radius: var(--border-radius-md);
-  outline: none; 
+  outline: none;
 }
 
 .recipePrice:focus {
-  border-color: var(--primary-color-dark); 
+  border-color: var(--primary-color-dark);
 }
 
 .recipePrice::placeholder {
-  color: var(--secondary-color); 
+  color: var(--secondary-color);
   opacity: 0.7;
 }
 
@@ -196,6 +201,19 @@ label[for="price"] {
 .submitButton:hover {
   background-color: var(--secondary-color);
   transform: translateY(-2px);
+}
+
+.cropButton {
+  background-color: aliceblue;
+  padding: var(--spacing-sm);
+  margin: 0 auto;
+  cursor: pointer;
+  margin-top: var(--spacing-sm);
+  border: none;
+}
+
+.cropped {
+  background-color: greenyellow;
 }
 
 @media (max-width: 1024px) {
